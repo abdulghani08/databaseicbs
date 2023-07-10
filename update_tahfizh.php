@@ -158,6 +158,7 @@ $data = mysqli_fetch_array($result);
         <h2>REKAPAN HAFALAN</h2>
         <div class="add-button">
             <a href="form_tambahdata_setoran.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Hafalan</a>
+            <a href="form_tambahujian_tahfizh.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Ujian Tahfizh</a>
         </div>
         <div class="details">
         <table>
@@ -187,6 +188,50 @@ $data = mysqli_fetch_array($result);
             </tr>
         </table>
         </div>
+        <center><h3>Ujian Tahfizh</h3></center>
+        <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Tanggal</th>
+                <th>Nama Ujian</th>
+                <th>Nilai</th>
+                <th>Keterangan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $setoran_query = "SELECT * FROM tahfizh_ujian WHERE nis='$nis'";
+            $setoran_result = mysqli_query($koneksi, $setoran_query);
+            $no = 1;
+            while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+                $nilai = $setoran_data['nilai'];
+                $keterangan = '';
+                if ($nilai == 'A') {
+                    $keterangan = 'Sangat Baik';
+                } elseif ($nilai == 'B') {
+                    $keterangan = 'Baik';
+                } elseif ($nilai == 'C') {
+                    $keterangan = 'Kurang Lancar';
+                } elseif ($nilai == 'D') {
+                    $keterangan = 'Tidak Lancar(Mengulang)';
+                }
+                ?>
+                <!-- Tambahkan kelas "kurang-lancar" pada baris yang memiliki keterangan "Kurang Lancar" (C) -->
+                <tr <?php if ($nilai == 'D') echo 'class="kurang-lancar"'; ?>>
+                    <td><?php echo $no; ?></td>
+                    <td><?php echo $setoran_data['tanggal']; ?></td>
+                    <td><?php echo $setoran_data['ujian']; ?></td>
+                    <td><?php echo $nilai; ?></td>
+                    <td><?php echo $keterangan; ?></td>
+                </tr>
+                <?php
+                $no++;
+            }
+            ?>
+        </tbody>
+        </table>
+        <center><h3>Rekapan Hafalan</h3></center>
         <table>
         <thead>
             <tr>
@@ -230,7 +275,7 @@ $data = mysqli_fetch_array($result);
             }
             ?>
         </tbody>
-    </table>
+        </table>
 
         <div class="total-hafalan">
         <?php

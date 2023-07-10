@@ -17,8 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nis = $_POST['nis']; // Ambil NIS dari form
     $nama = $_POST['nama']; // Ambil Nama dari form
 
+    $tanggal = $_POST['tanggal'];
     $pelanggaran = $_POST['pelanggaran'];
+    $poin = $_POST['poin'];
     $hukuman = $_POST['hukuman'];
+    $keterangan = $_POST['keterangan'];
 
     // Ambil data santri berdasarkan NIS dari tabel dt_prestasi
     $query = "SELECT * FROM portopolio_isi WHERE nis='$nis'";
@@ -41,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $poin = $data_poin['poin']; // Mengisi poin pelanggaran dari tabel daftar_pelanggaran
 
     // Query untuk menyimpan data prestasi
-    $query = "INSERT INTO disiplin_isi (nis, nama, pelanggaran, poin, hukuman) VALUES ('$nis', '$nama', '$pelanggaran', '$poin', '$hukuman')";
+    $query = "INSERT INTO disiplin_isi (nis, nama, tanggal, pelanggaran, poin, hukuman, keterangan) VALUES ('$nis', '$nama', '$tanggal', '$pelanggaran', '$poin', '$hukuman', '$keterangan')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -117,6 +120,9 @@ $result_pelanggaran = mysqli_query($koneksi, $query_pelanggaran);
             <input type="hidden" name="nis" value="<?php echo $nis; ?>">
             <input type="hidden" name="nama" value="<?php echo $nama; ?>">
 
+            <label for="tanggal">Tanggal :</label>
+            <input type="date" id="tanggal" name="tanggal" required>
+
             <label for="pelanggaran">Nama Pelanggaran :</label>
             <select id="pelanggaran" name="pelanggaran" required>
                 <?php
@@ -131,6 +137,13 @@ $result_pelanggaran = mysqli_query($koneksi, $query_pelanggaran);
 
             <label for="hukuman">Hukuman :</label>
             <input type="text" id="hukuman" name="hukuman" required>
+
+            <label for="keterangan">Keterangan :</label>
+            <select id="keterangan" name="keterangan" required>
+                <option value="Tuntas">Tuntas</option>
+                <option value="Belum Tuntas">Belum Tuntas</option>
+            </select>
+
 
             <input type="submit" value="Simpan">
         </form>

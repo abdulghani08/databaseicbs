@@ -141,6 +141,43 @@ $data = mysqli_fetch_array($result);
             width: 25px; /* Ubah dengan lebar yang diinginkan */
             height: auto; /* Atau ubah dengan tinggi yang diinginkan */
         }
+
+        .action-links {
+            display: flex;
+            justify-content: center;
+        }
+
+        .action-links a {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .action-links a.home img {
+            width: 25px; /* Ubah dengan lebar yang diinginkan */
+            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
+        }
+
+        .action-links a.update img {
+            width: 25px; /* Ubah dengan lebar yang diinginkan */
+            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
+        }
+
+        .action-links a.edit img{
+            width: 25px; /* Ubah dengan lebar yang diinginkan */
+            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
+        }
+
+        .action-links a.delete img{
+            width: 25px; /* Ubah dengan lebar yang diinginkan */
+            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
+        }
+
     </style>
 </head>
 
@@ -181,9 +218,12 @@ $data = mysqli_fetch_array($result);
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>Tanggal</th>
                     <th>Nama Pelanggaran</th>
                     <th>Poin Pelanggaran</th>
                     <th>Bentuk Hukuman</th>
+                    <th>Keterangan</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -196,9 +236,18 @@ $data = mysqli_fetch_array($result);
                     ?>
                     <tr>
                         <td><?php echo $no; ?></td>
+                        <td><?php echo $setoran_data['tanggal']; ?></td>
                         <td><?php echo $setoran_data['pelanggaran']; ?></td>
                         <td><?php echo $setoran_data['poin']; ?></td>
                         <td><?php echo $setoran_data['hukuman']; ?></td>
+                        <td><?php echo $setoran_data['keterangan']; ?></td>
+                        <td class="action-links">
+                            <a class="edit" href="edit_update_disiplin.php?nis=<?php echo $setoran_data['pelanggaran']; ?>&poin=<?php echo $setoran_data['poin']; ?>"><img src="edit_icon.png" alt="Edit"></a>
+                            <a class="delete" href="hapus_update_disiplin.php?nis=<?php echo $setoran_data['nis']; ?>&nama=<?php echo $setoran_data['nama']; ?>"><img src="delete_icon.png" alt="Delete"></a>
+
+
+                            <!-- <a class="edit" href="edit_datasantri_disiplin.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="edit_icon.png" alt="Edit"></a> -->
+                        </td>
                     </tr>
                     <?php
                     $no++;

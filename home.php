@@ -123,25 +123,29 @@ $data = mysqli_fetch_array($query);
 
         <center>
         <?php if ($data['level']=='Admin'): ?>
+            <a class="menu-link tahfizh" href='dt_kepesantrenan.php'>
+                <i class="fas fa-database"></i>
+                Kepesantrenan Santri
+            </a>
             <a class="menu-link tahfizh" href='dt_tahfizh.php'>
                 <i class="fas fa-database"></i>
-                Data Tahfizh Santri
+                Tahfizh Santri
             </a>
             <a class="menu-link tahfizh" href='dt_prestasi.php'>
                 <i class="fas fa-trophy"></i>
-                Data Prestasi Santri
+                Prestasi Santri
             </a>
             <a class="menu-link tahfizh" href='dt_disiplin.php'>
                 <i class="fas fa-check-circle"></i>
-                Data Kedisiplinan Santri
+                Kedisiplinan Santri
             </a>
             <a class="menu-link tahfizh" href='dt_perizinan.php'>
                 <i class="fas fa-file-alt"></i>
-                Data Perizinan Santri
+                Perizinan Santri
             </a>
-            <a class="menu-link database" href='dt_portopolio.php'>
+            <br><a class="menu-link database" href='dt_portopolio.php'>
                 <i class="fas fa-database"></i>
-                Database/ Portopolio Santri
+                Portopolio Santri
             </a>
             <h2 class="welcome-msg">Grafik Santri</h2>
             <a class="menu-link perizinan" href='grafik_tahfizh.php'>
@@ -159,25 +163,29 @@ $data = mysqli_fetch_array($query);
                 Pengaturan Akun Aplikasi
             </a>
         <?php elseif($data['level']=='Pembina'): ?>
+            <a class="menu-link tahfizh" href='dt_kepesantrenan.php'>
+                <i class="fas fa-database"></i>
+                Kepesantrenan Santri
+            </a>
             <a class="menu-link tahfizh" href='dt_tahfizh.php'>
                 <i class="fas fa-database"></i>
-                Data Tahfizh Santri
+                Tahfizh Santri
             </a>
             <a class="menu-link tahfizh" href='dt_prestasi.php'>
                 <i class="fas fa-trophy"></i>
-                Data Prestasi Santri
+                Prestasi Santri
             </a>
             <a class="menu-link tahfizh" href='dt_disiplin.php'>
                 <i class="fas fa-check-circle"></i>
-                Data Kedisiplinan Santri
+                Kedisiplinan Santri
             </a>
             <a class="menu-link tahfizh" href='dt_perizinan.php'>
                 <i class="fas fa-file-alt"></i>
-                Data Perizinan Santri
+                Perizinan Santri
             </a>
             <a class="menu-link database" href='dt_portopoliopembina.php'>
                 <i class="fas fa-database"></i>
-                Database/ Portopolio Santri
+                Portopolio Santri
             </a>
             <h2 class="welcome-msg">Grafik Santri</h2>
             <a class="menu-link perizinan" href='grafik_tahfizh.php'>

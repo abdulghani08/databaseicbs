@@ -20,7 +20,7 @@ $data = mysqli_fetch_array($result);
 <html>
 
 <head>
-    <title>REKAPAN PERIZINAN</title>
+    <title>Update Kepesantrenan</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -118,9 +118,9 @@ $data = mysqli_fetch_array($result);
         }
 
         .details th {
-            background-color: rgba(255, 255, 0, 0.5);
+        background-color: rgba(0, 120, 255, 0.5);
         }
-
+        
         .action-links {
             display: flex;
             justify-content: center;
@@ -141,19 +141,24 @@ $data = mysqli_fetch_array($result);
             width: 25px; /* Ubah dengan lebar yang diinginkan */
             height: auto; /* Atau ubah dengan tinggi yang diinginkan */
         }
+
+        tbody tr.kurang-lancar td {
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <div>
-            <a href="dt_perizinan.php"><img src="back_icon.png" alt="back"></a>
+            <a href="dt_kepesantrenan.php"><img src="back_icon.png" alt="back"></a>
         </div>
-        <h2>REKAPAN PERIZINAN</h2>
+        <h2>REKAPAN UJIAN KEPESANTRENAN</h2>
         <div class="add-button">
-            <a href="form_tambahdata_perizinan.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>">Tambah Perizinan</a>
+            <a href="form_tambahujian_kepesantrenan.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>">Tambah Ujian</a>
         </div>
-        <div class="details">
+       <div class="details">
         <table>
             <tr>
             <th>Nama</th>
@@ -181,24 +186,42 @@ $data = mysqli_fetch_array($result);
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Tanggal</th>
-                    <th>Keperluan</th>
-                    <th>Durasi (Hari)</th>
+                    <th>Tanggal Ujian</th>
+                    <th>Jenis Ujian</th>
+                    <th>Nilai</th>
+                    <th>Penguji</th>
+                    <th>Kategori</th>
+                    <th>Keterangan</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- Tampilkan data dari tabel prestasi_isi berdasarkan NIS -->
                 <?php
-                $setoran_query = "SELECT * FROM perizinan_isi WHERE nis='$nis'";
+                $setoran_query = "SELECT * FROM kepesantrenan_isi WHERE nis='$nis'";
                 $setoran_result = mysqli_query($koneksi, $setoran_query);
                 $no = 1;
                 while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+                    $nilai = $setoran_data['nilai'];
+                    $keterangan = '';
+                    if ($nilai == 'A') {
+                        $keterangan = 'Sangat Baik';
+                    } elseif ($nilai == 'B') {
+                        $keterangan = 'Baik';
+                    } elseif ($nilai == 'C') {
+                        $keterangan = 'Kurang Lancar';
+                    } elseif ($nilai == 'D') {
+                        $keterangan = 'Tidak Lancar';
+                    }
+                    
                     ?>
-                    <tr>
+                    <tr <?php if ($nilai == 'D') echo 'class="kurang-lancar"'; ?>>
                         <td><?php echo $no; ?></td>
                         <td><?php echo $setoran_data['tanggal']; ?></td>
-                        <td><?php echo $setoran_data['keperluan']; ?></td>
-                        <td><?php echo $setoran_data['durasi']; ?></td>
+                        <td><?php echo $setoran_data['jenis']; ?></td>
+                        <td><?php echo $nilai; ?></td>
+                        <td><?php echo $setoran_data['penguji']; ?></td>
+                        <td><?php echo $keterangan; ?></td>
+                        <td><?php echo $setoran_data['keterangan']; ?></td>
                     </tr>
                     <?php
                     $no++;
