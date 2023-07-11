@@ -64,23 +64,23 @@ $data = mysqli_fetch_array($query);
         }
 
         .menu-link.tahfizh {
-            background-color: #4CAF50;
+            background-color: rgba(76, 175, 80, 0); /* Ubah alpha menjadi 0 untuk transparansi */
         }
 
         .menu-link.prestasi {
-            background-color: #2196F3;
+            background-color: rgba(76, 175, 80, 0); /* Ubah alpha menjadi 0 untuk transparansi */
         }
 
         .menu-link.disiplin {
-            background-color: #F44336;
+            background-color: rgba(76, 175, 80, 0); /* Ubah alpha menjadi 0 untuk transparansi */
         }
 
         .menu-link.perizinan {
-            background-color: #FFC107;
+            background-color: rgba(76, 175, 80, 0); /* Ubah alpha menjadi 0 untuk transparansi */
         }
 
         .menu-link.database {
-            background-color: #8B0000;
+            background-color: rgba(76, 175, 80, 0);
             font-size: 18px;
             padding: 20px 40px;
             margin-bottom: 20px;
@@ -88,6 +88,8 @@ $data = mysqli_fetch_array($query);
 
         .menu-link i {
             margin-right: 5px;
+            width: 20px;
+            height: 20px;
         }
 
         table {
@@ -124,96 +126,103 @@ $data = mysqli_fetch_array($query);
         <center>
         <?php if ($data['level']=='Admin'): ?>
             <a class="menu-link tahfizh" href='dt_kepesantrenan.php'>
-                <i class="fas fa-database"></i>
-                Kepesantrenan Santri
+                <!-- <i class="fas fa-database" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_kepesantrenan.png" alt="Kepesantrenan Santri" style="width: 140px; height: 140px;">
             </a>
             <a class="menu-link tahfizh" href='dt_tahfizh.php'>
-                <i class="fas fa-database"></i>
-                Tahfizh Santri
+                <!-- <i class="fas fa-database" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_tahfizh.png" alt="Tahfizh Santri" style="width: 140px; height: 140px;">
             </a>
             <a class="menu-link tahfizh" href='dt_prestasi.php'>
-                <i class="fas fa-trophy"></i>
-                Prestasi Santri
+                <!-- <i class="fas fa-trophy" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_prestasi.png" alt="Prestasi Santri" style="width: 140px; height: 140px;">
             </a>
             <a class="menu-link tahfizh" href='dt_disiplin.php'>
-                <i class="fas fa-check-circle"></i>
-                Kedisiplinan Santri
+                <!-- <i class="fas fa-check-circle" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_disiplin.png" alt="Kedisiplinan Santri" style="width: 140px; height: 140px;">
             </a>
             <a class="menu-link tahfizh" href='dt_perizinan.php'>
-                <i class="fas fa-file-alt"></i>
-                Perizinan Santri
+                <!-- <i class="fas fa-file-alt" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_perizinan.png" alt="Perizinan Santri" style="width: 140px; height: 140px;">
+            </a>
+            <a class="menu-link tahfizh" href='dt_minatbakat.php'>
+                <!-- <i class="fas fa-file-alt" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_minatbakat.png" alt="Minat Bakat Santri" style="width: 140px; height: 140px;">
             </a>
             <br><a class="menu-link database" href='dt_portopolio.php'>
-                <i class="fas fa-database"></i>
-                Portopolio Santri
+                <!-- <i class="fas fa-database" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_portopolio.png" alt="Portopolio Santri" style="width: 200px; height: 200px;">
             </a>
             <h2 class="welcome-msg">Grafik Santri</h2>
             <a class="menu-link perizinan" href='grafik_tahfizh.php'>
-                <i class="fas fa-chart-bar"></i>
-                Grafik Tahfizh Santri
+                <!-- <i class="fas fa-chart-bar" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_grafiktahfizh.png" alt="Grafik Tahfizh Santri" style="width: 140px; height: 140px;">
             </a>
-            <br>
             <a class="menu-link perizinan" href='grafik_kedisiplinan.php'>
-                <i class="fas fa-chart-line"></i>
-                Grafik Kedisiplinan Santri
+                <!-- <i class="fas fa-chart-line" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_grafikdisiplin.png" alt="Grafik Kedisiplinan Santri" style="width: 140px; height: 140px;">
             </a>
             <h2 class="welcome-msg">Akun Aplikasi</h2>
             <a class="menu-link tahfizh" href='akun.php'>
-                <i class="fas fa-database"></i>
-                Pengaturan Akun Aplikasi
+                <!-- <i class="fas fa-database" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_pengaturanakun.png" alt="Pengaturan Akun Aplikasi" style="width: 140px; height: 140px;">
             </a>
         <?php elseif($data['level']=='Pembina'): ?>
             <a class="menu-link tahfizh" href='dt_kepesantrenan.php'>
-                <i class="fas fa-database"></i>
-                Kepesantrenan Santri
+                <!-- <i class="fas fa-database" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_kepesantrenan.png" alt="Kepesantrenan Santri" style="width: 140px; height: 140px;">
             </a>
             <a class="menu-link tahfizh" href='dt_tahfizh.php'>
-                <i class="fas fa-database"></i>
-                Tahfizh Santri
+                <!-- <i class="fas fa-database" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_tahfizh.png" alt="Tahfizh Santri" style="width: 140px; height: 140px;">
             </a>
             <a class="menu-link tahfizh" href='dt_prestasi.php'>
-                <i class="fas fa-trophy"></i>
-                Prestasi Santri
+                <!-- <i class="fas fa-trophy" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_prestasi.png" alt="Prestasi Santri" style="width: 140px; height: 140px;">
             </a>
             <a class="menu-link tahfizh" href='dt_disiplin.php'>
-                <i class="fas fa-check-circle"></i>
-                Kedisiplinan Santri
+                <!-- <i class="fas fa-check-circle" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_disiplin.png" alt="Kedisiplinan Santri" style="width: 140px; height: 140px;">
             </a>
             <a class="menu-link tahfizh" href='dt_perizinan.php'>
-                <i class="fas fa-file-alt"></i>
-                Perizinan Santri
+                <!-- <i class="fas fa-file-alt" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_perizinan.png" alt="Perizinan Santri" style="width: 140px; height: 140px;">
             </a>
-            <a class="menu-link database" href='dt_portopoliopembina.php'>
-                <i class="fas fa-database"></i>
-                Portopolio Santri
+            <a class="menu-link tahfizh" href='dt_minatbakat.php'>
+                <!-- <i class="fas fa-file-alt" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_minatbakat.png" alt="Minat Bakat Santri" style="width: 140px; height: 140px;">
+            </a>
+            <br><a class="menu-link database" href='dt_portopoliopembina.php'>
+                <!-- <i class="fas fa-database" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_portopolio.png" alt="Portopolio Santri" style="width: 200px; height: 200px;">
             </a>
             <h2 class="welcome-msg">Grafik Santri</h2>
             <a class="menu-link perizinan" href='grafik_tahfizh.php'>
-                <i class="fas fa-chart-bar"></i>
-                Grafik Tahfizh Santri
+                <!-- <i class="fas fa-chart-bar" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_grafiktahfizh.png" alt="Grafik Tahfizh Santri" style="width: 140px; height: 140px;">
             </a>
             <br>
             <a class="menu-link perizinan" href='grafik_kedisiplinan.php'>
-                <i class="fas fa-chart-line"></i>
-                Grafik Kedisiplinan Santri
+                <!-- <i class="fas fa-chart-line" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_grafikdisiplin.png" alt="Grafik Kedisiplinan Santri" style="width: 140px; height: 140px;">
             </a>
             <h2 class="welcome-msg">Pengaturan</h2>
             <a class="menu-link tahfizh" href='ganti_passwordpembina.php'>
-                <i class="fas fa-database"></i>
-                Ganti Password
+                <!-- <i class="fas fa-database" style="width: 140px; height: 140px;"></i> -->
+                <img src="icon_pengaturanakun.png" alt="Ganti Password" style="width: 140px; height: 140px;">
             </a>
         <?php elseif($data['level']=='Tamu'): ?>
             <a class="menu-link tahfizh" href='form_jualbeli.php?jenis=Jual'>
-                <i class="fas fa-database"></i>
-                Data Tahfizh Santri
+                <i class="fas fa-database" style="width: 140px; height: 140px;"></i>
+                <img src="icon_tahfizh.png" alt="Data Tahfizh Santri" style="width: 140px; height: 140px;">
             </a>
             <a class="menu-link prestasi" href='form_jualbeli.php?jenis=Beli'>
-                <i class="fas fa-trophy"></i>
-                Data Prestasi Santri
+                <i class="fas fa-trophy" style="width: 140px; height: 140px;"></i>
+                <img src="icon_prestasi.png" alt="Data Prestasi Santri" style="width: 140px; height: 140px;">
             </a>
             <a class="menu-link disiplin" href='form_cari.php'>
-                <i class="fas fa-search"></i>
-                Data Kedisiplinan Santri
+                <i class="fas fa-search" style="width: 140px; height: 140px;"></i>
+                <img src="icon_disiplin.png" alt="Data Kedisiplinan Santri" style="width: 140px; height: 140px;">
             </a>
         <?php endif; ?>
         </center>
@@ -236,8 +245,8 @@ $data = mysqli_fetch_array($query);
             </tr>
         </table> -->
         <center><p><a class="menu-link disiplin" href='logout.php'>
-                    <i class="fas fa-sign-out-alt"></i>
-                    Logout
+                    <!-- <i class="fas fa-sign-out-alt" style="width: 140px; height: 140px;"></i> -->
+                    <img src="icon_logout.png" alt="Logout" style="width: 140px; height: 140px;">
                 </a></p></center>
     </div>
 </body>

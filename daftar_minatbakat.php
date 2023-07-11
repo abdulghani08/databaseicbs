@@ -8,20 +8,19 @@ if (empty($_SESSION['username'])) {
 
 $koneksi = mysqli_connect($host, $username, $password, $database);
 
-// Ambil data pencarian dari form
-$search = $_GET['search'];
+// Ambil data dari tabel tahfizh_data
+$sortColumn = isset($_GET['sort']) ? $_GET['sort'] : 'bakat';
+$sortOrder = isset($_GET['order']) ? $_GET['order'] : 'asc';
 
-// Query pencarian data berdasarkan NIS atau Nama
-$query = "SELECT * FROM daftar_pelanggaran WHERE nama LIKE '%$search%' OR jenis LIKE '%$search%' OR klasifikasi LIKE '%$search%' OR poin LIKE '%$search%'";
+$query = "SELECT * FROM minat_bakat ORDER BY $sortColumn $sortOrder";
 $result = mysqli_query($koneksi, $query);
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hasil Pencarian</title>
+    <title>Daftar Minat Bakat</title>
     <style>
-        body {
+       body {
             font-family: Arial, sans-serif;
             background-image: url('backgroundgedung.jpg');
             background-size: cover;
@@ -123,6 +122,11 @@ $result = mysqli_query($koneksi, $query);
             font-size: 14px;
         }
 
+        .action-links a.home img {
+            width: 25px; /* Ubah dengan lebar yang diinginkan */
+            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
+        }
+
         .action-links a.update img {
             width: 25px; /* Ubah dengan lebar yang diinginkan */
             height: auto; /* Atau ubah dengan tinggi yang diinginkan */
@@ -154,44 +158,39 @@ $result = mysqli_query($koneksi, $query);
             font-size: 16px;
             margin-bottom: 10px;
         }
-    </style>
+</style>
 </head>
 <body>
     <div class="container">
     <div class="navigation">
-            <a class="home" href="home.php">Home</a>
-            <a class="logout" href="logout.php">Logout</a>
+            <a href="dt_minatbakat.php"><img src="back_icon.png" alt="back"></a>
         </div>
-        <h1>Hasil Pencarian Daftar Pelanggaran</h1>
-        <div class="search-bar">
-            <form method="GET" action="search_pelanggaran.php">
-                <input type="text" name="search" placeholder="Cari Nama, Jenis, Klasifikasi atau Poin">
+        <h1>Daftar Minat Bakat</h1>
+        <div class="add-santri-button">
+            <a href="form_tambahdata_peminatan.php">Tambah Peminatan</a>
+        </div>
+        <!-- <div class="search-bar">
+            <form method="GET" action="search_peminatan.php">
+                <input type="text" name="search" placeholder="Cari Nama atau jenis bakat">
                 <input type="submit" value="Cari">
             </form>
-        </div>
+        </div> -->
         <table>
             <thead>
                 <tr>
-                <th><a href="?sort=nama&order=<?php echo ($sortColumn == 'nama' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Nama Pelanggaran</a></th>
-                    <th><a href="?sort=jenis&order=<?php echo ($sortColumn == 'jenis' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Jenis Pelanggaran</a></th>
-                    <th><a href="?sort=klasifikasi&order=<?php echo ($sortColumn == 'klasifikasi' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Klasifikasi</a></th>
-                    <th><a href="?sort=poin&order=<?php echo ($sortColumn == 'poin' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Poin</a></th>
+                    <th><a href="?sort=bakat&order=<?php echo ($sortColumn == 'bakat' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Nama Peminatan</a></th>
+                    <th><a href="?sort=jenis&order=<?php echo ($sortColumn == 'jenis' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Jenis Peminatan</a></th>
                 </tr>
             </thead>
             <tbody>
                 <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
-                        <td><?php echo $row['nama']; ?></td>
+                        <td><?php echo $row['bakat']; ?></td>
                         <td><?php echo $row['jenis']; ?></td>
-                        <td><?php echo $row['kelasifikasi']; ?></td>
-                        <td><?php echo $row['poin']; ?></td>
                     </tr>
                 <?php } ?>
             </tbody>
         </table>
-        <div class="add-button">
-            <a href="dt_pelanggaran.php">Kembali</a>
-        </div>
     </div>
 </body>
 </html>

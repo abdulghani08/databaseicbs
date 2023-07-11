@@ -20,7 +20,7 @@ $data = mysqli_fetch_array($result);
 <html>
 
 <head>
-    <title>REKAPAN KEDISIPLINAN</title>
+    <title>Update Minat Bakat Santri</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -118,9 +118,9 @@ $data = mysqli_fetch_array($result);
         }
 
         .details th {
-            background-color: rgba(255, 0, 0, 0.5);
+        background-color: rgba(0, 120, 255, 0.5);
         }
-
+        
         .action-links {
             display: flex;
             justify-content: center;
@@ -142,55 +142,23 @@ $data = mysqli_fetch_array($result);
             height: auto; /* Atau ubah dengan tinggi yang diinginkan */
         }
 
-        .action-links {
-            display: flex;
-            justify-content: center;
-        }
-
-        .action-links a {
-            display: inline-block;
-            text-decoration: none;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin-right: 5px;
+        tbody tr.kurang-lancar td {
+            color: red;
             font-weight: bold;
-            font-size: 14px;
         }
-
-        .action-links a.home img {
-            width: 25px; /* Ubah dengan lebar yang diinginkan */
-            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
-        }
-
-        .action-links a.update img {
-            width: 25px; /* Ubah dengan lebar yang diinginkan */
-            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
-        }
-
-        .action-links a.edit img{
-            width: 25px; /* Ubah dengan lebar yang diinginkan */
-            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
-        }
-
-        .action-links a.delete img{
-            width: 25px; /* Ubah dengan lebar yang diinginkan */
-            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
-        }
-
     </style>
 </head>
 
 <body>
     <div class="container">
         <div>
-            <a href="dt_disiplin.php"><img src="back_icon.png" alt="back"></a>
+            <a href="dt_minatbakat.php"><img src="back_icon.png" alt="back"></a>
         </div>
-        <h2>REKAPAN KEDISIPLINAN</h2>
+        <h2>MINAT BAKAT SANTRI</h2>
         <div class="add-button">
-            <a href="form_tambahdata_disiplin.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>">Tambah Pelanggaran</a>
+            <a href="form_tambahdata_minatbakat.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>">Tambah Minat Bakat</a>
         </div>
-        <div class="details">
+       <div class="details">
         <table>
             <tr>
             <th>Nama</th>
@@ -218,33 +186,22 @@ $data = mysqli_fetch_array($result);
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Tanggal</th>
-                    <th>Nama Pelanggaran</th>
-                    <th>Poin Pelanggaran</th>
-                    <th>Bentuk Hukuman</th>
-                    <th>Keterangan</th>
-                    <!-- <th>Action</th> -->
+                    <th>Nama Peminatan</th>
+                    <th>Jenis Peminatan</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- Tampilkan data dari tabel prestasi_isi berdasarkan NIS -->
                 <?php
-                $setoran_query = "SELECT * FROM disiplin_isi WHERE nis='$nis'";
+                $setoran_query = "SELECT * FROM minat_bakat_isi WHERE nis='$nis'";
                 $setoran_result = mysqli_query($koneksi, $setoran_query);
                 $no = 1;
                 while ($setoran_data = mysqli_fetch_array($setoran_result)) {
                     ?>
                     <tr>
                         <td><?php echo $no; ?></td>
-                        <td><?php echo $setoran_data['tanggal']; ?></td>
-                        <td><?php echo $setoran_data['pelanggaran']; ?></td>
-                        <td><?php echo $setoran_data['poin']; ?></td>
-                        <td><?php echo $setoran_data['hukuman']; ?></td>
-                        <td><?php echo $setoran_data['keterangan']; ?></td>
-                        <!-- <td class="action-links">
-                            <a class="edit" href="edit_update_disiplin.php?nis=<?php echo $setoran_data['pelanggaran']; ?>&poin=<?php echo $setoran_data['poin']; ?>"><img src="edit_icon.png" alt="Edit"></a>
-                            <a class="delete" href="hapus_update_disiplin.php?nis=<?php echo $setoran_data['nis']; ?>&nama=<?php echo $setoran_data['nama']; ?>"><img src="delete_icon.png" alt="Delete"></a>
-                        </td> -->
+                        <td><?php echo $setoran_data['bakat']; ?></td>
+                        <td><?php echo $setoran_data['jenis']; ?></td>
                     </tr>
                     <?php
                     $no++;
@@ -252,23 +209,6 @@ $data = mysqli_fetch_array($result);
                 ?>
             </tbody>
         </table>
-
-        <div class="total-hafalan">
-        <?php
-        // Menghitung jumlah total POIN
-        $total_hafalan_query = "SELECT SUM(poin) AS total FROM disiplin_isi WHERE nis='$nis'";
-        $total_hafalan_result = mysqli_query($koneksi, $total_hafalan_query);
-        $total_hafalan_data = mysqli_fetch_assoc($total_hafalan_result);
-        $total_hafalan = $total_hafalan_data['total'];
-
-        // Menghitung jumlah total hafalan per juz
-        $total_hafalan_per_juz = 20; // Ubah sesuai dengan jumlah total hafalan per juz
-        $jumlah_total_hafalan_per_juz = $total_hafalan / $total_hafalan_per_juz;
-        ?>
-        <p>Total Poin: <?php echo $total_hafalan; ?> POIN</p>
-        </div>
-
-
     </div>
 </body>
 

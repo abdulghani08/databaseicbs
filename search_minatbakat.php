@@ -12,7 +12,7 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 $search = $_GET['search'];
 
 // Query pencarian data berdasarkan NIS atau Nama
-$query = "SELECT * FROM daftar_pelanggaran WHERE nama LIKE '%$search%' OR jenis LIKE '%$search%' OR klasifikasi LIKE '%$search%' OR poin LIKE '%$search%'";
+$query = "SELECT * FROM portopolio_isi WHERE nis LIKE '%$search%' OR nama LIKE '%$search%' OR asrama LIKE '%$search%' OR kelas LIKE '%$search%'";
 $result = mysqli_query($koneksi, $query);
 ?>
 
@@ -162,35 +162,44 @@ $result = mysqli_query($koneksi, $query);
             <a class="home" href="home.php">Home</a>
             <a class="logout" href="logout.php">Logout</a>
         </div>
-        <h1>Hasil Pencarian Daftar Pelanggaran</h1>
+        <h1>Hasil Pencarian</h1>
+        <!-- <div class="add-santri-button">
+            <a href="form_tambahdata_santri_disiplin.php">Tambah Data Santri</a>
+        </div> -->
         <div class="search-bar">
-            <form method="GET" action="search_pelanggaran.php">
-                <input type="text" name="search" placeholder="Cari Nama, Jenis, Klasifikasi atau Poin">
+            <form method="GET" action="search_minatbakat.php">
+                <input type="text" name="search" placeholder="Cari NIS, Nama, kelas atau Asrama">
                 <input type="submit" value="Cari">
             </form>
         </div>
         <table>
             <thead>
                 <tr>
-                <th><a href="?sort=nama&order=<?php echo ($sortColumn == 'nama' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Nama Pelanggaran</a></th>
-                    <th><a href="?sort=jenis&order=<?php echo ($sortColumn == 'jenis' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Jenis Pelanggaran</a></th>
-                    <th><a href="?sort=klasifikasi&order=<?php echo ($sortColumn == 'klasifikasi' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Klasifikasi</a></th>
-                    <th><a href="?sort=poin&order=<?php echo ($sortColumn == 'poin' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Poin</a></th>
+                <th><a href="?sort=nis&order=<?php echo ($sortColumn == 'nis' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">NIS</a></th>
+                    <th><a href="?sort=nama&order=<?php echo ($sortColumn == 'nama' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Nama</a></th>
+                    <th><a href="?sort=kelas&order=<?php echo ($sortColumn == 'kelas' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Kelas</a></th>
+                    <th><a href="?sort=asrama&order=<?php echo ($sortColumn == 'asrama' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Asrama</a></th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
+                        <td><?php echo $row['nis']; ?></td>
                         <td><?php echo $row['nama']; ?></td>
-                        <td><?php echo $row['jenis']; ?></td>
-                        <td><?php echo $row['kelasifikasi']; ?></td>
-                        <td><?php echo $row['poin']; ?></td>
+                        <td><?php echo $row['kelas']; ?></td>
+                        <td><?php echo $row['asrama']; ?></td>
+                        <td class="action-links">
+                            <a class="update" href="update_minatbakat.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="update_icon.png" alt="Update"></a>
+                            <!-- <a class="edit" href="edit_datasantri_disiplin.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="edit_icon.png" alt="Edit"></a>
+                            <a class="delete" href="hapus_datasantri_disiplin.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="delete_icon.png" alt="Delete"></a> -->
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
         </table>
         <div class="add-button">
-            <a href="dt_pelanggaran.php">Kembali</a>
+            <a href="dt_minatbakat.php">Kembali</a>
         </div>
     </div>
 </body>

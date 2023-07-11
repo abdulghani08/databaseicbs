@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </select>
 
             <label for="total_hafalan">Total Hafalan (Per halaman):</label>
-            <input type="number" min="1" id="total_hafalan" name="total_hafalan" required>
+            <input type="number" id="total_hafalan" name="total_hafalan" step="0.1" min="0" max="800" required>
 
             <input type="submit" value="Tambah Setoran">
         </form>

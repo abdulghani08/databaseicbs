@@ -282,7 +282,125 @@ $data = mysqli_fetch_array($result);
             </tr>
         </table>
         </div>
-    
+        <center><h3>Minat Bakat</h3></center>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Peminatan</th>
+                    <th>Jenis Peminatan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Tampilkan data dari tabel prestasi_isi berdasarkan NIS -->
+                <?php
+                $setoran_query = "SELECT * FROM minat_bakat_isi WHERE nis='$nis'";
+                $setoran_result = mysqli_query($koneksi, $setoran_query);
+                $no = 1;
+                while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+                    ?>
+                    <tr>
+                        <td><?php echo $no; ?></td>
+                        <td><?php echo $setoran_data['bakat']; ?></td>
+                        <td><?php echo $setoran_data['jenis']; ?></td>
+                    </tr>
+                    <?php
+                    $no++;
+                }
+                ?>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Tanggal Ujian</th>
+                    <th>Jenis Ujian</th>
+                    <th>Nilai</th>
+                    <th>Penguji</th>
+                    <th>Kategori</th>
+                    <th>Keterangan</th>
+                </tr>
+            </thead>
+            <tbody>
+            <center><h3>Rekapan Ujian Kepesantrenan</h3></center>
+                <!-- Tampilkan data dari tabel prestasi_isi berdasarkan NIS -->
+                <?php
+                $setoran_query = "SELECT * FROM kepesantrenan_isi WHERE nis='$nis'";
+                $setoran_result = mysqli_query($koneksi, $setoran_query);
+                $no = 1;
+                while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+                    $nilai = $setoran_data['nilai'];
+                    $keterangan = '';
+                    if ($nilai == 'A') {
+                        $keterangan = 'Sangat Baik';
+                    } elseif ($nilai == 'B') {
+                        $keterangan = 'Baik';
+                    } elseif ($nilai == 'C') {
+                        $keterangan = 'Kurang Lancar';
+                    } elseif ($nilai == 'D') {
+                        $keterangan = 'Tidak Lancar';
+                    }
+                    
+                    ?>
+                    <tr <?php if ($nilai == 'D') echo 'class="kurang-lancar"'; ?>>
+                        <td><?php echo $no; ?></td>
+                        <td><?php echo $setoran_data['tanggal']; ?></td>
+                        <td><?php echo $setoran_data['jenis']; ?></td>
+                        <td><?php echo $nilai; ?></td>
+                        <td><?php echo $setoran_data['penguji']; ?></td>
+                        <td><?php echo $keterangan; ?></td>
+                        <td><?php echo $setoran_data['keterangan']; ?></td>
+                    </tr>
+                    <?php
+                    $no++;
+                }
+                ?>
+            </tbody>
+        </table>
+        <center><h3>Rekapan Ujian Tahfizh</h3></center>
+        <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Tanggal</th>
+                <th>Nama Ujian</th>
+                <th>Nilai</th>
+                <th>Keterangan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $setoran_query = "SELECT * FROM tahfizh_ujian WHERE nis='$nis'";
+            $setoran_result = mysqli_query($koneksi, $setoran_query);
+            $no = 1;
+            while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+                $nilai = $setoran_data['nilai'];
+                $keterangan = '';
+                if ($nilai == 'A') {
+                    $keterangan = 'Sangat Baik';
+                } elseif ($nilai == 'B') {
+                    $keterangan = 'Baik';
+                } elseif ($nilai == 'C') {
+                    $keterangan = 'Kurang Lancar';
+                } elseif ($nilai == 'D') {
+                    $keterangan = 'Tidak Lancar(Mengulang)';
+                }
+                ?>
+                <!-- Tambahkan kelas "kurang-lancar" pada baris yang memiliki keterangan "Kurang Lancar" (C) -->
+                <tr <?php if ($nilai == 'D') echo 'class="kurang-lancar"'; ?>>
+                    <td><?php echo $no; ?></td>
+                    <td><?php echo $setoran_data['tanggal']; ?></td>
+                    <td><?php echo $setoran_data['ujian']; ?></td>
+                    <td><?php echo $nilai; ?></td>
+                    <td><?php echo $keterangan; ?></td>
+                </tr>
+                <?php
+                $no++;
+            }
+            ?>
+        </tbody>
+        </table>
     <center><h3>Rekapan Hafalan</h3></center>
     <table>
         <thead>

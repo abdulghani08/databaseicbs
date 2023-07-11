@@ -166,6 +166,9 @@ $result = mysqli_query($koneksi, $query);
             <a href="dt_disiplin.php"><img src="back_icon.png" alt="back"></a>
         </div>
         <h1>Daftar Pelanggaran</h1>
+        <div class="add-santri-button">
+            <a href="form_tambahdata_pelanggaran.php">Tambah Nama Pelanggaran</a>
+        </div>
         <div class="search-bar">
             <form method="GET" action="search_pelanggaran.php">
                 <input type="text" name="search" placeholder="Cari Nama, Jenis, Klasifikasi atau Poin">
