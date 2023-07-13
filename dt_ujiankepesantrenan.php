@@ -9,16 +9,16 @@ if (empty($_SESSION['username'])) {
 $koneksi = mysqli_connect($host, $username, $password, $database);
 
 // Ambil data dari tabel tahfizh_data
-$sortColumn = isset($_GET['sort']) ? $_GET['sort'] : 'nis';
+$sortColumn = isset($_GET['sort']) ? $_GET['sort'] : 'jenis';
 $sortOrder = isset($_GET['order']) ? $_GET['order'] : 'asc';
 
-$query = "SELECT * FROM portopolio_isi ORDER BY $sortColumn $sortOrder";
+$query = "SELECT * FROM daftar_ujiankepesantrenan ORDER BY $sortColumn $sortOrder";
 $result = mysqli_query($koneksi, $query);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Kepesantrenan Santri</title>
+    <title>Daftar Ujian Kepesantrenan</title>
     <style>
        body {
             font-family: Arial, sans-serif;
@@ -163,42 +163,28 @@ $result = mysqli_query($koneksi, $query);
 <body>
     <div class="container">
     <div class="navigation">
-            <a href="home.php"><img src="home_icon.png" alt="home"></a>
+            <a href="dt_kepesantrenan.php"><img src="back_icon.png" alt="back"></a>
         </div>
-        <h1>Kepesantrenan Santri</h1>
-        <div class="add-santri-button">
-            <!-- <a href="form_tambahdata_santri_disiplin.php">Tambah Data Santri</a> -->
-            <a href="dt_ujiankepesantrenan.php">Lihat Daftar Ujian Kepesantrenan</a>
-        </div>
-        <div class="search-bar">
-            <form method="GET" action="search_kepesantrenan.php">
-                <input type="text" name="search" placeholder="Cari NIS, Nama, kelas atau Asrama">
+        <h1>Daftar Ujian Kepesantrenan</h1>
+        <!-- <div class="add-santri-button">
+            <a href="form_tambahdata_pelanggaran.php">Tambah Nama Pelanggaran</a>
+        </div> -->
+        <!-- <div class="search-bar">
+            <form method="GET" action="search_pelanggaran.php">
+                <input type="text" name="search" placeholder="Cari Nama, Jenis, Klasifikasi atau Poin">
                 <input type="submit" value="Cari">
             </form>
-        </div>
+        </div> -->
         <table>
             <thead>
                 <tr>
-                    <th><a href="?sort=nis&order=<?php echo ($sortColumn == 'nis' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">NIS</a></th>
-                    <th><a href="?sort=nama&order=<?php echo ($sortColumn == 'nama' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Nama</a></th>
-                    <th><a href="?sort=kelas&order=<?php echo ($sortColumn == 'kelas' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Kelas</a></th>
-                    <th><a href="?sort=asrama&order=<?php echo ($sortColumn == 'asrama' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Asrama</a></th>
-                    <th>Action</th>
+                    <th><a href="?sort=jenis&order=<?php echo ($sortColumn == 'jenis' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Nama Ujian</a></th>
                 </tr>
             </thead>
             <tbody>
                 <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
-                        <td><?php echo $row['nis']; ?></td>
-                        <td><?php echo $row['nama']; ?></td>
-                        <td><?php echo $row['kelas']; ?></td>
-                        <td><?php echo $row['asrama']; ?></td>
-
-                        <td class="action-links">
-                            <a class="update" href="update_kepesantrenan.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="update_icon.png" alt="Update"></a>
-                            <!-- <a class="edit" href="edit_datasantri_disiplin.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="edit_icon.png" alt="Edit"></a>
-                            <a class="delete" href="hapus_datasantri_disiplin.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="delete_icon.png" alt="Delete"></a> -->
-                        </td>
+                        <td><?php echo $row['jenis']; ?></td>
                     </tr>
                 <?php } ?>
             </tbody>
