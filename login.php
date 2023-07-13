@@ -10,16 +10,18 @@
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-             padding: 0;
-             margin: 0;
+            padding: 0;
+            margin: 0;
         }
 
         .form-container {
-            width: 400px;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 5px;
-            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
         }
 
         .header {
@@ -100,9 +102,10 @@
             text-decoration: underline;
         }
     </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <div class="container">
+<div class="container">
     <div class="form-container">
         <!-- <h2>Login</h2> -->
         <center><h1>DATABASE SANTRI</h1></center>
@@ -130,5 +133,6 @@
         <!-- <center>belum punya akun?</center>
         <a href="form_register.php">Register</a> -->
     </div>
+</div>
 </body>
 </html>
