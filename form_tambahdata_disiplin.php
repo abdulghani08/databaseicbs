@@ -75,15 +75,15 @@ $result_pelanggaran = mysqli_query($koneksi, $query_pelanggaran);
         }
 
         .container {
-            max-width: 800px;
+            max-width: 300px;
             margin: 0 auto;
             background-color: #fff;
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 20px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
-        h2 {
+        h4 {
             text-align: center;
             margin-bottom: 20px;
         }
@@ -95,7 +95,7 @@ $result_pelanggaran = mysqli_query($koneksi, $query_pelanggaran);
         label,
         input {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         input[type="submit"] {
@@ -111,11 +111,12 @@ $result_pelanggaran = mysqli_query($koneksi, $query_pelanggaran);
             background-color: #45a049;
         }
     </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
     <div class="container">
-        <h2>Form Tambah Pelanggaran Santri</h2>
+        <h4>Form Tambah Pelanggaran</h4>
         <form method="POST">
             <input type="hidden" name="nis" value="<?php echo $nis; ?>">
             <input type="hidden" name="nama" value="<?php echo $nama; ?>">
@@ -123,8 +124,9 @@ $result_pelanggaran = mysqli_query($koneksi, $query_pelanggaran);
             <label for="tanggal">Tanggal :</label>
             <input type="date" id="tanggal" name="tanggal" required>
 
-            <label for="pelanggaran">Nama Pelanggaran :</label>
-            <select id="pelanggaran" name="pelanggaran" required>
+            <br>
+            <label for="pelanggaran">Pelanggaran :</label>
+            <select id="pelanggaran" name="pelanggaran" required style="width: 100%;">
                 <?php
                 while ($row_pelanggaran = mysqli_fetch_array($result_pelanggaran)) {
                     echo '<option value="' . $row_pelanggaran['nama'] . '" data-poin="' . $row_pelanggaran['poin'] . '">' . $row_pelanggaran['nama'] . '</option>';
@@ -132,6 +134,7 @@ $result_pelanggaran = mysqli_query($koneksi, $query_pelanggaran);
                 ?>
             </select>
 
+            <br> 
             <label for="poin">Poin Pelanggaran :</label>
             <input type="text" id="poin" name="poin" required readonly>
 
