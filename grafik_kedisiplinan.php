@@ -88,7 +88,7 @@
             </tr>
             <?php
             // Database connection code here
-            $koneksi = mysqli_connect("localhost", "root", "", "db_santri");
+            $koneksi = mysqli_connect("localhost", "sant5315_db_santri", "payakumbuh123", "sant5315_db_santri");
 
             // Mengecek koneksi
             if (mysqli_connect_errno()) {
@@ -124,7 +124,7 @@
 
         <?php
         // Database connection code here
-        $koneksi = mysqli_connect("localhost", "root", "", "db_santri");
+        $koneksi = mysqli_connect("localhost", "sant5315_db_santri", "payakumbuh123", "sant5315_db_santri");
 
         // Mengecek koneksi
         if (mysqli_connect_errno()) {

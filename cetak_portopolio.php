@@ -8,7 +8,7 @@ $pdf->SetAuthor('Nama Anda');
 $pdf->SetTitle('Cetak Portopolio');
 $pdf->SetMargins(15, 15, 15);// Set margin halaman
 $pdf->AddPage(); // Tambahkan halaman baru
-$koneksi = mysqli_connect("localhost", "root", "", "db_santri");// Koneksi ke database
+$koneksi = mysqli_connect("localhost", "sant5315_db_santri", "payakumbuh123", "sant5315_db_santri");// Koneksi ke database
 if (mysqli_connect_errno()) {
     echo "Koneksi database gagal: " . mysqli_connect_error();
     exit();

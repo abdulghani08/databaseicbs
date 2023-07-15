@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Password konfirmasi tidak sama.';
     } else {
         // Periksa apakah password lama yang dimasukkan benar
-        $conn = mysqli_connect('localhost', 'root', '', 'db_santri');
+        $conn = mysqli_connect('localhost', 'sant5315_db_santri', 'payakumbuh123', 'sant5315_db_santri');
         if (!$conn) {
             die('Koneksi database gagal: ' . mysqli_connect_error());
         }
