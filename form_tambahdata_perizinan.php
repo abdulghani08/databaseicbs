@@ -17,7 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nis = $_POST['nis']; // Ambil NIS dari form
     $nama = $_POST['nama']; // Ambil Nama dari form
 
-    $tanggal = $_POST['tanggal'];
+    $daritanggal = $_POST['daritanggal'];
+    $sampaitanggal = $_POST['sampaitanggal'];
     $keperluan = $_POST['keperluan'];
     $durasi = $_POST['durasi'];
 
@@ -31,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Query untuk menyimpan data prestasi
-    $query = "INSERT INTO perizinan_isi (nis, nama, tanggal, keperluan, durasi) VALUES ('$nis', '$nama', '$tanggal', '$keperluan', '$durasi')";
+    $query = "INSERT INTO perizinan_isi (nis, nama, daritanggal, sampaitanggal, keperluan, durasi) VALUES ('$nis', '$nama', '$daritanggal', '$sampaitanggal', '$keperluan', '$durasi')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -103,8 +104,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="hidden" name="nis" value="<?php echo $nis; ?>">
             <input type="hidden" name="nama" value="<?php echo $nama; ?>">
 
-            <label for="tanggal">Tanggal Izin :</label>
-            <input type="date" id="tanggal" name="tanggal" required>
+            <label for="daritanggal">Tanggal Izin :</label>
+            <input type="date" id="daritanggal" name="daritanggal" required>
+
+            <label for="sampaitanggal">Sampai Tanggal :</label>
+            <input type="date" id="sampaitanggal" name="sampaitanggal" required>
             
             <label for="keperluan">Keperluan Izin :</label>
             <input type="text" id="keperluan" name="keperluan" required>

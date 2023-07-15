@@ -181,7 +181,8 @@ $data = mysqli_fetch_array($result);
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Tanggal</th>
+                    <th>Dari Tanggal</th>
+                    <th>Sampai Tanggal</th>
                     <th>Keperluan</th>
                     <th>Durasi (Hari)</th>
                 </tr>
@@ -196,7 +197,8 @@ $data = mysqli_fetch_array($result);
                     ?>
                     <tr>
                         <td><?php echo $no; ?></td>
-                        <td><?php echo $setoran_data['tanggal']; ?></td>
+                        <td><?php echo $setoran_data['daritanggal']; ?></td>
+                        <td><?php echo $setoran_data['sampaitanggal']; ?></td>
                         <td><?php echo $setoran_data['keperluan']; ?></td>
                         <td><?php echo $setoran_data['durasi']; ?></td>
                     </tr>
