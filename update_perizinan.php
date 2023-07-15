@@ -21,6 +21,7 @@ $data = mysqli_fetch_array($result);
 
 <head>
     <title>REKAPAN PERIZINAN</title>
+    <link rel="shortcut icon" href="logo.png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -141,6 +142,11 @@ $data = mysqli_fetch_array($result);
             width: 25px; /* Ubah dengan lebar yang diinginkan */
             height: auto; /* Atau ubah dengan tinggi yang diinginkan */
         }
+
+        .action-links a.delete img{
+            width: 25px; /* Ubah dengan lebar yang diinginkan */
+            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
+        }
     </style>
 </head>
 
@@ -185,6 +191,7 @@ $data = mysqli_fetch_array($result);
                     <th>Sampai Tanggal</th>
                     <th>Keperluan</th>
                     <th>Durasi (Hari)</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -201,6 +208,9 @@ $data = mysqli_fetch_array($result);
                         <td><?php echo $setoran_data['sampaitanggal']; ?></td>
                         <td><?php echo $setoran_data['keperluan']; ?></td>
                         <td><?php echo $setoran_data['durasi']; ?></td>
+                        <td class="action-links">
+                            <a class="delete" href="aksi_hapus_perizinan.php?id=<?php echo $setoran_data['id']; ?>"><img src="delete_icon.png" alt="Delete"></a>
+                        </td>
                     </tr>
                     <?php
                     $no++;

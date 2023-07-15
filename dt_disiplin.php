@@ -19,6 +19,7 @@ $result = mysqli_query($koneksi, $query);
 <html>
 <head>
     <title>Data Kedisiplinan Santri</title>
+    <link rel="shortcut icon" href="logo.png">
     <style>
        body {
             font-family: Arial, sans-serif;

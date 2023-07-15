@@ -21,6 +21,7 @@ $data = mysqli_fetch_array($result);
 
 <head>
     <title>Update Portopolio</title>
+    <link rel="shortcut icon" href="logo.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {

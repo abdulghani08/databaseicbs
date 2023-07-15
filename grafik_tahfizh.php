@@ -34,6 +34,7 @@ mysqli_close($koneksi);
 
 <head>
     <title>Grafik Tahfizh</title>
+    <link rel="shortcut icon" href="logo.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {

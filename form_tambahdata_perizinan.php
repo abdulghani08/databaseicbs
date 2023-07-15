@@ -31,12 +31,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Santri tidak ditemukan");
     }
 
-    // Query untuk menyimpan data prestasi
-    $query = "INSERT INTO perizinan_isi (nis, nama, daritanggal, sampaitanggal, keperluan, durasi) VALUES ('$nis', '$nama', '$daritanggal', '$sampaitanggal', '$keperluan', '$durasi')";
+    // Generate ID secara otomatis
+    $query_max_id = "SELECT MAX(id) AS max_id FROM perizinan_isi";
+    $result_max_id = mysqli_query($koneksi, $query_max_id);
+    $row_max_id = mysqli_fetch_assoc($result_max_id);
+    $next_id = $row_max_id['max_id'] + 1;
+
+    // Query untuk menyimpan data perizinan
+    $query = "INSERT INTO perizinan_isi (id, nis, nama, daritanggal, sampaitanggal, keperluan, durasi) VALUES ('$next_id', '$nis', '$nama', '$daritanggal', '$sampaitanggal', '$keperluan', '$durasi')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
-        // Redirect ke halaman update_tahfizh.php setelah data berhasil disimpan
+        // Redirect ke halaman update_perizinan.php setelah data berhasil disimpan
         header("Location: update_perizinan.php?nis=$nis&nama=$nama");
         exit();
     } else {
@@ -45,11 +51,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Form Tambah Surat Izin</title>
+    <link rel="shortcut icon" href="logo.png">
     <style>
         body {
             font-family: Arial, sans-serif;

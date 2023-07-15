@@ -20,6 +20,7 @@ $result = mysqli_query($koneksi, $query);
 <html>
 <head>
     <title>Hasil Pencarian</title>
+    <link rel="shortcut icon" href="logo.png">
     <style>
         body {
             font-family: Arial, sans-serif;

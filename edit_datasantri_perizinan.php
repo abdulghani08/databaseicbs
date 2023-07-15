@@ -42,6 +42,7 @@ mysqli_close($koneksi);
 <html>
 <head>
     <title>Edit Data Santri Perizinan</title>
+    <link rel="shortcut icon" href="logo.png">
     <style>
         body {
             font-family: Arial, sans-serif;

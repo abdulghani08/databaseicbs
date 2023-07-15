@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Akun</title>
+    <link rel="shortcut icon" href="logo.png">
     <style>
         body {
             font-family: Arial, sans-serif;

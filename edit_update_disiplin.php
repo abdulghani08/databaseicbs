@@ -45,6 +45,7 @@ if (isset($_POST['update'])) {
 <html>
 <head>
     <title>Edit Data Disiplin</title>
+    <link rel="shortcut icon" href="logo.png">
     <!-- Tambahkan link CSS dan tag <style> di sini untuk mengatur tampilan form -->
     <style>
         /* Contoh styling form */

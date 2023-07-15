@@ -73,6 +73,7 @@ mysqli_stmt_close($stmt);
 <html>
 <head>
     <title>Edit Data Santri</title>
+    <link rel="shortcut icon" href="logo.png">
     <style>
         body {
             font-family: Arial, sans-serif;

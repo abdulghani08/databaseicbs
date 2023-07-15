@@ -46,6 +46,7 @@ mysqli_close($koneksi);
 <html>
 <head>
     <title>Home Tamu</title>
+    <link rel="shortcut icon" href="logo.png">
     <style>
         body {
             font-family: Arial, sans-serif;

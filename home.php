@@ -17,6 +17,7 @@ $data = mysqli_fetch_array($query);
 <html>
 <head>
     <title>Welcome</title>
+    <link rel="shortcut icon" href="logo.png">
     <style>
         body {
             font-family: Arial, sans-serif;

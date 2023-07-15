@@ -66,6 +66,7 @@ $result_pelanggaran = mysqli_query($koneksi, $query_pelanggaran);
 
 <head>
     <title>Form Tambah Pelanggaran</title>
+    <link rel="shortcut icon" href="logo.png">
     <style>
         body {
             font-family: Arial, sans-serif;
