@@ -185,7 +185,7 @@ $data = mysqli_fetch_array($query);
             <img src="icon_minatbakat.png" alt="Minat Bakat Santri" style="width: 140px; height: 140px;">
         </a>
         <br>
-        <a class="menu-link database" href='dt_portopoliopembina.php'>
+        <a class="menu-link database" href='dt_portopolio.php'>
             <img src="icon_portopolio.png" alt="Portopolio Santri" style="width: 200px; height: 200px;">
         </a>
         <h2 class="welcome-msg">Grafik Santri</h2>
