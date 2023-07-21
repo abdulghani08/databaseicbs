@@ -232,7 +232,7 @@ $data = mysqli_fetch_array($result);
                 <td><?php echo $keterangan; ?></td>
                 <td class="action-links">
                     <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_ujian_tahfizh.php -->
-                    <a class="delete" href="aksi_hapus_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="delete_icon.png" alt="Delete"></a>
+                    <a class="delete" href="aksi_hapus_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
                 </td>
             </tr>
             <?php
@@ -282,7 +282,7 @@ $data = mysqli_fetch_array($result);
                 <td><?php echo $setoran_data['total_hafalan']; ?></td>
                 <td class="action-links">
                     <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_rekapan_hafalan.php -->
-                    <a class="delete" href="aksi_hapus_rekapan_hafalan.php?id=<?php echo $setoran_data['id']; ?>"><img src="delete_icon.png" alt="Delete"></a>
+                    <a class="delete" href="aksi_hapus_rekapan_hafalan.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
                 </td>
             </tr>
             <?php
