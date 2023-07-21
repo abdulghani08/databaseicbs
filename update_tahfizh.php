@@ -144,6 +144,11 @@ $data = mysqli_fetch_array($result);
             height: auto; /* Atau ubah dengan tinggi yang diinginkan */
         }
 
+        .action-links a.delete img{
+            width: 25px; /* Ubah dengan lebar yang diinginkan */
+            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
+        }
+
         tbody tr.kurang-lancar td {
             color: red;
             font-weight: bold;
@@ -190,93 +195,102 @@ $data = mysqli_fetch_array($result);
         </table>
         </div>
         <center><h3>Ujian Tahfizh</h3></center>
-        <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Tanggal</th>
-                <th>Nama Ujian</th>
-                <th>Nilai</th>
-                <th>Keterangan</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $setoran_query = "SELECT * FROM tahfizh_ujian WHERE nis='$nis'";
-            $setoran_result = mysqli_query($koneksi, $setoran_query);
-            $no = 1;
-            while ($setoran_data = mysqli_fetch_array($setoran_result)) {
-                $nilai = $setoran_data['nilai'];
-                $keterangan = '';
-                if ($nilai == 'A') {
-                    $keterangan = 'Sangat Baik';
-                } elseif ($nilai == 'B') {
-                    $keterangan = 'Baik';
-                } elseif ($nilai == 'C') {
-                    $keterangan = 'Kurang Lancar';
-                } elseif ($nilai == 'D') {
-                    $keterangan = 'Tidak Lancar(Mengulang)';
-                }
-                ?>
-                <!-- Tambahkan kelas "kurang-lancar" pada baris yang memiliki keterangan "Kurang Lancar" (C) -->
-                <tr <?php if ($nilai == 'D') echo 'class="kurang-lancar"'; ?>>
-                    <td><?php echo $no; ?></td>
-                    <td><?php echo $setoran_data['tanggal']; ?></td>
-                    <td><?php echo $setoran_data['ujian']; ?></td>
-                    <td><?php echo $nilai; ?></td>
-                    <td><?php echo $keterangan; ?></td>
-                </tr>
-                <?php
-                $no++;
+<table>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Tanggal</th>
+            <th>Nama Ujian</th>
+            <th>Nilai</th>
+            <th>Keterangan</th>
+            <th>Action</th> <!-- Tambahkan kolom Action -->
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $setoran_query = "SELECT * FROM tahfizh_ujian WHERE nis='$nis'";
+        $setoran_result = mysqli_query($koneksi, $setoran_query);
+        $no = 1;
+        while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+            $nilai = $setoran_data['nilai'];
+            $keterangan = '';
+            if ($nilai == 'A') {
+                $keterangan = 'Sangat Baik';
+            } elseif ($nilai == 'B') {
+                $keterangan = 'Baik';
+            } elseif ($nilai == 'C') {
+                $keterangan = 'Kurang Lancar';
+            } elseif ($nilai == 'D') {
+                $keterangan = 'Tidak Lancar(Mengulang)';
             }
             ?>
-        </tbody>
-        </table>
+            <tr>
+                <td><?php echo $no; ?></td>
+                <td><?php echo $setoran_data['tanggal']; ?></td>
+                <td><?php echo $setoran_data['ujian']; ?></td>
+                <td><?php echo $nilai; ?></td>
+                <td><?php echo $keterangan; ?></td>
+                <td class="action-links">
+                    <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_ujian_tahfizh.php -->
+                    <a class="delete" href="aksi_hapus_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="delete_icon.png" alt="Delete"></a>
+                </td>
+            </tr>
+            <?php
+            $no++;
+        }
+        ?>
+    </tbody>
+</table>
+
         <center><h3>Rekapan Hafalan</h3></center>
-        <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Tanggal</th>
-                <th>Hafalan</th>
-                <th>Nilai</th>
-                <th>Keterangan</th>
-                <th>Total Hafalan (Halaman)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $setoran_query = "SELECT * FROM tahfizh_hafalan WHERE nis='$nis'";
-            $setoran_result = mysqli_query($koneksi, $setoran_query);
-            $no = 1;
-            while ($setoran_data = mysqli_fetch_array($setoran_result)) {
-                $nilai = $setoran_data['nilai'];
-                $keterangan = '';
-                if ($nilai == 'A') {
-                    $keterangan = 'Sangat Baik';
-                } elseif ($nilai == 'B') {
-                    $keterangan = 'Baik';
-                } elseif ($nilai == 'C') {
-                    $keterangan = 'Kurang Lancar';
-                } elseif ($nilai == 'D') {
-                    $keterangan = 'Tidak Lancar';
-                }
-                ?>
-                <!-- Tambahkan kelas "kurang-lancar" pada baris yang memiliki keterangan "Kurang Lancar" (C) -->
-                <tr <?php if ($nilai == 'D') echo 'class="kurang-lancar"'; ?>>
-                    <td><?php echo $no; ?></td>
-                    <td><?php echo $setoran_data['tanggal']; ?></td>
-                    <td><?php echo $setoran_data['hafalan']; ?></td>
-                    <td><?php echo $nilai; ?></td>
-                    <td><?php echo $keterangan; ?></td>
-                    <td><?php echo $setoran_data['total_hafalan']; ?></td>
-                </tr>
-                <?php
-                $no++;
+<table>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Tanggal</th>
+            <th>Hafalan</th>
+            <th>Nilai</th>
+            <th>Keterangan</th>
+            <th>Total Hafalan (Halaman)</th>
+            <th>Action</th> <!-- Tambahkan kolom Action -->
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $setoran_query = "SELECT * FROM tahfizh_hafalan WHERE nis='$nis'";
+        $setoran_result = mysqli_query($koneksi, $setoran_query);
+        $no = 1;
+        while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+            $nilai = $setoran_data['nilai'];
+            $keterangan = '';
+            if ($nilai == 'A') {
+                $keterangan = 'Sangat Baik';
+            } elseif ($nilai == 'B') {
+                $keterangan = 'Baik';
+            } elseif ($nilai == 'C') {
+                $keterangan = 'Kurang Lancar';
+            } elseif ($nilai == 'D') {
+                $keterangan = 'Tidak Lancar';
             }
             ?>
-        </tbody>
-        </table>
+            <tr>
+                <td><?php echo $no; ?></td>
+                <td><?php echo $setoran_data['tanggal']; ?></td>
+                <td><?php echo $setoran_data['hafalan']; ?></td>
+                <td><?php echo $nilai; ?></td>
+                <td><?php echo $keterangan; ?></td>
+                <td><?php echo $setoran_data['total_hafalan']; ?></td>
+                <td class="action-links">
+                    <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_rekapan_hafalan.php -->
+                    <a class="delete" href="aksi_hapus_rekapan_hafalan.php?id=<?php echo $setoran_data['id']; ?>"><img src="delete_icon.png" alt="Delete"></a>
+                </td>
+            </tr>
+            <?php
+            $no++;
+        }
+        ?>
+    </tbody>
+</table>
 
         <div class="total-hafalan">
         <?php
