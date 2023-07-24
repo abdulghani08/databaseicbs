@@ -209,7 +209,7 @@ $data = mysqli_fetch_array($result);
                         <td><?php echo $setoran_data['keperluan']; ?></td>
                         <td><?php echo $setoran_data['durasi']; ?></td>
                         <td class="action-links">
-                            <a class="delete" href="aksi_hapus_perizinan.php?id=<?php echo $setoran_data['id']; ?>"><img src="delete_icon.png" alt="Delete"></a>
+                            <a class="delete" href="aksi_hapus_perizinan.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
                         </td>
                     </tr>
                     <?php

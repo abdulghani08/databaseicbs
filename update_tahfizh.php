@@ -242,7 +242,7 @@ $data = mysqli_fetch_array($result);
     </tbody>
 </table>
 
-        <center><h3>Rekapan Hafalan</h3></center>
+<center><h3>Rekapan Hafalan</h3></center>
 <table>
     <thead>
         <tr>

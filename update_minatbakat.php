@@ -143,6 +143,11 @@ $data = mysqli_fetch_array($result);
             height: auto; /* Atau ubah dengan tinggi yang diinginkan */
         }
 
+        .action-links a.delete img{
+            width: 25px; /* Ubah dengan lebar yang diinginkan */
+            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
+        }
+
         tbody tr.kurang-lancar td {
             color: red;
             font-weight: bold;
@@ -189,6 +194,7 @@ $data = mysqli_fetch_array($result);
                     <th>No</th>
                     <th>Nama Peminatan</th>
                     <th>Jenis Peminatan</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -203,6 +209,9 @@ $data = mysqli_fetch_array($result);
                         <td><?php echo $no; ?></td>
                         <td><?php echo $setoran_data['bakat']; ?></td>
                         <td><?php echo $setoran_data['jenis']; ?></td>
+                        <td class="action-links">
+                            <a class="delete" href="aksi_hapus_minatbakat.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
+                        </td>
                     </tr>
                     <?php
                     $no++;

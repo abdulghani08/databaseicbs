@@ -143,6 +143,11 @@ $data = mysqli_fetch_array($result);
             height: auto; /* Atau ubah dengan tinggi yang diinginkan */
         }
 
+        .action-links a.delete img{
+            width: 25px; /* Ubah dengan lebar yang diinginkan */
+            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
+        }
+
         tbody tr.kurang-lancar td {
             color: red;
             font-weight: bold;
@@ -193,6 +198,7 @@ $data = mysqli_fetch_array($result);
                     <th>Penguji</th>
                     <th>Kategori</th>
                     <th>Keterangan</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -223,6 +229,10 @@ $data = mysqli_fetch_array($result);
                         <td><?php echo $setoran_data['penguji']; ?></td>
                         <td><?php echo $keterangan; ?></td>
                         <td><?php echo $setoran_data['keterangan']; ?></td>
+                        <td class="action-links">
+                    <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_rekapan_hafalan.php -->
+                    <a class="delete" href="aksi_hapus_ujian_kepesantrenan.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
+                </td>
                     </tr>
                     <?php
                     $no++;

@@ -12,7 +12,7 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 $id = $_GET['id'];
 
 // Query untuk menghapus data berdasarkan ID
-$query = "DELETE FROM tahfizh_hafalan WHERE id='$id'";
+$query = "DELETE FROM disiplin_isi WHERE id='$id'";
 $result = mysqli_query($koneksi, $query);
 
 if ($result) {

@@ -224,7 +224,7 @@ $data = mysqli_fetch_array($result);
                     <th>Poin Pelanggaran</th>
                     <th>Bentuk Hukuman</th>
                     <th>Keterangan</th>
-                    <!-- <th>Action</th> -->
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -242,10 +242,10 @@ $data = mysqli_fetch_array($result);
                         <td><?php echo $setoran_data['poin']; ?></td>
                         <td><?php echo $setoran_data['hukuman']; ?></td>
                         <td><?php echo $setoran_data['keterangan']; ?></td>
-                        <!-- <td class="action-links">
-                            <a class="edit" href="edit_update_disiplin.php?nis=<?php echo $setoran_data['pelanggaran']; ?>&poin=<?php echo $setoran_data['poin']; ?>"><img src="edit_icon.png" alt="Edit"></a>
-                            <a class="delete" href="hapus_update_disiplin.php?nis=<?php echo $setoran_data['nis']; ?>&nama=<?php echo $setoran_data['nama']; ?>"><img src="delete_icon.png" alt="Delete"></a>
-                        </td> -->
+                        <td class="action-links">
+                    <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_rekapan_hafalan.php -->
+                    <a class="delete" href="aksi_hapus_disiplin.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
+                </td>
                     </tr>
                     <?php
                     $no++;
