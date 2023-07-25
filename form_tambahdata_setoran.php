@@ -19,6 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nilai = $_POST['nilai'];
     $totalHafalan = $_POST['total_hafalan'];
 
+    // Membersihkan nilai $hafalan untuk mencegah serangan SQL injection
+$hafalan = mysqli_real_escape_string($koneksi, $hafalan);
+
     // Query untuk menyimpan data setoran
     $query = "INSERT INTO tahfizh_hafalan (nis, tanggal, hafalan, nilai, total_hafalan) VALUES ('$nis', '$tanggal', '$hafalan', '$nilai', '$totalHafalan')";
     $result = mysqli_query($koneksi, $query);
@@ -110,7 +113,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </select>
 
             <label for="total_hafalan">Total Hafalan (Per halaman):</label>
-            <input type="number" id="total_hafalan" name="total_hafalan" step="0.1" min="0" max="800" required>
+            <input type="number" id="total_hafalan" name="total_hafalan" step="0.1" min="0" max="604" required>
+            <h6>Catatan : 1 Juz = 20 halaman</h6>
 
             <input type="submit" value="Tambah Setoran">
         </form>
