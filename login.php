@@ -1,7 +1,3 @@
-<?php
-header("Location: maintenance.html");
-exit;
-?>
 <!DOCTYPE html>
 <html>
 <head>

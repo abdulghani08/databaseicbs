@@ -1,4 +1,4 @@
 <?php
-header("Location: maintenance.html");
+header("Location: login.php");
 exit;
 ?>
