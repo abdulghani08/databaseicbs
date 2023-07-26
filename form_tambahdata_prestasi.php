@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <option value="kota">Asrama</option>
                 <option value="kota">Sekolah</option>
                 <option value="kota">ICBS</option>
-                <option value="kota">Kota</option>
+                <option value="kota">Kota/ Kabupaten</option>
                 <option value="provinsi">Provinsi</option>
                 <option value="nasional">Nasional</option>
                 <option value="internasional">Internasional</option>
