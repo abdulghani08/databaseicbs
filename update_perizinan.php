@@ -147,6 +147,11 @@ $data = mysqli_fetch_array($result);
             width: 25px; /* Ubah dengan lebar yang diinginkan */
             height: auto; /* Atau ubah dengan tinggi yang diinginkan */
         }
+
+        .action-links a.edit img{
+            width: 25px; /* Ubah dengan lebar yang diinginkan */
+            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
+        }
     </style>
 </head>
 
@@ -209,6 +214,7 @@ $data = mysqli_fetch_array($result);
                         <td><?php echo $setoran_data['keperluan']; ?></td>
                         <td><?php echo $setoran_data['durasi']; ?></td>
                         <td class="action-links">
+                            <a class="edit" href="edit_perizinan.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a>
                             <a class="delete" href="aksi_hapus_perizinan.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
                         </td>
                     </tr>
