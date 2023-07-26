@@ -118,6 +118,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="tingkat">Tingkat :</label>
             <select id="tingkat" name="tingkat" required>
                 <option value="">Pilih Tingkat</option>
+                <option value="kota">Asrama</option>
+                <option value="kota">Sekolah</option>
+                <option value="kota">ICBS</option>
                 <option value="kota">Kota</option>
                 <option value="provinsi">Provinsi</option>
                 <option value="nasional">Nasional</option>
