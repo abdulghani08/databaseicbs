@@ -149,6 +149,11 @@ $data = mysqli_fetch_array($result);
             height: auto; /* Atau ubah dengan tinggi yang diinginkan */
         }
 
+        .action-links a.edit img{
+            width: 25px; /* Ubah dengan lebar yang diinginkan */
+            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
+        }
+
         tbody tr.kurang-lancar td {
             color: red;
             font-weight: bold;
@@ -231,7 +236,7 @@ $data = mysqli_fetch_array($result);
                 <td><?php echo $nilai; ?></td>
                 <td><?php echo $keterangan; ?></td>
                 <td class="action-links">
-                    <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_ujian_tahfizh.php -->
+                    <a class="edit" href="edit_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a>
                     <a class="delete" href="aksi_hapus_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
                 </td>
             </tr>
@@ -282,7 +287,9 @@ $data = mysqli_fetch_array($result);
                 <td><?php echo $setoran_data['total_hafalan']; ?></td>
                 <td class="action-links">
                     <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_rekapan_hafalan.php -->
+                    <a class="edit" href="edit_setoran_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a>
                     <a class="delete" href="aksi_hapus_rekapan_hafalan.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
+                    <!-- Tambahkan tombol edit dengan link ke edit_setoran_tahfizh.php -->
                 </td>
             </tr>
             <?php
