@@ -88,6 +88,9 @@
                             <option value="Admin">Admin</option>
                             <option value="Pembina">Pembina</option>
                             <option value="Tamu">Tamu</option>
+                            <option value="Admin_pa">Admin_pa</option>
+                            <option value="Pembina_pa">Pembina_pa</option>
+                            <option value="Tamu_pa">Tamu_pa</option>
                         </select>
                     </td>
                 </tr>

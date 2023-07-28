@@ -21,9 +21,15 @@ if(isset($_POST['username']) && isset($_POST['password'])){
             header("Location: home.php?level=Pembina");
         } elseif($row['level'] == "Tamu"){
             header("Location: hometamu.php?level=Tamu");
+        } elseif($row['level'] == "Admin_pa"){
+            header("Location: putra/home.php?level=Admin_pa");
+        } elseif($row['level'] == "Pembina_pa"){
+            header("Location: putra/home.php?level=Pembina_pa");
+        } elseif($row['level'] == "Tamu_pa"){
+            header("Location: putra/hometamu.php?level=Tamu_pa");
         } else {
             die("Level tidak valid");
-        }
+        } 
     } else {
         die("Username atau password salah <a href=\"javascript:history.back()\">Kembali</a>");
     }
