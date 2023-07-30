@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'connection.php';
+require_once '../connection.php';
 
 if (!isset($_SESSION['username'])) {
     header('Location: login.php');
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head>
     <title>Ganti Password</title>
-    <link rel="shortcut icon" href="logo.png">
+    <link rel="shortcut icon" href="../logo.png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .back-button a {
             display: inline-block;
             padding: 5px;
-            background: url('home_icon.png') no-repeat center center;
+            background: url('../home_icon.png') no-repeat center center;
             background-size: 100%;
             width: 20px;
             height: 20px;

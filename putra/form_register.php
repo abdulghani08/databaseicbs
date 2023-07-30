@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Register Form</title>
-    <link rel="shortcut icon" href="logo.png">
+    <link rel="shortcut icon" href="../logo.png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -84,10 +84,13 @@
                 <tr>
                     <td>Level</td>
                     <td>
-                        <select name="level">
+                    <select name="level">
                             <option value="Admin">Admin</option>
                             <option value="Pembina">Pembina</option>
                             <option value="Tamu">Tamu</option>
+                            <option value="Admin_pa">Admin_pa</option>
+                            <option value="Pembina_pa">Pembina_pa</option>
+                            <option value="Tamu_pa">Tamu_pa</option>
                         </select>
                     </td>
                 </tr>

@@ -63,13 +63,13 @@
 <body>
     <div class="container">
     <center><div class="navigation">
-            <a href="../home.php"><img src="../home_icon.png" alt="home"></a>
+            <a href="home.php"><img src="../home_icon.png" alt="home"></a>
         </div></center>
         <center><h2>Akun</h2></center>
         <center><div class="button-container">
-            <button onclick="location.href='../form_register.php'">Tambahkan User</button>
-            <button onclick="location.href='../lihat_user.php'">Lihat Seluruh User</button>
-            <button onclick="location.href='../ganti_passwordadmin.php'">Ganti Password</button>
+            <button onclick="location.href='form_register.php'">Tambahkan User</button>
+            <button onclick="location.href='lihat_user.php'">Lihat Seluruh User</button>
+            <button onclick="location.href='ganti_passwordadmin.php'">Ganti Password</button>
         </div></center>
     </div>
 </body>

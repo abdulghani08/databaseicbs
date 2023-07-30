@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "connection.php";
+include "../connection.php";
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 if (empty($_SESSION['username'])) {
     die("Anda belum login");
@@ -21,12 +21,12 @@ $data = mysqli_fetch_array($result);
 
 <head>
     <title>Update Tahfizh</title>
-    <link rel="shortcut icon" href="logo.png">
+    <link rel="shortcut icon" href="../logo.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('backgroundgedung.jpg');
+            background-image: url('../backgroundgedung.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -164,7 +164,7 @@ $data = mysqli_fetch_array($result);
 <body>
     <div class="container">
         <div>
-            <a href="dt_tahfizh.php"><img src="back_icon.png" alt="home"></a>
+            <a href="dt_tahfizh.php"><img src="../back_icon.png" alt="home"></a>
         </div>
         <h2>REKAPAN HAFALAN</h2>
         <div class="add-button">
@@ -236,8 +236,8 @@ $data = mysqli_fetch_array($result);
                 <td><?php echo $nilai; ?></td>
                 <td><?php echo $keterangan; ?></td>
                 <td class="action-links">
-                    <a class="edit" href="edit_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a>
-                    <a class="delete" href="aksi_hapus_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
+                    <a class="edit" href="edit_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="../edit_icon.png" alt="Edit"></a>
+                    <a class="delete" href="aksi_hapus_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="../delete_icon.png" alt="Delete"></a>
                 </td>
             </tr>
             <?php
@@ -287,8 +287,8 @@ $data = mysqli_fetch_array($result);
                 <td><?php echo $setoran_data['total_hafalan']; ?></td>
                 <td class="action-links">
                     <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_rekapan_hafalan.php -->
-                    <a class="edit" href="edit_setoran_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a>
-                    <a class="delete" href="aksi_hapus_rekapan_hafalan.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
+                    <a class="edit" href="edit_setoran_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="../edit_icon.png" alt="Edit"></a>
+                    <a class="delete" href="aksi_hapus_rekapan_hafalan.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="../delete_icon.png" alt="Delete"></a>
                     <!-- Tambahkan tombol edit dengan link ke edit_setoran_tahfizh.php -->
                 </td>
             </tr>

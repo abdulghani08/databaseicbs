@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "connection.php";
+include "../connection.php";
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 if (empty($_SESSION['username'])) {
     die("Anda belum login");
@@ -21,12 +21,12 @@ $data = mysqli_fetch_array($result);
 
 <head>
     <title>Update Portopolio</title>
-    <link rel="shortcut icon" href="logo.png">
+    <link rel="shortcut icon" href="../logo.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('backgroundgedung.jpg');
+            background-image: url('../backgroundgedung.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -154,7 +154,7 @@ $data = mysqli_fetch_array($result);
 <body>
     <div class="container">
         <div>
-            <a href="hometamu.php"><img src="back_icon.png" alt="home"></a>
+            <a href="hometamu.php"><img src="../back_icon.png" alt="home"></a>
         </div>
         <h2>Biodata Santri</h2>
         <!-- <div class="add-button">

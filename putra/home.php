@@ -132,82 +132,82 @@ $data = mysqli_fetch_array($query);
 
     <div style="text-align: center;">
         <?php if ($data['level']=='Admin_pa'): ?>
-        <a class="menu-link tahfizh" href='../dt_kepesantrenan.php'>
+        <a class="menu-link tahfizh" href='dt_kepesantrenan.php'>
             <img src="../icon_kepesantrenan.png" alt="Kepesantrenan Santri" style="width: 140px; height: 140px;">
         </a>
-        <a class="menu-link tahfizh" href='../dt_tahfizh.php'>
+        <a class="menu-link tahfizh" href='dt_tahfizh.php'>
             <img src="../icon_tahfizh.png" alt="Tahfizh Santri" style="width: 140px; height: 140px;">
         </a>
-        <a class="menu-link tahfizh" href='../dt_prestasi.php'>
+        <a class="menu-link tahfizh" href='dt_prestasi.php'>
             <img src="../icon_prestasi.png" alt="Prestasi Santri" style="width: 140px; height: 140px;">
         </a>
-        <a class="menu-link tahfizh" href='../dt_disiplin.php'>
+        <a class="menu-link tahfizh" href='dt_disiplin.php'>
             <img src="../icon_disiplin.png" alt="Kedisiplinan Santri" style="width: 140px; height: 140px;">
         </a>
-        <a class="menu-link tahfizh" href='../dt_perizinan.php'>
+        <a class="menu-link tahfizh" href='dt_perizinan.php'>
             <img src="../icon_perizinan.png" alt="Perizinan Santri" style="width: 140px; height: 140px;">
         </a>
-        <a class="menu-link tahfizh" href='../dt_minatbakat.php'>
+        <a class="menu-link tahfizh" href='dt_minatbakat.php'>
             <img src="../icon_minatbakat.png" alt="Minat Bakat Santri" style="width: 140px; height: 140px;">
         </a>
         <br>
-        <a class="menu-link database" href='../dt_portopolio.php'>
+        <a class="menu-link database" href='dt_portopolio.php'>
             <img src="../icon_portopolio.png" alt="Portopolio Santri" style="width: 200px; height: 200px;">
         </a>
         <h2 class="welcome-msg">Grafik Santri</h2>
-        <a class="menu-link perizinan" href='../grafik_tahfizh.php'>
+        <a class="menu-link perizinan" href='grafik_tahfizh.php'>
             <img src="../icon_grafiktahfizh.png" alt="Grafik Tahfizh Santri" style="width: 140px; height: 140px;">
         </a>
-        <a class="menu-link perizinan" href='../grafik_kedisiplinan.php'>
+        <a class="menu-link perizinan" href='grafik_kedisiplinan.php'>
             <img src="../icon_grafikdisiplin.png" alt="Grafik Kedisiplinan Santri" style="width: 140px; height: 140px;">
         </a>
         <h2 class="welcome-msg">Akun Aplikasi</h2>
-        <a class="menu-link tahfizh" href='../akun.php'>
+        <a class="menu-link tahfizh" href='akun.php'>
             <img src="../icon_pengaturanakun.png" alt="Pengaturan Akun Aplikasi" style="width: 140px; height: 140px;">
         </a>
         <?php elseif($data['level']=='Pembina_pa'): ?>
-        <a class="menu-link tahfizh" href='../dt_kepesantrenan.php'>
+        <a class="menu-link tahfizh" href='dt_kepesantrenan.php'>
             <img src="../icon_kepesantrenan.png" alt="Kepesantrenan Santri" style="width: 140px; height: 140px;">
         </a>
-        <a class="menu-link tahfizh" href='../dt_tahfizh.php'>
+        <a class="menu-link tahfizh" href='dt_tahfizh.php'>
             <img src="../icon_tahfizh.png" alt="Tahfizh Santri" style="width: 140px; height: 140px;">
         </a>
-        <a class="menu-link tahfizh" href='../dt_prestasi.php'>
+        <a class="menu-link tahfizh" href='dt_prestasi.php'>
             <img src="../icon_prestasi.png" alt="Prestasi Santri" style="width: 140px; height: 140px;">
         </a>
-        <a class="menu-link tahfizh" href='../dt_disiplin.php'>
+        <a class="menu-link tahfizh" href='dt_disiplin.php'>
             <img src="../icon_disiplin.png" alt="Kedisiplinan Santri" style="width: 140px; height: 140px;">
         </a>
-        <a class="menu-link tahfizh" href='../dt_perizinan.php'>
+        <a class="menu-link tahfizh" href='dt_perizinan.php'>
             <img src="../icon_perizinan.png" alt="Perizinan Santri" style="width: 140px; height: 140px;">
         </a>
-        <a class="menu-link tahfizh" href='../dt_minatbakat.php'>
+        <a class="menu-link tahfizh" href='dt_minatbakat.php'>
             <img src="../icon_minatbakat.png" alt="Minat Bakat Santri" style="width: 140px; height: 140px;">
         </a>
         <br>
-        <a class="menu-link database" href='../dt_portopolio.php'>
+        <a class="menu-link database" href='dt_portopolio.php'>
             <img src="../icon_portopolio.png" alt="Portopolio Santri" style="width: 200px; height: 200px;">
         </a>
         <h2 class="welcome-msg">Grafik Santri</h2>
-        <a class="menu-link perizinan" href='../grafik_tahfizh.php'>
+        <a class="menu-link perizinan" href='grafik_tahfizh.php'>
             <img src="../icon_grafiktahfizh.png" alt="Grafik Tahfizh Santri" style="width: 140px; height: 140px;">
         </a>
         <br>
-        <a class="menu-link perizinan" href='../grafik_kedisiplinan.php'>
+        <a class="menu-link perizinan" href='grafik_kedisiplinan.php'>
             <img src="../icon_grafikdisiplin.png" alt="Grafik Kedisiplinan Santri" style="width: 140px; height: 140px;">
         </a>
         <h2 class="welcome-msg">Pengaturan</h2>
-        <a class="menu-link tahfizh" href='../ganti_passwordpembina.php'>
+        <a class="menu-link tahfizh" href='ganti_passwordpembina.php'>
             <img src="../icon_pengaturanakun.png" alt="Ganti Password" style="width: 140px; height: 140px;">
         </a>
         <?php elseif($data['level']=='Tamu_pa'): ?>
-        <a class="menu-link tahfizh" href='../form_jualbeli.php?jenis=Jual'>
+        <a class="menu-link tahfizh" href='form_jualbeli.php?jenis=Jual'>
             <img src="../icon_tahfizh.png" alt="Data Tahfizh Santri" style="width: 140px; height: 140px;">
         </a>
-        <a class="menu-link prestasi" href='../form_jualbeli.php?jenis=Beli'>
+        <a class="menu-link prestasi" href='form_jualbeli.php?jenis=Beli'>
             <img src="../icon_prestasi.png" alt="Data Prestasi Santri" style="width: 140px; height: 140px;">
         </a>
-        <a class="menu-link disiplin" href='../form_cari.php'>
+        <a class="menu-link disiplin" href='form_cari.php'>
             <img src="../icon_disiplin.png" alt="Data Kedisiplinan Santri" style="width: 140px; height: 140px;">
         </a>
         <?php endif; ?>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "connection.php";
+include "../connection.php";
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 if (empty($_SESSION['username'])) {
     die("Anda belum login");
@@ -21,11 +21,11 @@ $data = mysqli_fetch_array($result);
 
 <head>
     <title>Update Minat Bakat Santri</title>
-    <link rel="shortcut icon" href="logo.png">
+    <link rel="shortcut icon" href="../logo.png">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('backgroundgedung.jpg');
+            background-image: url('../backgroundgedung.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -163,7 +163,7 @@ $data = mysqli_fetch_array($result);
 <body>
     <div class="container">
         <div>
-            <a href="dt_minatbakat.php"><img src="back_icon.png" alt="back"></a>
+            <a href="dt_minatbakat.php"><img src="../back_icon.png" alt="back"></a>
         </div>
         <h2>MINAT BAKAT SANTRI</h2>
         <div class="add-button">
@@ -215,8 +215,8 @@ $data = mysqli_fetch_array($result);
                         <td><?php echo $setoran_data['bakat']; ?></td>
                         <td><?php echo $setoran_data['jenis']; ?></td>
                         <td class="action-links">
-                            <!-- <a class="edit" href="edit_minatbakat.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a> -->
-                            <a class="delete" href="aksi_hapus_minatbakat.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
+                            <!-- <a class="edit" href="edit_minatbakat.php?id=<?php echo $setoran_data['id']; ?>"><img src="../edit_icon.png" alt="Edit"></a> -->
+                            <a class="delete" href="aksi_hapus_minatbakat.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="../delete_icon.png" alt="Delete"></a>
                         </td>
                     </tr>
                     <?php

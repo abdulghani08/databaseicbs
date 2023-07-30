@@ -1,5 +1,5 @@
 <?php
-include "connection.php";
+include "../connection.php";
 
 // Mengambil data kualitas hafalan dari tabel tahfizh_setoran
 $query_kualitas_hafalan = "SELECT COUNT(*) AS total, nilai FROM putra_tahfizh_hafalan GROUP BY nilai";
@@ -34,12 +34,12 @@ mysqli_close($koneksi);
 
 <head>
     <title>Grafik Tahfizh</title>
-    <link rel="shortcut icon" href="logo.png">
+    <link rel="shortcut icon" href="../logo.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('backgroundgedung.jpg');
+            background-image: url('../backgroundgedung.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -92,7 +92,7 @@ mysqli_close($koneksi);
 <body>
     <div class="container">
         <div class="navigation">
-            <a href="home.php"><img src="home_icon.png" alt="home"></a>
+            <a href="home.php"><img src="../home_icon.png" alt="home"></a>
         </div>
         <h2>Grafik Rata-Rata Kualitas Hafalan Santri</h2>
 

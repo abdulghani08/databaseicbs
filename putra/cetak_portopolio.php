@@ -1,5 +1,5 @@
 <?php
-require_once('../tcpdf/tcpdf.php');
+require_once('tcpdf/tcpdf.php');
 $nis = $_GET['nis'];
 $nama = $_GET['nama'];
 $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false); // Buat objek TCPDF

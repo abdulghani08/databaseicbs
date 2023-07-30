@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "connection.php";
+include "../connection.php";
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 if (empty($_SESSION['username'])) {
     die("Anda belum login");
@@ -31,7 +31,7 @@ $result = mysqli_query($koneksi, $query);
 <html>
 <head>
     <title>Data Prestasi</title>
-    <link rel="shortcut icon" href="logo.png">
+    <link rel="shortcut icon" href="../logo.png">
     <style>
         body {
             font-family: Arial, sans-serif;

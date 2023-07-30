@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "connection.php";
+include "../connection.php";
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 if (empty($_SESSION['username'])) {
     die("Anda belum login");
@@ -19,11 +19,11 @@ $result = mysqli_query($koneksi, $query);
 <html>
 <head>
     <title>Data Kedisiplinan Santri</title>
-    <link rel="shortcut icon" href="logo.png">
+    <link rel="shortcut icon" href="../logo.png">
     <style>
        body {
             font-family: Arial, sans-serif;
-            background-image: url('backgroundgedung.jpg');
+            background-image: url('../backgroundgedung.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -164,7 +164,7 @@ $result = mysqli_query($koneksi, $query);
 <body>
     <div class="container">
     <div class="navigation">
-            <a href="home.php"><img src="home_icon.png" alt="home"></a>
+            <a href="home.php"><img src="../home_icon.png" alt="home"></a>
         </div>
         <h1>Data Kedisiplinan Santri</h1>
         <div class="add-santri-button">
@@ -196,9 +196,9 @@ $result = mysqli_query($koneksi, $query);
                         <td><?php echo $row['asrama']; ?></td>
 
                         <td class="action-links">
-                            <a class="update" href="update_disiplin.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="update_icon.png" alt="Update"></a>
-                            <!-- <a class="edit" href="edit_datasantri_disiplin.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="edit_icon.png" alt="Edit"></a>
-                            <a class="delete" href="hapus_datasantri_disiplin.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="delete_icon.png" alt="Delete"></a> -->
+                            <a class="update" href="update_disiplin.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="../update_icon.png" alt="Update"></a>
+                            <!-- <a class="edit" href="edit_datasantri_disiplin.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="../edit_icon.png" alt="Edit"></a>
+                            <a class="delete" href="hapus_datasantri_disiplin.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="../delete_icon.png" alt="Delete"></a> -->
                         </td>
                     </tr>
                 <?php } ?>

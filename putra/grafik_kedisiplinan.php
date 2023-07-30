@@ -2,14 +2,14 @@
 <html>
 <head>
     <title>Grafik Kedisiplinan</title>
-    <link rel="shortcut icon" href="logo.png">
+    <link rel="shortcut icon" href="../logo.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('backgroundgedung.jpg');
+            background-image: url('../backgroundgedung.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -77,7 +77,7 @@
     <div class="container">
     <div class="container">
     <center><div class="navigation">
-            <a href="home.php"><img src="home_icon.png" alt="home"></a>
+            <a href="home.php"><img src="../home_icon.png" alt="home"></a>
         </div></center>
         <center><h2>Grafik Kedisiplinan</h2></center>
 

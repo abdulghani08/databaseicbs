@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "connection.php";
+include "../connection.php";
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 if (empty($_SESSION['username'])) {
     die("Anda belum login");
@@ -21,11 +21,11 @@ $data = mysqli_fetch_array($result);
 
 <head>
     <title>Update Prestasi</title>
-    <link rel="shortcut icon" href="logo.png">
+    <link rel="shortcut icon" href="../logo.png">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('backgroundgedung.jpg');
+            background-image: url('../backgroundgedung.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -153,7 +153,7 @@ $data = mysqli_fetch_array($result);
 <body>
     <div class="container">
         <div>
-            <a href="dt_prestasi.php"><img src="back_icon.png" alt="back"></a>
+            <a href="dt_prestasi.php"><img src="../back_icon.png" alt="back"></a>
         </div>
         <h2>REKAPAN PRESTASI</h2>
         <div class="add-button">
@@ -212,7 +212,7 @@ $data = mysqli_fetch_array($result);
                         <td><?php echo $setoran_data['juara']; ?></td>
                         <td class="action-links">
                     <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_ujian_tahfizh.php -->
-                    <a class="delete" href="aksi_hapus_prestasi.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
+                    <a class="delete" href="aksi_hapus_prestasi.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="../delete_icon.png" alt="Delete"></a>
                 </td>
                     </tr>
                     <?php
