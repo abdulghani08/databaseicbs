@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $daritanggal = $_POST['daritanggal'];
     $sampaitanggal = $_POST['sampaitanggal'];
-    $keperluan = $_POST['keperluan'];
+    $keperluan = mysqli_real_escape_string($koneksi, $_POST['keperluan']);
     $durasi = $_POST['durasi'];
 
     // Ambil data santri berdasarkan NIS dari tabel dt_prestasi

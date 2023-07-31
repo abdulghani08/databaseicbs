@@ -15,7 +15,7 @@ $nama = $_GET['nama'];
 // Proses simpan data setoran ke database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tanggal = $_POST['tanggal'];
-    $hafalan = $_POST['hafalan'];
+    $hafalan = mysqli_real_escape_string($koneksi, $_POST['hafalan']);
     $nilai = $_POST['nilai'];
     $totalHafalan = $_POST['total_hafalan'];
 

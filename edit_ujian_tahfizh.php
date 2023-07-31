@@ -19,7 +19,7 @@ $data = mysqli_fetch_array($result);
 // Proses update data ujian tahfizh
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tanggal = $_POST['tanggal'];
-    $ujian = $_POST['ujian'];
+    $ujian = mysqli_real_escape_string($koneksi, $_POST['ujian']);
     $nilai = $_POST['nilai'];
 
     // Query untuk mengupdate data ujian tahfizh berdasarkan ID

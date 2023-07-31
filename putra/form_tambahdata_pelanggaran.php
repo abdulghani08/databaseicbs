@@ -12,10 +12,10 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 
 // Proses simpan data pelanggaran ke database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nama = $_POST['nama'];
-    $jenis = $_POST['jenis'];
-    $klasifikasi = $_POST['klasifikasi'];
-    $poin = $_POST['poin'];
+    $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
+    $jenis = mysqli_real_escape_string($koneksi, $_POST['jenis']);
+    $klasifikasi = mysqli_real_escape_string($koneksi, $_POST['klasifikasi']);
+    $poin = mysqli_real_escape_string($koneksi, $_POST['poin']);
 
     // Query untuk menyimpan data pelanggaran
     $query = "INSERT INTO daftar_pelanggaran (nama, jenis, klasifikasi, poin) VALUES ('$nama', '$jenis', '$klasifikasi', '$poin')";

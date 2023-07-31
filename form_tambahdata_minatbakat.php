@@ -20,7 +20,7 @@ $result_bakat = mysqli_query($koneksi, $query_bakat);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nis = $_POST['nis'];
     $nama = $_POST['nama'];
-    $bakat = $_POST['bakat'];
+    $bakat = mysqli_real_escape_string($koneksi, $_POST['bakat']);
 
     // Query untuk mendapatkan jenis berdasarkan foreign key dari bakat
     $query_jenis = "SELECT jenis FROM minat_bakat WHERE bakat='$bakat'";

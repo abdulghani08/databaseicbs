@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $dari_tanggal = $_POST['dari_tanggal'];
             $sampai_tanggal = $_POST['sampai_tanggal'];
-            $keperluan = $_POST['keperluan'];
+            $keperluan = mysqli_real_escape_string($koneksi, $_POST['keperluan']);
             $durasi = $_POST['durasi'];
 
             // Query untuk mengupdate data perizinan

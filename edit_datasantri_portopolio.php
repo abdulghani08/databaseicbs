@@ -11,35 +11,35 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 // Periksa apakah ada permintaan pengiriman form
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Dapatkan data dari form
-    $nama = $_POST['nama'];
-    $tempat_lahir = $_POST['tempat_lahir'];
-    $tanggal_lahir = $_POST['tanggal_lahir'];
-    $nis = $_POST['nis'];
-    $alamat = $_POST['alamat'];
-    $kelas = $_POST['kelas'];
-    $asrama = $_POST['asrama'];
-    $pembina = $_POST['pembina'];
-    $muhafizh = $_POST['muhafizh'];
-    $sekolah_asal = $_POST['sekolah_asal'];
-    $cita = $_POST['cita'];
-    $alamat_medsos = $_POST['alamat_medsos'];
-    $riwayat_penyakit = $_POST['riwayat_penyakit'];
-    $alergi = $_POST['alergi'];
-    $anakke = $_POST['anakke'];
-    $bersaudara = $_POST['bersaudara'];
-    $disenangi = $_POST['disenangi'];
-    $tidak_disenangi = $_POST['tidak_disenangi'];
-    $nama_ayah = $_POST['nama_ayah'];
-    $pekerjaan_ayah = $_POST['pekerjaan_ayah'];
-    $hp_ayah = $_POST['hp_ayah'];
-    $nama_ibu = $_POST['nama_ibu'];
-    $pekerjaan_ibu = $_POST['pekerjaan_ibu'];
-    $hp_ibu = $_POST['hp_ibu'];
-    $karakter_disukai = $_POST['karakter_disukai'];
-    $karakter_tidakdisukai = $_POST['karakter_tidakdisukai'];
-    $kelebihan = $_POST['kelebihan'];
-    $kekurangan = $_POST['kekurangan'];
-    $motto = $_POST['motto'];
+    $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
+    $tempat_lahir = mysqli_real_escape_string($koneksi, $_POST['tempat_lahir']);
+    $tanggal_lahir = mysqli_real_escape_string($koneksi, $_POST['tanggal_lahir']);
+    $nis = mysqli_real_escape_string($koneksi, $_POST['nis']);
+    $alamat = mysqli_real_escape_string($koneksi, $_POST['alamat']);
+    $kelas = mysqli_real_escape_string($koneksi, $_POST['kelas']);
+    $asrama = mysqli_real_escape_string($koneksi, $_POST['asrama']);
+    $pembina = mysqli_real_escape_string($koneksi, $_POST['pembina']);
+    $muhafizh = mysqli_real_escape_string($koneksi, $_POST['muhafizh']);
+    $sekolah_asal = mysqli_real_escape_string($koneksi, $_POST['sekolah_asal']);
+    $cita = mysqli_real_escape_string($koneksi, $_POST['cita']);
+    $alamat_medsos = mysqli_real_escape_string($koneksi, $_POST['alamat_medsos']);
+    $riwayat_penyakit = mysqli_real_escape_string($koneksi, $_POST['riwayat_penyakit']);
+    $alergi = mysqli_real_escape_string($koneksi, $_POST['alergi']);
+    $anakke = mysqli_real_escape_string($koneksi, $_POST['anakke']);
+    $bersaudara = mysqli_real_escape_string($koneksi, $_POST['bersaudara']);
+    $disenangi = mysqli_real_escape_string($koneksi, $_POST['disenangi']);
+    $tidak_disenangi = mysqli_real_escape_string($koneksi, $_POST['tidak_disenangi']);
+    $nama_ayah = mysqli_real_escape_string($koneksi, $_POST['nama_ayah']);
+    $pekerjaan_ayah = mysqli_real_escape_string($koneksi, $_POST['pekerjaan_ayah']);
+    $hp_ayah = mysqli_real_escape_string($koneksi, $_POST['hp_ayah']);
+    $nama_ibu = mysqli_real_escape_string($koneksi, $_POST['nama_ibu']);
+    $pekerjaan_ibu = mysqli_real_escape_string($koneksi, $_POST['pekerjaan_ibu']);
+    $hp_ibu = mysqli_real_escape_string($koneksi, $_POST['hp_ibu']);
+    $karakter_disukai = mysqli_real_escape_string($koneksi, $_POST['karakter_disukai']);
+    $karakter_tidakdisukai = mysqli_real_escape_string($koneksi, $_POST['karakter_tidakdisukai']);
+    $kelebihan = mysqli_real_escape_string($koneksi, $_POST['kelebihan']);
+    $kekurangan = mysqli_real_escape_string($koneksi, $_POST['kekurangan']);
+    $motto = mysqli_real_escape_string($koneksi, $_POST['motto']);
 
     // Perbarui data pada tabel tahfizh_data
     $query = "UPDATE portopolio_isi SET nama='$nama', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', kelas='$kelas', asrama='$asrama', pembina='$pembina', muhafizh='$muhafizh', sekolah_asal='$sekolah_asal', cita='$cita', alamat_medsos='$alamat_medsos', riwayat_penyakit='$riwayat_penyakit', alergi='$alergi', anakke='$anakke', bersaudara='$bersaudara', disenangi='$disenangi', tidak_disenangi='$tidak_disenangi', nama_ayah='$nama_ayah', pekerjaan_ayah='$pekerjaan_ayah', hp_ayah='$hp_ayah', nama_ibu='$nama_ibu', pekerjaan_ibu='$pekerjaan_ibu', hp_ibu='$hp_ibu', karakter_disukai='$karakter_disukai', karakter_tidakdisukai='$karakter_tidakdisukai', kelebihan='$kelebihan', kekurangan='$kekurangan', motto='$motto' WHERE nis='$nis'";
@@ -67,6 +67,7 @@ mysqli_close($koneksi);
 <head>
     <title>Edit Data Santri</title>
     <link rel="shortcut icon" href="logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -79,7 +80,7 @@ mysqli_close($koneksi);
             padding: 20px;
         }
         .container {
-            max-width: 800px;
+            max-width: 500px;
             margin: 0 auto;
             background-color: #fff;
             padding: 20px;
@@ -89,6 +90,7 @@ mysqli_close($koneksi);
         h2 {
             text-align: center;
             margin-bottom: 20px;
+            font-size: 24px;
         }
         form {
             margin-top: 20px;
@@ -99,32 +101,36 @@ mysqli_close($koneksi);
         .form-group label {
             display: block;
             font-weight: bold;
+            font-size: 18px;
         }
-        .form-group input[type="text"] {
+        .form-group input[type="text"],
+        .form-group input[type="date"] {
             width: 100%;
-            padding: 5px;
+            padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            font-size: 16px;
         }
         .form-group input[type="submit"] {
-            padding: 5px 10px;
+            padding: 10px 20px;
             background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 18px;
         }
-        .button a{
-        background-color: #FF0000;
-        color: #FFFFFF;
-        padding: 5px 10px;
-        border: none;
-        border-radius: 4px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 12px;
-        cursor: pointer;
+        .button a {
+            background-color: #FF0000;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>

@@ -12,8 +12,8 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 
 // Proses simpan data pelanggaran ke database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nama = $_POST['nama'];
-    $jenis = $_POST['jenis'];
+    $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
+    $jenis = mysqli_real_escape_string($koneksi, $_POST['jenis']);
     $klasifikasi = $_POST['klasifikasi'];
     $poin = $_POST['poin'];
 

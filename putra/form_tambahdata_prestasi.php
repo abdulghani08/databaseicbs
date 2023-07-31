@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nis = $_POST['nis']; // Ambil NIS dari form
     $nama = $_POST['nama']; // Ambil Nama dari form
 
-    $nama_prestasi = $_POST['nama_prestasi'];
-    $penyelenggara = $_POST['penyelenggara'];
+    $nama_prestasi = mysqli_real_escape_string($koneksi, $_POST['nama_prestasi']);
+    $penyelenggara = mysqli_real_escape_string($koneksi, $_POST['penyelenggara']);
     $waktu = $_POST['waktu'];
     $tingkat = $_POST['tingkat'];
     $juara = $_POST['juara'];

@@ -22,8 +22,8 @@ if (isset($_GET['id'])) {
 
         // Proses update data minat dan bakat ke database
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $nama_peminatan = $_POST['nama_peminatan'];
-            $jenis_peminatan = $_POST['jenis_peminatan'];
+            $nama_peminatan = mysqli_real_escape_string($koneksi, $_POST['nama_peminatan']);
+            $jenis_peminatan = mysqli_real_escape_string($koneksi, $_POST['jenis_peminatan']);
 
             // Query untuk mengupdate data minat dan bakat
             $query_update = "UPDATE putra_minat_bakat_isi SET bakat='$nama_peminatan', jenis='$jenis_peminatan' WHERE id='$id_minatbakat'";

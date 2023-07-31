@@ -12,7 +12,7 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 $sortColumn = isset($_GET['sort']) ? $_GET['sort'] : 'bakat';
 $sortOrder = isset($_GET['order']) ? $_GET['order'] : 'asc';
 
-$query = "SELECT * FROM putra_minat_bakat ORDER BY $sortColumn $sortOrder";
+$query = "SELECT * FROM minat_bakat ORDER BY $sortColumn $sortOrder";
 $result = mysqli_query($koneksi, $query);
 ?>
 <!DOCTYPE html>
@@ -168,7 +168,7 @@ $result = mysqli_query($koneksi, $query);
         </div>
         <h1>Daftar Minat Bakat</h1>
         <div class="add-santri-button">
-            <a href="form_tambahdata_peminatan.php">Tambah Peminatan</a>
+            <!-- <a href="form_tambahdata_peminatan.php">Tambah Peminatan</a> -->
         </div>
         <!-- <div class="search-bar">
             <form method="GET" action="search_peminatan.php">
