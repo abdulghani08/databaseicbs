@@ -222,6 +222,7 @@ $data = mysqli_fetch_array($result);
                     <th>Tanggal</th>
                     <th>Nama Pelanggaran</th>
                     <th>Poin Pelanggaran</th>
+                    <th>Klasifikasi</th>
                     <th>Bentuk Hukuman</th>
                     <th>Keterangan</th>
                     <th>Action</th>
@@ -240,6 +241,7 @@ $data = mysqli_fetch_array($result);
                         <td><?php echo $setoran_data['tanggal']; ?></td>
                         <td><?php echo $setoran_data['pelanggaran']; ?></td>
                         <td><?php echo $setoran_data['poin']; ?></td>
+                        <td><?php echo $setoran_data['klasifikasi']; ?></td>
                         <td><?php echo $setoran_data['hukuman']; ?></td>
                         <td><?php echo $setoran_data['keterangan']; ?></td>
                         <td class="action-links">

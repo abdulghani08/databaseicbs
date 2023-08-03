@@ -29,6 +29,18 @@
     <!-- CSS -->
     <link rel="stylesheet" href="stylemaintenance.css" />
     <title>Document</title>
+    <script>
+      // Function to check if the page is reloaded using tab key
+      function checkTabReload() {
+        if (performance.navigation.type === 1) {
+          // Redirect to index.php when the page is reloaded
+          window.location.replace('index.php');
+        }
+      }
+    
+      // Attach the checkTabReload function to the onload event of the body
+      window.onload = checkTabReload;
+    </script>    
   </head>
   <body>
     <center><div class="logo">
@@ -39,7 +51,7 @@
         <div class="col-md-10 main-title">
           <h1>APLIKASI</h1>
           <h2>Sedang Dalam Perbaikan</h2>
-          <h3>Estimasi selesai : 06.00 WIB</h3>
+          <h3>Estimasi selesai : 14.45 WIB</h3>
           <!-- <div id="countdown" class="countdown-timer"></div> -->
         </div>
       </div>

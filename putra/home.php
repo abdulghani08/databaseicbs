@@ -128,7 +128,7 @@ $data = mysqli_fetch_array($query);
     <div class="logo">
     </div>
     <p class="welcome-msg">Selamat Datang <?php echo $user; ?></p>
-    <strong><p class="welcome-msg">Database Santri ICBS</p></strong>
+    <strong><p class="welcome-msg">Database Santri PUTRA ICBS</p></strong>
 
     <div style="text-align: center;">
         <?php if ($data['level']=='Admin_pa'): ?>
