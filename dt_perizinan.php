@@ -183,25 +183,32 @@ $result = mysqli_query($koneksi, $query);
                     <th><a href="?sort=nama&order=<?php echo ($sortColumn == 'nama' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Nama</a></th>
                     <th><a href="?sort=kelas&order=<?php echo ($sortColumn == 'kelas' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Kelas</a></th>
                     <th><a href="?sort=asrama&order=<?php echo ($sortColumn == 'asrama' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Asrama</a></th>
+                    <th>Total Perizinan</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                    <tr>
-                        <td><?php echo $row['nis']; ?></td>
-                        <td><?php echo $row['nama']; ?></td>
-                        <td><?php echo $row['kelas']; ?></td>
-                        <td><?php echo $row['asrama']; ?></td>
+    <?php
+    while ($row = mysqli_fetch_assoc($result)) {
+        $nis = $row['nis'];
+        $query_total = "SELECT COUNT(*) AS total_perizinan FROM perizinan_isi WHERE nis='$nis'";
+        $result_total = mysqli_query($koneksi, $query_total);
+        $data_total = mysqli_fetch_assoc($result_total);
+        $total_perizinan = $data_total['total_perizinan'];
+    ?>
+        <tr>
+            <td><?php echo $row['nis']; ?></td>
+            <td><?php echo $row['nama']; ?></td>
+            <td><?php echo $row['kelas']; ?></td>
+            <td><?php echo $row['asrama']; ?></td>
+            <td><?php echo $total_perizinan; ?></td>
+            <td class="action-links">
+                <a class="update" href="update_perizinan.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="update_icon.png" alt="Update"></a>
+            </td>
+        </tr>
+    <?php } ?>
+</tbody>
 
-                        <td class="action-links">
-                            <a class="update" href="update_perizinan.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="update_icon.png" alt="Update"></a>
-                            <!-- <a class="edit" href="edit_datasantri_perizinan.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="edit_icon.png" alt="Edit"></a>
-                            <a class="delete" href="hapus_datasantri_perizinan.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="delete_icon.png" alt="Delete"></a> -->
-                        </td>
-                    </tr>
-                <?php } ?>
-            </tbody>
         </table>
     </div>
 </body>
