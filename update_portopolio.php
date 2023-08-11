@@ -18,11 +18,11 @@ $data = mysqli_fetch_array($result);
 
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Update Portopolio</title>
     <link rel="shortcut icon" href="logo.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -36,12 +36,13 @@ $data = mysqli_fetch_array($result);
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
+            max-width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
+            overflow: hidden;
         }
 
         h2 {
@@ -49,32 +50,28 @@ $data = mysqli_fetch_array($result);
             margin-bottom: 20px;
         }
 
-        .add-button {
+        .button-row {
+            display: flex;
+            justify-content: space-between;
             margin-bottom: 10px;
-            text-align: center;
         }
 
-        .add-button a {
-            display: inline-block;
+        .button-row a {
             text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .button-row .cetak-button {
             background-color: #4CAF50;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 16px;
-            margin-right: 10px;
+            color: white;
         }
 
-        .back-button a {
-            display: inline-block;
-            text-decoration: none;
+        .button-row .back-button {
             background-color: #FF0000;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 16px;
+            color: white;
         }
 
         table {
@@ -102,51 +99,14 @@ $data = mysqli_fetch_array($result);
             background-color: #e0e0e0;
         }
 
-        .details {
-        background-color: rgba(255, 255, 255, 0.5);
-        padding: 10px;
-        border: 1px solid #ddd;
-        }
-
-        .details table {
-        width: 100%;
-        border-collapse: collapse;
-        }
-
-        .details th,
-        .details td {
-        padding: 8px;
-        border: 1px solid #ddd;
-        }
-
-        .details th {
-        background-color: rgba(76, 175, 80, 0.5);
-        }
-
-        .action-links {
-            display: flex;
-            justify-content: center;
-        }
-
-        .action-links a {
-            display: inline-block;
-            text-decoration: none;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin-right: 5px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .action-links a.back img {
-            width: 25px; /* Ubah dengan lebar yang diinginkan */
-            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
-        }
-
-        tbody tr.kurang-lancar td {
+        .kurang-lancar td {
             color: red;
             font-weight: bold;
+        }
+
+        .chart-container {
+            max-width: 100%;
+            margin-top: 20px;
         }
     </style>
 </head>

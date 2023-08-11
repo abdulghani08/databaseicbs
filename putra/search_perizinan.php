@@ -180,6 +180,7 @@ $result = mysqli_query($koneksi, $query);
                     <th><a href="?sort=nama&order=<?php echo ($sortColumn == 'nama' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Nama</a></th>
                     <th><a href="?sort=kelas&order=<?php echo ($sortColumn == 'kelas' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Kelas</a></th>
                     <th><a href="?sort=asrama&order=<?php echo ($sortColumn == 'asrama' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Asrama</a></th>
+                    <th>Total Perizinan</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -190,6 +191,19 @@ $result = mysqli_query($koneksi, $query);
                         <td><?php echo $row['nama']; ?></td>
                         <td><?php echo $row['kelas']; ?></td>
                         <td><?php echo $row['asrama']; ?></td>
+                        <td>
+                            <?php
+                            $nis = $row['nis'];
+
+                            // Menghitung total hafalan
+                            $total_hafalan_query = "SELECT SUM(durasi) AS total FROM putra_perizinan_isi WHERE nis='$nis'";
+                            $total_hafalan_result = mysqli_query($koneksi, $total_hafalan_query);
+                            $total_hafalan_data = mysqli_fetch_assoc($total_hafalan_result);
+                            $total_hafalan = $total_hafalan_data['total'];
+
+                            echo $total_hafalan;
+                            ?>
+                        </td>
                         <td class="action-links">
                             <a class="update" href="update_perizinan.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="../update_icon.png" alt="Update"></a>
                             <!-- <a class="edit" href="edit_datasantri_perizinan.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="../edit_icon.png" alt="Edit"></a>
