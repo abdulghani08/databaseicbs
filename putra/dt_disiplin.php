@@ -200,7 +200,7 @@ $result = mysqli_query($koneksi, $query);
                             $nis = $row['nis'];
 
                             // Menghitung total hafalan
-                            $total_hafalan_query = "SELECT SUM(poin) AS total FROM disiplin_isi WHERE nis='$nis'";
+                            $total_hafalan_query = "SELECT SUM(poin) AS total FROM putra_disiplin_isi WHERE nis='$nis'";
                             $total_hafalan_result = mysqli_query($koneksi, $total_hafalan_query);
                             $total_hafalan_data = mysqli_fetch_assoc($total_hafalan_result);
                             $total_hafalan = $total_hafalan_data['total'];

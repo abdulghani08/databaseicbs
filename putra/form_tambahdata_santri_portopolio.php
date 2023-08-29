@@ -141,11 +141,11 @@ input[type="text"] {
             </div>
             <div class="form-group">
                 <label>Tempat Lahir:</label>
-                <input type="text" name="tempat_lahir" required>
+                <input type="text" name="tempat_lahir">
             </div>
             <div class="form-group">
                 <label>Tanggal Lahir:</label>
-                <input type="date" name="tanggal_lahir" required>
+                <input type="date" name="tanggal_lahir">
             </div>
             <div class="form-group">
                 <label>NIS:</label>
@@ -153,103 +153,103 @@ input[type="text"] {
             </div>
             <div class="form-group">
                 <label>Alamat:</label>
-                <input type="text" name="alamat" required>
+                <input type="text" name="alamat">
             </div>
             <div class="form-group">
                 <label>Kelas:</label>
-                <input type="text" name="kelas" required>
+                <input type="text" name="kelas">
             </div>
             <div class="form-group">
                 <label>Asrama:</label>
-                <input type="text" name="asrama" required>
+                <input type="text" name="asrama">
             </div>
             <div class="form-group">
                 <label>Pembina:</label>
-                <input type="text" name="pembina" required>
+                <input type="text" name="pembina">
             </div>
             <div class="form-group">
                 <label>Muhafizh:</label>
-                <input type="text" name="muhafizh" required>
+                <input type="text" name="muhafizh">
             </div>
             <div class="form-group">
                 <label>Sekolah Asal:</label>
-                <input type="text" name="sekolah_asal" required>
+                <input type="text" name="sekolah_asal">
             </div>
             <div class="form-group">
                 <label>Cita-cita:</label>
-                <input type="text" name="cita" required>
+                <input type="text" name="cita">
             </div>
             <div class="form-group">
                 <label>Alamat Medsos:</label>
-                <input type="text" name="alamat_medsos" required>
+                <input type="text" name="alamat_medsos">
             </div>
             <div class="form-group">
                 <label>Riwayat Penyakit:</label>
-                <input type="text" name="riwayat_penyakit" required>
+                <input type="text" name="riwayat_penyakit">
             </div>
             <div class="form-group">
                 <label>Alergi:</label>
-                <input type="text" name="alergi" required>
+                <input type="text" name="alergi">
             </div>
             <div class="form-group">
                 <label>Anak Ke-:</label>
-                <input type="text" name="anakke" required>
+                <input type="text" name="anakke">
             </div>
             <div class="form-group">
                 <label>Dari Bersaudara:</label>
-                <input type="text" name="bersaudara" required>
+                <input type="text" name="bersaudara">
             </div>
             <div class="form-group">
                 <label>Hal Yang Disenangi:</label>
-                <input type="text" name="disenangi" required>
+                <input type="text" name="disenangi">
             </div>
             <div class="form-group">
                 <label>Hal Yang Tidak Disenangi:</label>
-                <input type="text" name="tidak_disenangi" required>
+                <input type="text" name="tidak_disenangi">
             </div>
             <div class="form-group">
                 <label>Nama Ayah:</label>
-                <input type="text" name="nama_ayah" required>
+                <input type="text" name="nama_ayah">
             </div>
             <div class="form-group">
                 <label>Pekerjaan Ayah:</label>
-                <input type="text" name="pekerjaan_ayah" required>
+                <input type="text" name="pekerjaan_ayah">
             </div>
             <div class="form-group">
                 <label>No. Hp Ayah:</label>
-                <input type="text" name="hp_ayah" required>
+                <input type="text" name="hp_ayah">
             </div>
             <div class="form-group">
                 <label>Nama Ibu:</label>
-                <input type="text" name="nama_ibu" required>
+                <input type="text" name="nama_ibu">
             </div>
             <div class="form-group">
                 <label>Pekerjaan Ibu:</label>
-                <input type="text" name="pekerjaan_ibu" required>
+                <input type="text" name="pekerjaan_ibu">
             </div>
             <div class="form-group">
                 <label>No. Hp Ibu:</label>
-                <input type="text" name="hp_ibu" required>
+                <input type="text" name="hp_ibu">
             </div>
             <div class="form-group">
                 <label>Karakter Yang Disukai:</label>
-                <input type="text" name="karakter_disukai" required>
+                <input type="text" name="karakter_disukai">
             </div>
             <div class="form-group">
                 <label>Karakter Yang Tidak Disukai:</label>
-                <input type="text" name="karakter_tidakdisukai" required>
+                <input type="text" name="karakter_tidakdisukai">
             </div>
             <div class="form-group">
                 <label>Kelebihan Saya:</label>
-                <input type="text" name="kelebihan" required>
+                <input type="text" name="kelebihan">
             </div>
             <div class="form-group">
                 <label>Kekurangan yang akan saya perbaiki:</label>
-                <input type="text" name="kekurangan" required>
+                <input type="text" name="kekurangan">
             </div>
             <div class="form-group">
                 <label>Motto Hidup:</label>
-                <input type="text" name="motto" required>
+                <input type="text" name="motto">
             </div>
             <div class="submit-button">
                 <input type="submit" value="Tambah Data">
