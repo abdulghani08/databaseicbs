@@ -29,7 +29,7 @@ if (isset($_GET['id'])) {
             $keterangan = $_POST['keterangan'];
 
             // Query untuk mengupdate data kedisiplinan
-            $query_update = "UPDATE disiplin_isi SET tanggal='$tanggal', pelanggaran='$pelanggaran', poin='$poin', hukuman='$hukuman', keterangan='$keterangan' WHERE id='$id_disiplin'";
+            $query_update = "UPDATE disiplin_isi SET tanggal='$tanggal', pelanggaran='$pelanggaran', poin='$poin', hukuman='$hukuman', hukumantambahan='$hukumantambahan', keterangan='$keterangan' WHERE id='$id_disiplin'";
             $result_update = mysqli_query($koneksi, $query_update);
 
             if ($result_update) {
@@ -120,6 +120,9 @@ if (isset($_GET['id'])) {
 
             <label for="hukuman">Bentuk Hukuman:</label>
             <input type="text" id="hukuman" name="hukuman" value="<?php echo $data['hukuman']; ?>" required>
+
+            <label for="hukumantambahan">Hukuman Tambahan (Opsional):</label>
+            <input type="text" id="hukumantambahan" name="hukumantambahan" value="<?php echo $data['hukumantambahan']; ?>" required>
 
             <label for="keterangan">Keterangan :</label>
             <select id="keterangan" name="keterangan" required>

@@ -14,6 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tanggal_lahir = mysqli_real_escape_string($koneksi, $_POST['tanggal_lahir']);
     $nis = mysqli_real_escape_string($koneksi, $_POST['nis']);
     $alamat = mysqli_real_escape_string($koneksi, $_POST['alamat']);
+    $kabkota = mysqli_real_escape_string($koneksi, $_POST['kabkota']);
+    $provinsi = mysqli_real_escape_string($koneksi, $_POST['provinsi']);
     $kelas = mysqli_real_escape_string($koneksi, $_POST['kelas']);
     $asrama = mysqli_real_escape_string($koneksi, $_POST['asrama']);
     $pembina = mysqli_real_escape_string($koneksi, $_POST['pembina']);
@@ -40,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $motto = mysqli_real_escape_string($koneksi, $_POST['motto']);
     
     // Query untuk menyimpan data santri ke tabel prestasi_data
-    $query = "INSERT INTO portopolio_isi (nama, tempat_lahir, tanggal_lahir, nis, alamat, kelas, asrama, pembina, muhafizh, sekolah_asal, cita, alamat_medsos, riwayat_penyakit, alergi, anakke, bersaudara, disenangi, tidak_disenangi, nama_ayah, pekerjaan_ayah, hp_ayah, nama_ibu, pekerjaan_ibu, hp_ibu, karakter_disukai, karakter_tidakdisukai, kelebihan, kekurangan, motto) VALUES ('$nama', '$tempat_lahir', '$tanggal_lahir', '$nis', '$alamat', '$kelas', '$asrama', '$pembina', '$muhafizh', '$sekolah_asal', '$cita', '$alamat_medsos', '$riwayat_penyakit', '$alergi', '$anakke', '$bersaudara', '$disenangi', '$tidak_disenangi', '$nama_ayah', '$pekerjaan_ayah', '$hp_ayah', '$nama_ibu', '$pekerjaan_ibu', '$hp_ibu', '$karakter_disukai', '$karakter_tidakdisukai', '$kelebihan', '$kekurangan', '$motto')";
+    $query = "INSERT INTO portopolio_isi (nama, tempat_lahir, tanggal_lahir, nis, alamat, kabkota, provinsi, kelas, asrama, pembina, muhafizh, sekolah_asal, cita, alamat_medsos, riwayat_penyakit, alergi, anakke, bersaudara, disenangi, tidak_disenangi, nama_ayah, pekerjaan_ayah, hp_ayah, nama_ibu, pekerjaan_ibu, hp_ibu, karakter_disukai, karakter_tidakdisukai, kelebihan, kekurangan, motto) VALUES ('$nama', '$tempat_lahir', '$tanggal_lahir', '$nis', '$alamat', '$kabkota', '$provinsi', '$kelas', '$asrama', '$pembina', '$muhafizh', '$sekolah_asal', '$cita', '$alamat_medsos', '$riwayat_penyakit', '$alergi', '$anakke', '$bersaudara', '$disenangi', '$tidak_disenangi', '$nama_ayah', '$pekerjaan_ayah', '$hp_ayah', '$nama_ibu', '$pekerjaan_ibu', '$hp_ibu', '$karakter_disukai', '$karakter_tidakdisukai', '$kelebihan', '$kekurangan', '$motto')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -154,6 +156,14 @@ input[type="text"] {
             <div class="form-group">
                 <label>Alamat:</label>
                 <input type="text" name="alamat">
+            </div>
+            <div class="form-group">
+                <label>Kab./Kota:</label>
+                <input type="text" name="kabkota">
+            </div>
+            <div class="form-group">
+                <label>Provinsi:</label>
+                <input type="text" name="provinsi">
             </div>
             <div class="form-group">
                 <label>Kelas:</label>

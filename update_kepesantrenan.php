@@ -203,6 +203,7 @@ $data = mysqli_fetch_array($result);
                     <th>Penguji</th>
                     <th>Kategori</th>
                     <th>Keterangan</th>
+                    <th>Catatan</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -234,6 +235,7 @@ $data = mysqli_fetch_array($result);
                         <td><?php echo $setoran_data['penguji']; ?></td>
                         <td><?php echo $keterangan; ?></td>
                         <td><?php echo $setoran_data['keterangan']; ?></td>
+                        <td><?php echo $setoran_data['catatan']; ?></td>
                         <td class="action-links">
                     <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_rekapan_hafalan.php -->
                     <a class="edit" href="edit_kepesantrenan.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a>

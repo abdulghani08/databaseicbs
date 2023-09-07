@@ -23,8 +23,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['hapus'])) {
     }
 }
 
-// Ambil data dari tabel tahfizh_data
-$query = "SELECT * FROM portopolio_isi";
+// Proses pencarian
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
+    $keyword = mysqli_real_escape_string($koneksi, $_POST['search']);
+    // Ubah query berdasarkan kata kunci pencarian
+    $query = "SELECT * FROM portopolio_isi WHERE nis LIKE '%$keyword%' OR nama LIKE '%$keyword%'";
+} else {
+    // Ambil data dari tabel portopolio_isi jika tidak ada pencarian
+    $query = "SELECT * FROM portopolio_isi";
+}
+
 $result = mysqli_query($koneksi, $query);
 ?>
 <!DOCTYPE html>
@@ -107,17 +115,23 @@ $result = mysqli_query($koneksi, $query);
         .add-button a:hover {
             background-color: #0069d9;
         }
+
+        .search-bar {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-    <div class="add-button">
+        <div class="add-button">
             <a href="dt_portopolio.php">Kembali</a>
         </div>
         <h1>Data Santri</h1>
+
+        <!-- Search Bar -->
         <div class="search-bar">
-            <form method="POST" action="search_hapus_datasantri_portopolio.php">
-                <input type="text" name="search" placeholder="Cari NIS atau Nama Santri">
+            <form method="POST" action="">
+                <input type="text" name="search" placeholder="Cari NIS atau Nama Santri" value="<?php echo isset($_POST['search']) ? $_POST['search'] : ''; ?>">
                 <input type="submit" value="Cari">
             </form>
         </div>

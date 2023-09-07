@@ -146,6 +146,14 @@ $data = mysqli_fetch_array($result);
             <td><?php echo $data['alamat']; ?></td>
             </tr>
             <tr>
+            <th>Kab./Kota</th>
+            <td><?php echo $data['kabkota']; ?></td>
+            </tr>
+            <tr>
+            <th>Provinsi</th>
+            <td><?php echo $data['provinsi']; ?></td>
+            </tr>
+            <tr>
             <th>Kelas</th>
             <td><?php echo $data['kelas']; ?></td>
             </tr>

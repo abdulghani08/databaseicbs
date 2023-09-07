@@ -19,9 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nilai = $_POST['nilai'];
     $penguji = $_POST['penguji'];
     $keterangan = $_POST['keterangan'];
+    $catatan = $_POST['catatan'];
 
     // Query untuk menyimpan data ujian tahfizh
-    $query = "INSERT INTO kepesantrenan_isi (nis, nama, tanggal, jenis, nilai, penguji, keterangan) VALUES ('$nis', '$nama', '$tanggal', '$jenis', '$nilai', '$penguji', '$keterangan')";
+    $query = "INSERT INTO kepesantrenan_isi (nis, nama, tanggal, jenis, nilai, penguji, keterangan, catatan) VALUES ('$nis', '$nama', '$tanggal', '$jenis', '$nilai', '$penguji', '$keterangan', '$catatan')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -177,6 +178,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <option value="Tuntas">Tuntas</option>
                 <option value="Belum Tuntas">Belum Tuntas</option>
             </select>
+
+            <br><br>
+            <label for="catatan">Catatan:</label>
+            <input type="text" id="catatan" name="catatan" required>
 
             <input type="submit" value="Tambah Ujian Kepesantrenan">
         </form>

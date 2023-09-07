@@ -16,6 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tanggal_lahir = mysqli_real_escape_string($koneksi, $_POST['tanggal_lahir']);
     $nis = mysqli_real_escape_string($koneksi, $_POST['nis']);
     $alamat = mysqli_real_escape_string($koneksi, $_POST['alamat']);
+    $kabkota = mysqli_real_escape_string($koneksi, $_POST['kabkota']);
+    $provinsi = mysqli_real_escape_string($koneksi, $_POST['provinsi']);
     $kelas = mysqli_real_escape_string($koneksi, $_POST['kelas']);
     $asrama = mysqli_real_escape_string($koneksi, $_POST['asrama']);
     $pembina = mysqli_real_escape_string($koneksi, $_POST['pembina']);
@@ -42,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $motto = mysqli_real_escape_string($koneksi, $_POST['motto']);
 
     // Perbarui data pada tabel tahfizh_data
-    $query = "UPDATE portopolio_isi SET nama='$nama', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', kelas='$kelas', asrama='$asrama', pembina='$pembina', muhafizh='$muhafizh', sekolah_asal='$sekolah_asal', cita='$cita', alamat_medsos='$alamat_medsos', riwayat_penyakit='$riwayat_penyakit', alergi='$alergi', anakke='$anakke', bersaudara='$bersaudara', disenangi='$disenangi', tidak_disenangi='$tidak_disenangi', nama_ayah='$nama_ayah', pekerjaan_ayah='$pekerjaan_ayah', hp_ayah='$hp_ayah', nama_ibu='$nama_ibu', pekerjaan_ibu='$pekerjaan_ibu', hp_ibu='$hp_ibu', karakter_disukai='$karakter_disukai', karakter_tidakdisukai='$karakter_tidakdisukai', kelebihan='$kelebihan', kekurangan='$kekurangan', motto='$motto' WHERE nis='$nis'";
+    $query = "UPDATE portopolio_isi SET nama='$nama', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', kabkota='$kabkota', provinsi='$provinsi', kelas='$kelas', asrama='$asrama', pembina='$pembina', muhafizh='$muhafizh', sekolah_asal='$sekolah_asal', cita='$cita', alamat_medsos='$alamat_medsos', riwayat_penyakit='$riwayat_penyakit', alergi='$alergi', anakke='$anakke', bersaudara='$bersaudara', disenangi='$disenangi', tidak_disenangi='$tidak_disenangi', nama_ayah='$nama_ayah', pekerjaan_ayah='$pekerjaan_ayah', hp_ayah='$hp_ayah', nama_ibu='$nama_ibu', pekerjaan_ibu='$pekerjaan_ibu', hp_ibu='$hp_ibu', karakter_disukai='$karakter_disukai', karakter_tidakdisukai='$karakter_tidakdisukai', kelebihan='$kelebihan', kekurangan='$kekurangan', motto='$motto' WHERE nis='$nis'";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -160,6 +162,14 @@ mysqli_close($koneksi);
             <div class="form-group">
                 <label>Alamat:</label>
                 <input type="text" name="alamat" value="<?php echo $row['alamat']; ?>">
+            </div>
+            <div class="form-group">
+                <label>Kab./Kota:</label>
+                <input type="text" name="kabkota" value="<?php echo $row['kabkota']; ?>">
+            </div>
+            <div class="form-group">
+                <label>Provinsi:</label>
+                <input type="text" name="provinsi" value="<?php echo $row['provinsi']; ?>">
             </div>
             <div class="form-group">
                 <label>Kelas:</label>

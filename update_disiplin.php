@@ -224,6 +224,7 @@ $data = mysqli_fetch_array($result);
                     <th>Poin Pelanggaran</th>
                     <th>Klasifikasi</th>
                     <th>Bentuk Hukuman</th>
+                    <th>Hukuman Tambahan (Opsional)</th>
                     <th>Keterangan</th>
                     <th>Action</th>
                 </tr>
@@ -243,6 +244,7 @@ $data = mysqli_fetch_array($result);
                         <td><?php echo $setoran_data['poin']; ?></td>
                         <td><?php echo $setoran_data['klasifikasi']; ?></td>
                         <td><?php echo $setoran_data['hukuman']; ?></td>
+                        <td><?php echo $setoran_data['hukumantambahan']; ?></td>
                         <td><?php echo $setoran_data['keterangan']; ?></td>
                         <td class="action-links">
                     <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_rekapan_hafalan.php -->

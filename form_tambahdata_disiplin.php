@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $poin = $_POST['poin'];
     $klasifikasi = $_POST['klasifikasi'];
     $hukuman = $_POST['hukuman'];
+    $hukumantambahan = $_POST['hukumantambahan'];
     $keterangan = $_POST['keterangan'];
 
     // Ambil data santri berdasarkan NIS dari tabel dt_prestasi
@@ -58,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     // Query untuk menyimpan data prestasi
-    $query = "INSERT INTO disiplin_isi (nis, nama, tanggal, pelanggaran, poin, klasifikasi, hukuman, keterangan) VALUES ('$nis', '$nama', '$tanggal', '$pelanggaran', '$poin', '$klasifikasi', '$hukuman', '$keterangan')";
+    $query = "INSERT INTO disiplin_isi (nis, nama, tanggal, pelanggaran, poin, klasifikasi, hukuman, hukumantambahan, keterangan) VALUES ('$nis', '$nama', '$tanggal', '$pelanggaran', '$poin', '$klasifikasi', '$hukuman', '$hukumantambahan', '$keterangan')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -164,6 +165,10 @@ $data_hukuman = mysqli_fetch_array($result_hukuman);
 
             <label for="hukuman">Hukuman :</label>
             <select id="hukuman" name="hukuman" required style="width: 100%;"></select>
+
+            <br><br>
+            <label for="hukumantambahan">Hukuman Tambahan (Opsional)</label>
+            <input type="text" id="hukumantambahan" name="hukumantambahan">
 
             <br>
             <br>

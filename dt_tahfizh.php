@@ -185,6 +185,7 @@ $result = mysqli_query($koneksi, $query);
                     <th><a href="?sort=nama&order=<?php echo ($sortColumn == 'nama' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Nama</a></th>
                     <th><a href="?sort=kelas&order=<?php echo ($sortColumn == 'kelas' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Kelas</a></th>
                     <th><a href="?sort=asrama&order=<?php echo ($sortColumn == 'asrama' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Asrama</a></th>
+                    <th><a href="?sort=muhafizh&order=<?php echo ($sortColumn == 'muhafizh' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Muhafizh</a></th>
                     <th>Total Hafalan (Halaman)</th>
                     <th>Action</th>
                 </tr>
@@ -196,6 +197,7 @@ $result = mysqli_query($koneksi, $query);
                         <td><?php echo $row['nama']; ?></td>
                         <td><?php echo $row['kelas']; ?></td>
                         <td><?php echo $row['asrama']; ?></td>
+                        <td><?php echo $row['muhafizh']; ?></td>
                         <td>
                             <?php
                             $nis = $row['nis'];
