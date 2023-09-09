@@ -160,22 +160,24 @@ $result = mysqli_query($koneksi, $query);
             margin-bottom: 10px;
         }
 </style>
+<script>
+        // Fungsi JavaScript untuk menampilkan/menyembunyikan gambar
+        function toggleImage(rowId) {
+            var img = document.getElementById('img_' + rowId);
+            if (img.style.display === 'none') {
+                img.style.display = 'block';
+            } else {
+                img.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container">
     <div class="navigation">
-            <a href="dt_kepesantrenan.php"><img src="back_icon.png" alt="back"></a>
+            <a href="dt_kepesantrenan.php"><img src="../back_icon.png" alt="back"></a>
         </div>
         <h1>Daftar Ujian Kepesantrenan</h1>
-        <!-- <div class="add-santri-button">
-            <a href="form_tambahdata_pelanggaran.php">Tambah Nama Pelanggaran</a>
-        </div> -->
-        <!-- <div class="search-bar">
-            <form method="GET" action="search_pelanggaran.php">
-                <input type="text" name="search" placeholder="Cari Nama, Jenis, Klasifikasi atau Poin">
-                <input type="submit" value="Cari">
-            </form>
-        </div> -->
         <table>
             <thead>
                 <tr>
@@ -185,7 +187,21 @@ $result = mysqli_query($koneksi, $query);
             <tbody>
                 <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
-                        <td><?php echo $row['jenis']; ?></td>
+                        <td onclick="toggleImage('<?php echo $row['id']; ?>')" style="cursor: pointer;">
+                            <?php echo $row['jenis']; ?>
+                        </td>
+                    </tr>
+                    <tr style="display: none;" id="img_<?php echo $row['id']; ?>">
+                        <td>
+                            <?php
+                            $gambarPath = 'gambar_ujian/' . $row['id'] . '.jpg'; // Path gambar
+                            if (file_exists($gambarPath)) {
+                                echo '<img src="' . $gambarPath . '" alt="Gambar Ujian" />';
+                            } else {
+                                echo 'Gambar tidak ditemukan';
+                            }
+                            ?>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>

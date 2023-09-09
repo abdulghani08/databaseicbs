@@ -212,7 +212,7 @@ $result = mysqli_query($koneksi, $query);
                             ?>
                         </td>
             <td class="action-links">
-                <a class="update" href="update_perizinan.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="update_icon.png" alt="Update"></a>
+                <a class="update" href="update_perizinan.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"target="_blank"><img src="update_icon.png" alt="Update"></a>
             </td>
         </tr>
     <?php } ?>

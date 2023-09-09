@@ -207,7 +207,7 @@ $result = mysqli_query($koneksi, $query);
                             ?>
                         </td>
                         <td class="action-links">
-                            <a class="update" href="update_tahfizh.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="update_icon.png" alt="Update"></a>
+                        <a class="update" href="update_tahfizh.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>" target="_blank"><img src="update_icon.png" alt="Update"></a>
                             <!-- <a class="edit" href="edit_datasantri_tahfizh.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="edit_icon.png" alt="Edit"></a>
                             <a class="delete" href="hapus_datasantri_tahfizh.php?nis=<?php echo $row['nis']; ?>&nama=<?php echo $row['nama']; ?>"><img src="delete_icon.png" alt="Delete"></a> -->
                         </td>
