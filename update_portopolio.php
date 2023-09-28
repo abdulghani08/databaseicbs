@@ -279,6 +279,73 @@ $data = mysqli_fetch_array($result);
                 ?>
             </tbody>
         </table>
+
+        <h3><center>Pengalaman Organisasi</center></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Organisasi</th>
+                    <th>Jabatan</th>
+                    <th>Periode</th>
+                    <th>Tingkat</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Tampilkan data dari tabel prestasi_isi berdasarkan NIS -->
+                <?php
+                $setoran_query = "SELECT * FROM pengalaman_organisasi_isi WHERE nis='$nis'";
+                $setoran_result = mysqli_query($koneksi, $setoran_query);
+                $no = 1;
+                while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+                    ?>
+                    <tr>
+                        <td><?php echo $no; ?></td>
+                        <td><?php echo $setoran_data['nama_organisasi']; ?></td>
+                        <td><?php echo $setoran_data['jabatan']; ?></td>
+                        <td><?php echo $setoran_data['periode']; ?></td>
+                        <td><?php echo $setoran_data['tingkat']; ?></td>
+                    </tr>
+                    <?php
+                    $no++;
+                }
+                ?>
+            </tbody>
+        </table>
+
+        <br>
+        <h3><center>Pengalaman Kegiatan Tersertifikasi</center></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Kegiatan</th>
+                    <th>Waktu Kegiatan</th>
+                    <th>Penyelenggara</th>
+                    <th>Tingkat</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Tampilkan data dari tabel prestasi_isi berdasarkan NIS -->
+                <?php
+                $setoran_query = "SELECT * FROM kegiatan_tersertifikasi_isi WHERE nis='$nis'";
+                $setoran_result = mysqli_query($koneksi, $setoran_query);
+                $no = 1;
+                while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+                    ?>
+                    <tr>
+                        <td><?php echo $no; ?></td>
+                        <td><?php echo $setoran_data['nama_kegiatan']; ?></td>
+                        <td><?php echo $setoran_data['waktu_kegiatan']; ?></td>
+                        <td><?php echo $setoran_data['penyelenggara']; ?></td>
+                        <td><?php echo $setoran_data['tingkat']; ?></td>
+                    </tr>
+                    <?php
+                    $no++;
+                }
+                ?>
+            </tbody>
+        </table>
         <table>
             <thead>
                 <tr>
@@ -415,6 +482,51 @@ $data = mysqli_fetch_array($result);
             ?>
         </tbody>
     </table>
+
+    <center><h3>Rekapan Ujian Tasmi'</h3></center>
+<table>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Tanggal</th>
+            <th>Hafalan</th>
+            <th>Nilai</th>
+            <th>Keterangan</th>
+            <!-- <th>Total Hafalan (Halaman)</th> -->
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $setoran_query = "SELECT * FROM tasmik_isi WHERE nis='$nis'";
+        $setoran_result = mysqli_query($koneksi, $setoran_query);
+        $no = 1;
+        while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+            $nilai = $setoran_data['nilai'];
+            $keterangan = '';
+            if ($nilai == 'A') {
+                $keterangan = 'Sangat Baik';
+            } elseif ($nilai == 'B') {
+                $keterangan = 'Baik';
+            } elseif ($nilai == 'C') {
+                $keterangan = 'Kurang Lancar';
+            } elseif ($nilai == 'D') {
+                $keterangan = 'Tidak Lancar';
+            }
+            ?>
+            <tr>
+                <td><?php echo $no; ?></td>
+                <td><?php echo $setoran_data['tanggal']; ?></td>
+                <td><?php echo $setoran_data['ujian']; ?></td>
+                <td><?php echo $nilai; ?></td>
+                <td><?php echo $keterangan; ?></td>
+                <!-- <td><?php echo $setoran_data['total_hafalan']; ?></td> -->
+            </tr>
+            <?php
+            $no++;
+        }
+        ?>
+    </tbody>
+</table>
     <div class="total-hafalan">
     <?php
     // Menghitung jumlah total hafalan

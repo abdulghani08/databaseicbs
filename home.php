@@ -70,6 +70,9 @@ $data = mysqli_fetch_array($query);
                     <div class="carousel-item">
                       <img class="d-block w-100" src="img/slider4.png" alt="First slide" id="slider1">
                     </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="img/slider5.png" alt="First slide" id="slider1">
+                    </div>
                   </div>
                 </div>
               </div>
@@ -89,7 +92,7 @@ $data = mysqli_fetch_array($query);
                   </a>
                 </div>
               <div class="row">
-                <p id="title1">kpesantren</p>
+                <p id="title1">Kpesantrenan</p>
               </div> 
               </div>  
             </div>
@@ -125,7 +128,7 @@ $data = mysqli_fetch_array($query);
                   </a>
               </div>
               <div class="row">
-                <p id="title3">Kedisiplinan</p> 
+                <p id="title3">disiplin</p> 
               </div>
               </div>
             </div>

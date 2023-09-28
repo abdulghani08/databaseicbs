@@ -12,26 +12,23 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 $nis = $_GET['nis'];
 $nama = $_GET['nama'];
 
-// Proses simpan data setoran ke database
+// Proses simpan data ujian tahfizh ke database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $tanggal = $_POST['tanggal'];
-    $hafalan = mysqli_real_escape_string($koneksi, $_POST['hafalan']);
-    $nilai = $_POST['nilai'];
-    $totalHafalan = $_POST['total_hafalan'];
+    $nama_organisasi = $_POST['nama_organisasi'];
+    $jabatan = $_POST['jabatan'];
+    $periode = $_POST['periode'];
+    $tingkat = $_POST['tingkat'];
 
-    // Membersihkan nilai $hafalan untuk mencegah serangan SQL injection
-$hafalan = mysqli_real_escape_string($koneksi, $hafalan);
-
-    // Query untuk menyimpan data setoran
-    $query = "INSERT INTO tahfizh_hafalan (nis, tanggal, hafalan, nilai, total_hafalan) VALUES ('$nis', '$tanggal', '$hafalan', '$nilai', '$totalHafalan')";
+    // Query untuk menyimpan data ujian tahfizh
+    $query = "INSERT INTO pengalaman_organisasi_isi (nis, nama, nama_organisasi, jabatan, periode, tingkat) VALUES ('$nis', '$nama', '$nama_organisasi', '$jabatan', '$periode', '$tingkat')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
         // Redirect ke halaman update_tahfizh.php setelah data berhasil disimpan
-        header("Location: update_tahfizh.php?nis=$nis&nama=$nama");
+        header("Location: update_minatbakat.php?nis=$nis&nama=$nama");
         exit();
     } else {
-        echo "Terjadi kesalahan saat menyimpan data setoran.";
+        echo "Terjadi kesalahan saat menyimpan data ujian tahfizh.";
     }
 }
 ?>
@@ -40,7 +37,7 @@ $hafalan = mysqli_real_escape_string($koneksi, $hafalan);
 <html>
 
 <head>
-    <title>Form Tambah Setoran</title>
+    <title>Form Tambah Pengalaman Organisasi</title>
     <link rel="shortcut icon" href="logo.png">
     <style>
         body {
@@ -95,40 +92,26 @@ $hafalan = mysqli_real_escape_string($koneksi, $hafalan);
 
 <body>
     <div class="container">
-        <h2>Form Tambah Setoran</h2>
+        <h2>Form Tambah Pengalaman Organisasi</h2>
         <form method="POST">
-            <label for="tanggal">Tanggal:</label>
-            <input type="date" id="tanggal" name="tanggal" required>
+            <label for="nama_organisasi">Nama Organisasi:</label>
+            <input type="text" id="nama_organisasi" name="nama_organisasi" required>
 
-            <label for="hafalan">Hafalan:</label>
-            <input type="text" id="hafalan" name="hafalan" required>
-            <h6>Contoh Penulisan 
-<br>1. Qs. Al Baqaroh 1-29 (Hal. 2-5) 
-(jika perhalaman)
+            <label for="jabatan">Jabatan:</label>
+            <input type="text" id="jabatan" name="jabatan" required>
 
-<br>2. Qs. An-Naba 1 -40 
-(Jika 1 surat)
+            <label for="periode">Periode:</label>
+            <input type="text" id="periode" name="periode" required>
 
-<br>3. Qs. An-Naba 31 - 40 dan An Naziat 1-15 (hal. 583)
-(jika beda surat tapi 1 halaman)</h6>
+            <label for="tingkat">Tingkat:</label>
+            <input type="text" id="tingkat" name="tingkat" required>
 
-            <label for="nilai">Nilai:</label>
-            <select id="nilai" name="nilai" required>
-                <option value="">Pilih Nilai</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-            </select>
-
-            <label for="total_hafalan">Total Hafalan (Per halaman):</label>
-            <input type="number" id="total_hafalan" name="total_hafalan" step="0.1" min="0" max="604" required>
             
 
-            <input type="submit" value="Tambah Setoran">
+            <input type="submit" value="Tambah Pengalaman Organisasi">
         </form>
         <div class="add-button">
-            <a href="dt_tahfizh.php">Kembali</a>
+            <a href="dt_minatbakat.php">Kembali</a>
         </div>
     </div>
 </body>

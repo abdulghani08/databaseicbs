@@ -169,7 +169,8 @@ $data = mysqli_fetch_array($result);
         <h2>REKAPAN HAFALAN</h2>
         <div class="add-button">
             <a href="form_tambahdata_setoran.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Hafalan</a>
-            <a href="form_tambahujian_tahfizh.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Ujian Tahfizh</a>
+            <a href="form_tambahujian_tahfizh.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Ujian Tasmi' Qur'an Perjuz</a>
+            <a href="form_tambahujian_tasmik.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Ujian Tahfizh</a>
         </div>
         <div class="details">
         <table>
@@ -199,7 +200,60 @@ $data = mysqli_fetch_array($result);
             </tr>
         </table>
         </div>
-        <center><h3>Ujian Tahfizh</h3></center>
+
+<center><h3>Rekapan Hafalan</h3></center>
+<table>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Tanggal</th>
+            <th>Hafalan</th>
+            <th>Nilai</th>
+            <th>Keterangan</th>
+            <th>Total Hafalan (Halaman)</th>
+            <th>Action</th> <!-- Tambahkan kolom Action -->
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $setoran_query = "SELECT * FROM tahfizh_hafalan WHERE nis='$nis'";
+        $setoran_result = mysqli_query($koneksi, $setoran_query);
+        $no = 1;
+        while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+            $nilai = $setoran_data['nilai'];
+            $keterangan = '';
+            if ($nilai == 'A') {
+                $keterangan = 'Sangat Baik';
+            } elseif ($nilai == 'B') {
+                $keterangan = 'Baik';
+            } elseif ($nilai == 'C') {
+                $keterangan = 'Kurang Lancar';
+            } elseif ($nilai == 'D') {
+                $keterangan = 'Tidak Lancar';
+            }
+            ?>
+            <tr>
+                <td><?php echo $no; ?></td>
+                <td><?php echo $setoran_data['tanggal']; ?></td>
+                <td><?php echo $setoran_data['hafalan']; ?></td>
+                <td><?php echo $nilai; ?></td>
+                <td><?php echo $keterangan; ?></td>
+                <td><?php echo $setoran_data['total_hafalan']; ?></td>
+                <td class="action-links">
+                    <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_rekapan_hafalan.php -->
+                    <a class="edit" href="edit_setoran_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a>
+                    <a class="delete" href="aksi_hapus_rekapan_hafalan.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
+                    <!-- Tambahkan tombol edit dengan link ke edit_setoran_tahfizh.php -->
+                </td>
+            </tr>
+            <?php
+            $no++;
+        }
+        ?>
+    </tbody>
+</table>
+
+<center><h3>Rekapan Ujian Tasmi' Qur'an Perjuz / Ujian Kenaikan Juz</h3></center>
 <table>
     <thead>
         <tr>
@@ -247,7 +301,7 @@ $data = mysqli_fetch_array($result);
     </tbody>
 </table>
 
-<center><h3>Rekapan Hafalan</h3></center>
+<center><h3>Rekapan Ujian Tahfizh</h3></center>
 <table>
     <thead>
         <tr>
@@ -262,7 +316,7 @@ $data = mysqli_fetch_array($result);
     </thead>
     <tbody>
         <?php
-        $setoran_query = "SELECT * FROM tahfizh_hafalan WHERE nis='$nis'";
+        $setoran_query = "SELECT * FROM tasmik_isi WHERE nis='$nis'";
         $setoran_result = mysqli_query($koneksi, $setoran_query);
         $no = 1;
         while ($setoran_data = mysqli_fetch_array($setoran_result)) {
@@ -281,14 +335,14 @@ $data = mysqli_fetch_array($result);
             <tr>
                 <td><?php echo $no; ?></td>
                 <td><?php echo $setoran_data['tanggal']; ?></td>
-                <td><?php echo $setoran_data['hafalan']; ?></td>
+                <td><?php echo $setoran_data['ujian']; ?></td>
                 <td><?php echo $nilai; ?></td>
                 <td><?php echo $keterangan; ?></td>
-                <td><?php echo $setoran_data['total_hafalan']; ?></td>
+                <td><?php echo $setoran_data['total_halaman']; ?></td>
                 <td class="action-links">
                     <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_rekapan_hafalan.php -->
-                    <a class="edit" href="edit_setoran_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a>
-                    <a class="delete" href="aksi_hapus_rekapan_hafalan.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
+                    <!-- <a class="edit" href="edit_setoran_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a> -->
+                    <a class="delete" href="aksi_hapus_ujian_tasmik.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
                     <!-- Tambahkan tombol edit dengan link ke edit_setoran_tahfizh.php -->
                 </td>
             </tr>

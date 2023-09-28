@@ -168,6 +168,10 @@ $data = mysqli_fetch_array($result);
         <h2>MINAT BAKAT SANTRI</h2>
         <div class="add-button">
             <a href="form_tambahdata_minatbakat.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>">Tambah Minat Bakat</a>
+            <a href="form_tambahdata_pengalaman_organisasi.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>">Tambah Pengalaman Organisasi</a>
+        </div>
+        <div class="add-button">
+            <a href="form_tambahdata_sertifikasi.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>">Tambah Pengalaman Kegiatan Tersertifikasi</a>
         </div>
        <div class="details">
         <table>
@@ -193,6 +197,7 @@ $data = mysqli_fetch_array($result);
             </tr>
         </table>
         </div>
+        <h3><center>Peminatan dan Bakat</center></h3>
         <table>
             <thead>
                 <tr>
@@ -217,6 +222,84 @@ $data = mysqli_fetch_array($result);
                         <td class="action-links">
                             <!-- <a class="edit" href="edit_minatbakat.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a> -->
                             <a class="delete" href="aksi_hapus_minatbakat.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
+                        </td>
+                    </tr>
+                    <?php
+                    $no++;
+                }
+                ?>
+            </tbody>
+        </table>
+
+        <br>
+        <h3><center>Pengalaman Organisasi</center></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Organisasi</th>
+                    <th>Jabatan</th>
+                    <th>Periode</th>
+                    <th>Tingkat</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Tampilkan data dari tabel prestasi_isi berdasarkan NIS -->
+                <?php
+                $setoran_query = "SELECT * FROM pengalaman_organisasi_isi WHERE nis='$nis'";
+                $setoran_result = mysqli_query($koneksi, $setoran_query);
+                $no = 1;
+                while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+                    ?>
+                    <tr>
+                        <td><?php echo $no; ?></td>
+                        <td><?php echo $setoran_data['nama_organisasi']; ?></td>
+                        <td><?php echo $setoran_data['jabatan']; ?></td>
+                        <td><?php echo $setoran_data['periode']; ?></td>
+                        <td><?php echo $setoran_data['tingkat']; ?></td>
+                        <td class="action-links">
+                            <!-- <a class="edit" href="edit_minatbakat.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a> -->
+                            <a class="delete" href="aksi_hapus_pengalaman_organisasi.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
+                        </td>
+                    </tr>
+                    <?php
+                    $no++;
+                }
+                ?>
+            </tbody>
+        </table>
+
+        <br>
+        <h3><center>Pengalaman Kegiatan Tersertifikasi</center></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Kegiatan</th>
+                    <th>Waktu Kegiatan</th>
+                    <th>Penyelenggara</th>
+                    <th>Tingkat</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Tampilkan data dari tabel prestasi_isi berdasarkan NIS -->
+                <?php
+                $setoran_query = "SELECT * FROM kegiatan_tersertifikasi_isi WHERE nis='$nis'";
+                $setoran_result = mysqli_query($koneksi, $setoran_query);
+                $no = 1;
+                while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+                    ?>
+                    <tr>
+                        <td><?php echo $no; ?></td>
+                        <td><?php echo $setoran_data['nama_kegiatan']; ?></td>
+                        <td><?php echo $setoran_data['waktu_kegiatan']; ?></td>
+                        <td><?php echo $setoran_data['penyelenggara']; ?></td>
+                        <td><?php echo $setoran_data['tingkat']; ?></td>
+                        <td class="action-links">
+                            <!-- <a class="edit" href="edit_minatbakat.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a> -->
+                            <a class="delete" href="aksi_hapus_kegiatan_tersertifikasi.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
                         </td>
                     </tr>
                     <?php

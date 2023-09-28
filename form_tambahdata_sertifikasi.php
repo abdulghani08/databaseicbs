@@ -12,26 +12,23 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 $nis = $_GET['nis'];
 $nama = $_GET['nama'];
 
-// Proses simpan data setoran ke database
+// Proses simpan data ujian tahfizh ke database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $tanggal = $_POST['tanggal'];
-    $hafalan = mysqli_real_escape_string($koneksi, $_POST['hafalan']);
-    $nilai = $_POST['nilai'];
-    $totalHafalan = $_POST['total_hafalan'];
+    $nama_kegiatan = $_POST['nama_kegiatan'];
+    $waktu_kegiatan = $_POST['waktu_kegiatan'];
+    $penyelenggara = $_POST['penyelenggara'];
+    $tingkat = $_POST['tingkat'];
 
-    // Membersihkan nilai $hafalan untuk mencegah serangan SQL injection
-$hafalan = mysqli_real_escape_string($koneksi, $hafalan);
-
-    // Query untuk menyimpan data setoran
-    $query = "INSERT INTO tahfizh_hafalan (nis, tanggal, hafalan, nilai, total_hafalan) VALUES ('$nis', '$tanggal', '$hafalan', '$nilai', '$totalHafalan')";
+    // Query untuk menyimpan data ujian tahfizh
+    $query = "INSERT INTO kegiatan_tersertifikasi_isi (nis, nama, nama_kegiatan, waktu_kegiatan, penyelenggara, tingkat) VALUES ('$nis', '$nama', '$nama_kegiatan', '$waktu_kegiatan', '$penyelenggara', '$tingkat')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
         // Redirect ke halaman update_tahfizh.php setelah data berhasil disimpan
-        header("Location: update_tahfizh.php?nis=$nis&nama=$nama");
+        header("Location: update_minatbakat.php?nis=$nis&nama=$nama");
         exit();
     } else {
-        echo "Terjadi kesalahan saat menyimpan data setoran.";
+        echo "Terjadi kesalahan saat menyimpan data ujian tahfizh.";
     }
 }
 ?>
@@ -40,7 +37,7 @@ $hafalan = mysqli_real_escape_string($koneksi, $hafalan);
 <html>
 
 <head>
-    <title>Form Tambah Setoran</title>
+    <title>Form Tambah Pengalaman Kegiatan Tersertifikasi</title>
     <link rel="shortcut icon" href="logo.png">
     <style>
         body {
@@ -95,40 +92,26 @@ $hafalan = mysqli_real_escape_string($koneksi, $hafalan);
 
 <body>
     <div class="container">
-        <h2>Form Tambah Setoran</h2>
+        <h2>Form Tambah Pengalaman Kegiatan Tersertifikasi</h2>
         <form method="POST">
-            <label for="tanggal">Tanggal:</label>
-            <input type="date" id="tanggal" name="tanggal" required>
+            <label for="nama_kegiatan">Nama Kegiatan:</label>
+            <input type="text" id="nama_kegiatan" name="nama_kegiatan" required>
 
-            <label for="hafalan">Hafalan:</label>
-            <input type="text" id="hafalan" name="hafalan" required>
-            <h6>Contoh Penulisan 
-<br>1. Qs. Al Baqaroh 1-29 (Hal. 2-5) 
-(jika perhalaman)
+            <label for="waktu_kegiatan">Waktu Kegiatan:</label>
+            <input type="date" id="waktu_kegiatan" name="waktu_kegiatan" required>
 
-<br>2. Qs. An-Naba 1 -40 
-(Jika 1 surat)
+            <label for="penyelenggara">penyelenggara:</label>
+            <input type="text" id="penyelenggara" name="penyelenggara" required>
 
-<br>3. Qs. An-Naba 31 - 40 dan An Naziat 1-15 (hal. 583)
-(jika beda surat tapi 1 halaman)</h6>
+            <label for="tingkat">Tingkat:</label>
+            <input type="text" id="tingkat" name="tingkat" required>
 
-            <label for="nilai">Nilai:</label>
-            <select id="nilai" name="nilai" required>
-                <option value="">Pilih Nilai</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-            </select>
-
-            <label for="total_hafalan">Total Hafalan (Per halaman):</label>
-            <input type="number" id="total_hafalan" name="total_hafalan" step="0.1" min="0" max="604" required>
             
 
-            <input type="submit" value="Tambah Setoran">
+            <input type="submit" value="Tambah Pengalaman Kegiatan Tersertifikasi">
         </form>
         <div class="add-button">
-            <a href="dt_tahfizh.php">Kembali</a>
+            <a href="dt_minatbakat.php">Kembali</a>
         </div>
     </div>
 </body>
