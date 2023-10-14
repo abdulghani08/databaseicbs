@@ -1,10 +1,10 @@
 <?php
-session_start();
+// session_start();
 include "connection.php";
-error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-if (empty($_SESSION['username'])) {
-    die("Anda belum login");
-}
+// error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+// if (empty($_SESSION['username'])) {
+//     die("Anda belum login");
+// }
 
 $koneksi = mysqli_connect($host, $username, $password, $database);
 
@@ -22,17 +22,39 @@ $data = mysqli_fetch_array($result);
     <title>Update Portopolio</title>
     <link rel="shortcut icon" href="logo.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
+        @media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    .button-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .button-row a {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    table {
+        font-size: 14px;
+    }
+    .chart-container {
+        margin-top: 10px;
+    }
+}
+
         body {
             font-family: Arial, sans-serif;
+            font-size: 14px;
             background-image: url('backgroundgedung.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            background-color: white; /* Ubah warna latar belakang menjadi putih */
             margin: 0;
-            padding: 20px;
+            padding: 10px;
         }
 
         .container {
@@ -48,6 +70,13 @@ $data = mysqli_fetch_array($result);
         h2 {
             text-align: center;
             margin-bottom: 20px;
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
         }
 
         .button-row {
@@ -113,18 +142,37 @@ $data = mysqli_fetch_array($result);
 
 <body>
     <div class="container">
-        <div>
-            <a href="dt_portopolio.php"><img src="back_icon.png" alt="home"></a>
-        </div>
-        <h2>Biodata Santri</h2>
-        <div class="add-button">
-            <a href="cetak_portopolio.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Cetak Portopolio</a>
-        </div>
+    <div>
+    <a href="dt_portopolio.php"><img src="back_icon.png" alt="home" style="width: 30px;"></a>
+</div>
+
+<?php
+// Ambil data foto santri dari database
+$query_foto = "SELECT pas_poto FROM portopolio_isi WHERE nis='$nis' AND nama='$nama'";
+$result_foto = mysqli_query($koneksi, $query_foto);
+$row_foto = mysqli_fetch_assoc($result_foto);
+$pas_poto = $row_foto['pas_poto'];
+?>
+
+<h2 style="text-align: center; margin-bottom: 10px; font-size: 24px;">Biodata Santri</h2>
+
+<div class="add-button" style="text-align: center;">
+    <a href="cetak_portopolio.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50; width: 100%;">Cetak Portopolio</a>
+</div>
+
         <!-- <div class="add-button">
             <a href="form_tambahdata_setoran.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Hafalan</a>
         </div> -->
         <div class="details">
         <table>
+            <tr>
+            <th>Pas Foto Santri</th>
+            <td>
+            <div style="text-align: center; margin-bottom: 20px;">
+        <img src="<?php echo $pas_poto; ?>" alt="Pas Foto Santri" style="width: 200px; height: 200px; border-radius: 50%;">
+    </div>
+            </td>
+            </tr>
             <tr>
             <th>Nama Santri</th>
             <td><?php echo $data['nama']; ?></td>
@@ -544,7 +592,8 @@ $data = mysqli_fetch_array($result);
     </div>
     <center><h3>Grafik Kualitas Hafalan</h3></center>
 
-        <canvas id="chart"></canvas>
+    <canvas id="chart" style="max-width: 100%;"></canvas>
+
 
         <script>
             // Mendapatkan data nilai dari PHP

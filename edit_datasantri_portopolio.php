@@ -2,15 +2,57 @@
 session_start();
 include "connection.php";
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+
 if (empty($_SESSION['username'])) {
     die("Anda belum login");
 }
 
 $koneksi = mysqli_connect($host, $username, $password, $database);
 
+// Tentukan ukuran maksimal file (dalam byte) - 10 MB
+$maxFileSize = 10 * 1024 * 1024; // 10 MB dalam byte
+
 // Periksa apakah ada permintaan pengiriman form
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nis = mysqli_real_escape_string($koneksi, $_POST['nis']);
+    $upload_dir = '/home/sant5315/public_html/uploads/';
+
+    // Periksa apakah ada file yang diunggah
+    if (isset($_FILES['pas_poto']) && $_FILES['pas_poto']['error'] === UPLOAD_ERR_OK) {
+        // Buat nama unik untuk file foto
+        $filename = $_FILES['pas_poto']['name'];
+        $foto_name = $nis . '_' . $filename;
+        $foto_path = $upload_dir . $foto_name;
+
+        // Periksa ukuran file
+        if ($_FILES['pas_poto']['size'] > $maxFileSize) {
+            echo "Ukuran file terlalu besar. Maksimal 10 MB.";
+            exit();  // Hentikan proses jika ukuran melebihi batas
+        }
+
+        // Pindahkan file foto ke direktori yang ditentukan
+        if (move_uploaded_file($_FILES['pas_poto']['tmp_name'], $foto_path)) {
+            // Perbarui path foto santri di database
+            $query_update_foto = "UPDATE portopolio_isi SET pas_poto='$foto_path' WHERE nis='$nis'";
+            $result_update_foto = mysqli_query($koneksi, $query_update_foto);
+
+            if ($result_update_foto) {
+                echo "File berhasil dipindahkan ke " . $foto_path . ". Data telah berhasil diperbarui.";
+            } else {
+                echo "Terjadi kesalahan saat memperbarui data: " . mysqli_error($koneksi);
+            }
+        } else {
+            echo "Terjadi kesalahan saat memindahkan file foto.";
+        }
+    } else {
+        echo "Tidak ada file foto yang diunggah atau terjadi kesalahan dalam unggah file.";
+    }
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Dapatkan data dari form
+    // $pas_poto = mysqli_real_escape_string($koneksi, $_POST['pas_poto']);
     $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
     $tempat_lahir = mysqli_real_escape_string($koneksi, $_POST['tempat_lahir']);
     $tanggal_lahir = mysqli_real_escape_string($koneksi, $_POST['tanggal_lahir']);
@@ -44,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $motto = mysqli_real_escape_string($koneksi, $_POST['motto']);
 
     // Perbarui data pada tabel tahfizh_data
-    $query = "UPDATE portopolio_isi SET nama='$nama', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', kabkota='$kabkota', provinsi='$provinsi', kelas='$kelas', asrama='$asrama', pembina='$pembina', muhafizh='$muhafizh', sekolah_asal='$sekolah_asal', cita='$cita', alamat_medsos='$alamat_medsos', riwayat_penyakit='$riwayat_penyakit', alergi='$alergi', anakke='$anakke', bersaudara='$bersaudara', disenangi='$disenangi', tidak_disenangi='$tidak_disenangi', nama_ayah='$nama_ayah', pekerjaan_ayah='$pekerjaan_ayah', hp_ayah='$hp_ayah', nama_ibu='$nama_ibu', pekerjaan_ibu='$pekerjaan_ibu', hp_ibu='$hp_ibu', karakter_disukai='$karakter_disukai', karakter_tidakdisukai='$karakter_tidakdisukai', kelebihan='$kelebihan', kekurangan='$kekurangan', motto='$motto' WHERE nis='$nis'";
+    $query = "UPDATE portopolio_isi SET pas_poto='$pas_poto', nama='$nama', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', kabkota='$kabkota', provinsi='$provinsi', kelas='$kelas', asrama='$asrama', pembina='$pembina', muhafizh='$muhafizh', sekolah_asal='$sekolah_asal', cita='$cita', alamat_medsos='$alamat_medsos', riwayat_penyakit='$riwayat_penyakit', alergi='$alergi', anakke='$anakke', bersaudara='$bersaudara', disenangi='$disenangi', tidak_disenangi='$tidak_disenangi', nama_ayah='$nama_ayah', pekerjaan_ayah='$pekerjaan_ayah', hp_ayah='$hp_ayah', nama_ibu='$nama_ibu', pekerjaan_ibu='$pekerjaan_ibu', hp_ibu='$hp_ibu', karakter_disukai='$karakter_disukai', karakter_tidakdisukai='$karakter_tidakdisukai', kelebihan='$kelebihan', kekurangan='$kekurangan', motto='$motto' WHERE nis='$nis'";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -142,7 +184,11 @@ mysqli_close($koneksi);
                 <a href="dt_portopolio.php">Kembali</a>
             </div>
         <h2>Edit Data Santri</h2>
-        <form method="POST" action="">
+        <form action="edit_datasantri_portopolio.php" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>Foto Santri:</label>
+                <input type="file" name="pas_poto" accept=".jpg, .jpeg, .png">
+            </div>
             <div class="form-group">
                 <label>Nama Santri:</label>
                 <input type="text" name="nama" value="<?php echo $row['nama']; ?>">

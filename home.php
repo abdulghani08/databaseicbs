@@ -73,6 +73,39 @@ $data = mysqli_fetch_array($query);
                     <div class="carousel-item">
                       <img class="d-block w-100" src="img/slider5.png" alt="First slide" id="slider1">
                     </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="img/slider6.png" alt="First slide" id="slider1">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="img/slider7.png" alt="First slide" id="slider1">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="img/slider8.png" alt="First slide" id="slider1">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="img/slider9.png" alt="First slide" id="slider1">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="img/slider10.png" alt="First slide" id="slider1">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="img/slider11.png" alt="First slide" id="slider1">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="img/slider12.png" alt="First slide" id="slider1">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="img/slider13.png" alt="First slide" id="slider1">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="img/slider14.png" alt="First slide" id="slider1">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="img/slider15.png" alt="First slide" id="slider1">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block w-100" src="img/slider16.png" alt="First slide" id="slider1">
+                    </div>
                   </div>
                 </div>
               </div>

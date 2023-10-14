@@ -136,7 +136,11 @@ input[type="text"] {
             <a href="dt_portopolio.php">Kembali</a>
         </div>
         <h2>Form Tambah Data Santri</h2>
-        <form method="POST" action="">
+        <form method="POST" action="" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>Upload Foto:</label>
+                <input type="file" name="pas_poto" accept="image/*">
+            </div>
             <div class="form-group">
                 <label>Nama Santri:</label>
                 <input type="text" name="nama" required>

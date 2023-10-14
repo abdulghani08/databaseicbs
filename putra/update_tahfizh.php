@@ -169,7 +169,8 @@ $data = mysqli_fetch_array($result);
         <h2>REKAPAN HAFALAN</h2>
         <div class="add-button">
             <a href="form_tambahdata_setoran.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Hafalan</a>
-            <a href="form_tambahujian_tahfizh.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Ujian Tahfizh</a>
+            <a href="form_tambahujian_tahfizh.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Ujian Tasmi' Qur'an Perjuz</a>
+            <a href="form_tambahujian_tasmik.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Ujian Tahfizh</a>
         </div>
         <div class="details">
         <table>
@@ -199,53 +200,6 @@ $data = mysqli_fetch_array($result);
             </tr>
         </table>
         </div>
-        <center><h3>Ujian Tahfizh</h3></center>
-<table>
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Tanggal</th>
-            <th>Nama Ujian</th>
-            <th>Nilai</th>
-            <th>Keterangan</th>
-            <th>Action</th> <!-- Tambahkan kolom Action -->
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        $setoran_query = "SELECT * FROM putra_tahfizh_ujian WHERE nis='$nis'";
-        $setoran_result = mysqli_query($koneksi, $setoran_query);
-        $no = 1;
-        while ($setoran_data = mysqli_fetch_array($setoran_result)) {
-            $nilai = $setoran_data['nilai'];
-            $keterangan = '';
-            if ($nilai == 'A') {
-                $keterangan = 'Sangat Baik';
-            } elseif ($nilai == 'B') {
-                $keterangan = 'Baik';
-            } elseif ($nilai == 'C') {
-                $keterangan = 'Kurang Lancar';
-            } elseif ($nilai == 'D') {
-                $keterangan = 'Tidak Lancar(Mengulang)';
-            }
-            ?>
-            <tr>
-                <td><?php echo $no; ?></td>
-                <td><?php echo $setoran_data['tanggal']; ?></td>
-                <td><?php echo $setoran_data['ujian']; ?></td>
-                <td><?php echo $nilai; ?></td>
-                <td><?php echo $keterangan; ?></td>
-                <td class="action-links">
-                    <a class="edit" href="edit_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="../edit_icon.png" alt="Edit"></a>
-                    <a class="delete" href="aksi_hapus_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="../delete_icon.png" alt="Delete"></a>
-                </td>
-            </tr>
-            <?php
-            $no++;
-        }
-        ?>
-    </tbody>
-</table>
 
 <center><h3>Rekapan Hafalan</h3></center>
 <table>
@@ -299,10 +253,110 @@ $data = mysqli_fetch_array($result);
     </tbody>
 </table>
 
+<center><h3>Rekapan Ujian Tasmi' Qur'an Perjuz / Ujian Kenaikan Juz</h3></center>
+<table>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Tanggal</th>
+            <th>Nama Ujian</th>
+            <th>Nilai</th>
+            <th>Keterangan</th>
+            <th>Action</th> <!-- Tambahkan kolom Action -->
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $setoran_query = "SELECT * FROM putra_tahfizh_ujian WHERE nis='$nis'";
+        $setoran_result = mysqli_query($koneksi, $setoran_query);
+        $no = 1;
+        while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+            $nilai = $setoran_data['nilai'];
+            $keterangan = '';
+            if ($nilai == 'A') {
+                $keterangan = 'Sangat Baik';
+            } elseif ($nilai == 'B') {
+                $keterangan = 'Baik';
+            } elseif ($nilai == 'C') {
+                $keterangan = 'Kurang Lancar';
+            } elseif ($nilai == 'D') {
+                $keterangan = 'Tidak Lancar(Mengulang)';
+            }
+            ?>
+            <tr>
+                <td><?php echo $no; ?></td>
+                <td><?php echo $setoran_data['tanggal']; ?></td>
+                <td><?php echo $setoran_data['ujian']; ?></td>
+                <td><?php echo $nilai; ?></td>
+                <td><?php echo $keterangan; ?></td>
+                <td class="action-links">
+                    <a class="edit" href="edit_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="../edit_icon.png" alt="Edit"></a>
+                    <a class="delete" href="aksi_hapus_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="../delete_icon.png" alt="Delete"></a>
+                </td>
+            </tr>
+            <?php
+            $no++;
+        }
+        ?>
+    </tbody>
+</table>
+
+<center><h3>Rekapan Ujian Tahfizh</h3></center>
+<table>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Tanggal</th>
+            <th>Hafalan</th>
+            <th>Nilai</th>
+            <th>Keterangan</th>
+            <th>Total Hafalan (Halaman)</th>
+            <th>Action</th> <!-- Tambahkan kolom Action -->
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $setoran_query = "SELECT * FROM putra_tasmik_isi WHERE nis='$nis'";
+        $setoran_result = mysqli_query($koneksi, $setoran_query);
+        $no = 1;
+        while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+            $nilai = $setoran_data['nilai'];
+            $keterangan = '';
+            if ($nilai == 'A') {
+                $keterangan = 'Sangat Baik';
+            } elseif ($nilai == 'B') {
+                $keterangan = 'Baik';
+            } elseif ($nilai == 'C') {
+                $keterangan = 'Kurang Lancar';
+            } elseif ($nilai == 'D') {
+                $keterangan = 'Tidak Lancar';
+            }
+            ?>
+            <tr>
+                <td><?php echo $no; ?></td>
+                <td><?php echo $setoran_data['tanggal']; ?></td>
+                <td><?php echo $setoran_data['ujian']; ?></td>
+                <td><?php echo $nilai; ?></td>
+                <td><?php echo $keterangan; ?></td>
+                <td><?php echo $setoran_data['total_halaman']; ?></td>
+                <td class="action-links">
+                    <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_rekapan_hafalan.php -->
+                    <!-- <a class="edit" href="edit_setoran_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a> -->
+                    <a class="delete" href="aksi_hapus_ujian_tasmik.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="../delete_icon.png" alt="Delete"></a>
+                    <!-- Tambahkan tombol edit dengan link ke edit_setoran_tahfizh.php -->
+                </td>
+            </tr>
+            <?php
+            $no++;
+        }
+        ?>
+    </tbody>
+</table>
+
         <div class="total-hafalan">
         <?php
         // Menghitung jumlah total hafalan
-        $total_hafalan_query = "SELECT SUM(total_hafalan) AS total FROM putra_tahfizh_hafalan WHERE nis='$nis'";
+        $total_hafalan_query = "SELECT SUM(total_hafalan) AS total FROM tahfizh_hafalan WHERE nis='$nis'";
         $total_hafalan_result = mysqli_query($koneksi, $total_hafalan_query);
         $total_hafalan_data = mysqli_fetch_assoc($total_hafalan_result);
         $total_hafalan = $total_hafalan_data['total'];
@@ -322,22 +376,22 @@ $data = mysqli_fetch_array($result);
         <script>
             // Mendapatkan data nilai dari PHP
             <?php
-            $nilai_a_query = "SELECT COUNT(*) AS total FROM putra_tahfizh_hafalan WHERE nis='$nis' AND nilai='A'";
+            $nilai_a_query = "SELECT COUNT(*) AS total FROM tahfizh_hafalan WHERE nis='$nis' AND nilai='A'";
             $nilai_a_result = mysqli_query($koneksi, $nilai_a_query);
             $nilai_a_data = mysqli_fetch_assoc($nilai_a_result);
             $nilai_a_total = $nilai_a_data['total'];
 
-            $nilai_b_query = "SELECT COUNT(*) AS total FROM putra_tahfizh_hafalan WHERE nis='$nis' AND nilai='B'";
+            $nilai_b_query = "SELECT COUNT(*) AS total FROM tahfizh_hafalan WHERE nis='$nis' AND nilai='B'";
             $nilai_b_result = mysqli_query($koneksi, $nilai_b_query);
             $nilai_b_data = mysqli_fetch_assoc($nilai_b_result);
             $nilai_b_total = $nilai_b_data['total'];
 
-            $nilai_c_query = "SELECT COUNT(*) AS total FROM putra_tahfizh_hafalan WHERE nis='$nis' AND nilai='C'";
+            $nilai_c_query = "SELECT COUNT(*) AS total FROM tahfizh_hafalan WHERE nis='$nis' AND nilai='C'";
             $nilai_c_result = mysqli_query($koneksi, $nilai_c_query);
             $nilai_c_data = mysqli_fetch_assoc($nilai_c_result);
             $nilai_c_total = $nilai_c_data['total'];
 
-            $nilai_d_query = "SELECT COUNT(*) AS total FROM putra_tahfizh_hafalan WHERE nis='$nis' AND nilai='D'";
+            $nilai_d_query = "SELECT COUNT(*) AS total FROM tahfizh_hafalan WHERE nis='$nis' AND nilai='D'";
             $nilai_d_result = mysqli_query($koneksi, $nilai_d_query);
             $nilai_d_data = mysqli_fetch_assoc($nilai_d_result);
             $nilai_d_total = $nilai_d_data['total'];

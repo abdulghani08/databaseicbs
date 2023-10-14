@@ -15,7 +15,7 @@ $nama = $_GET['nama'];
 // Proses simpan data ujian tahfizh ke database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tanggal = $_POST['tanggal'];
-    $ujian = $_POST['ujian'];
+    $ujian = mysqli_real_escape_string($koneksi, $_POST['ujian']);
     $nilai = $_POST['nilai'];
     $total_halaman = $_POST['total_halaman'];
 

@@ -15,11 +15,12 @@ $nama = $_GET['nama'];
 // Proses simpan data ujian tahfizh ke database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tanggal = $_POST['tanggal'];
-    $ujian = $_POST['ujian'];
+    $ujian = mysqli_real_escape_string($koneksi, $_POST['ujian']);
     $nilai = $_POST['nilai'];
+    $total_halaman = $_POST['total_halaman'];
 
     // Query untuk menyimpan data ujian tahfizh
-    $query = "INSERT INTO putra_tahfizh_ujian (nis, nama, tanggal, ujian, nilai) VALUES ('$nis', '$nis', '$tanggal', '$ujian', '$nilai')";
+    $query = "INSERT INTO putra_tasmik_isi (nis, nama, tanggal, ujian, nilai, total_halaman) VALUES ('$nis', '$nis', '$tanggal', '$ujian', '$nilai', '$total_halaman')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -36,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 
 <head>
-    <title>Form Tambah Ujian Tasmik</title>
+    <title>Form Tambah Ujian Tahfizh</title>
     <link rel="shortcut icon" href="../logo.png">
     <style>
         body {
@@ -91,18 +92,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <div class="container">
-        <h2>Form Tambah Ujian Tasmi'</h2>
+        <h2>Form Tambah Ujian Tahfizh</h2>
         <form method="POST">
             <label for="tanggal">Tanggal:</label>
             <input type="date" id="tanggal" name="tanggal" required>
 
-            <!-- <label for="hafalan">Ujian Tasmi' :</label>
-            <input type="text" id="hafalan" name="hafalan" required> -->
-            
+            <label for="ujian">Ujian Tahfizh:</label>
+            <input type="text" id="ujian" name="ujian" required>
+            <h6>Contoh Penulisan 
+<br>1. Qs. Al Baqaroh 1-29 (Hal. 2-5) 
+(jika perhalaman)
 
-            <label for="ujian">Ujian Tasmi' :</label>
+<br>2. Qs. An-Naba 1 -40 
+(Jika 1 surat)
+
+<br>3. Qs. An-Naba 31 - 40 dan An Naziat 1-15 (hal. 583)
+(jika beda surat tapi 1 halaman)</h6>
+
+            <!-- <label for="ujian">Ujian Tahfizh:</label>
             <select id="ujian" name="ujian" required>
-                <option value="">Pilih Ujian Tasmi</option>
+                <option value="">Pilih Ujian Tahfizh</option>
                 <option value="Ujian Praktek Tahsin">Ujian Praktek Tahsin</option>
                 <option value="Ujian Teori Tahsin">Ujian Teori Tahsin</option>
                 <option value="Tasmi 5 Juz">Tasmi 5 Juz</option>
@@ -141,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <option value="Ujian Juz 28">Ujian Juz 28</option>
                 <option value="Ujian Juz 29">Ujian Juz 29</option>
                 <option value="Ujian Juz 30">Ujian Juz 30</option>
-            </select>
+            </select> -->
 
             <label for="nilai">Nilai:</label>
             <select id="nilai" name="nilai" required>
@@ -152,11 +161,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <option value="D">D</option>
             </select>
 
-            <!-- <label for="total_hafalan">Total Hafalan (Per halaman):</label>
-            <input type="number" id="total_hafalan" name="total_hafalan" step="0.1" min="0" max="604" required>
-            <h6>Catatan : 1 Juz = 20 halaman</h6> -->
-
-            <br><br>
+            <label for="total_halaman">Total Hafalan (Per halaman):</label>
+            <input type="number" id="total_halaman" name="total_halaman" step="0.1" min="0" max="604" required>
+            <h6>Catatan : 1 Juz = 20 halaman</h6>
+            <br>
+            <br>
             <input type="submit" value="Tambah Ujian Tahfizh">
         </form>
         <div class="add-button">
