@@ -16,7 +16,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
         $_SESSION['level'] = $row['level'];
 
         if($row['level'] == "Admin"){
-            header("Location: home.php?level=Admin");
+            header("Location: homeadmin.php?level=Admin");
         } elseif($row['level'] == "Pembina"){
             header("Location: home.php?level=Pembina");
         } elseif($row['level'] == "Tamu"){
