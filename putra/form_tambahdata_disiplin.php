@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $poin = $_POST['poin'];
     $klasifikasi = $_POST['klasifikasi'];
     $hukuman = $_POST['hukuman'];
+    $hukumantambahan = $_POST['hukumantambahan'];
     $keterangan = $_POST['keterangan'];
 
     // Ambil data santri berdasarkan NIS dari tabel dt_prestasi
@@ -30,8 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = mysqli_fetch_array($result);
 
     if (!$data) {
-        die("Santri tidak ditemukan");
+        die("Gagal menjalankan query: " . mysqli_error($koneksi));
     }
+    $data = mysqli_fetch_array($result);
 
     // Ambil poin pelanggaran dari tabel daftar_pelanggaran berdasarkan nama pelanggaran yang dipilih
     $query_poin = "SELECT poin FROM daftar_pelanggaran WHERE nama='$pelanggaran'";
@@ -55,8 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $klasifikasi = $data_klasifikasi['klasifikasi']; // Mengisi klasifikasi dari tabel daftar_pelanggaran
 
+
     // Query untuk menyimpan data prestasi
-    $query = "INSERT INTO putra_disiplin_isi (nis, nama, tanggal, pelanggaran, poin, hukuman, keterangan) VALUES ('$nis', '$nama', '$tanggal', '$pelanggaran', '$poin', '$hukuman', '$keterangan')";
+    $query = "INSERT INTO putra_disiplin_isi (nis, nama, tanggal, pelanggaran, poin, klasifikasi, hukuman, hukumantambahan, keterangan) VALUES ('$nis', '$nama', '$tanggal', '$pelanggaran', '$poin', '$klasifikasi', '$hukuman', '$hukumantambahan', '$keterangan')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -83,7 +86,7 @@ $data_hukuman = mysqli_fetch_array($result_hukuman);
 
 <head>
     <title>Form Tambah Pelanggaran</title>
-    <link rel="shortcut icon" href="logo.png">
+    <link rel="shortcut icon" href="../logo.png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -162,6 +165,10 @@ $data_hukuman = mysqli_fetch_array($result_hukuman);
 
             <label for="hukuman">Hukuman :</label>
             <select id="hukuman" name="hukuman" required style="width: 100%;"></select>
+
+            <br><br>
+            <label for="hukumantambahan">Hukuman Tambahan (Opsional)</label>
+            <input type="text" id="hukumantambahan" name="hukumantambahan">
 
             <br>
             <br>

@@ -1,10 +1,10 @@
 <?php
-session_start();
+// session_start();
 include "../connection.php";
-error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-if (empty($_SESSION['username'])) {
-    die("Anda belum login");
-}
+// error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+// if (empty($_SESSION['username'])) {
+//     die("Anda belum login");
+// }
 
 $koneksi = mysqli_connect($host, $username, $password, $database);
 
@@ -18,30 +18,56 @@ $data = mysqli_fetch_array($result);
 
 <!DOCTYPE html>
 <html>
-
+    
 <head>
     <title>Update Portopolio</title>
     <link rel="shortcut icon" href="../logo.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
+        @media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    .button-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .button-row a {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    table {
+        font-size: 14px;
+        overflow-x: auto;
+    }
+    .chart-container {
+        margin-top: 10px;
+    }
+}
+
         body {
             font-family: Arial, sans-serif;
+            font-size: 14px;
             background-image: url('../backgroundgedung.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            background-color: white; /* Ubah warna latar belakang menjadi putih */
             margin: 0;
-            padding: 20px;
+            padding: 10px;
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
+            max-width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
+            overflow: hidden;
+            overflow-x: auto;
         }
 
         h2 {
@@ -49,38 +75,42 @@ $data = mysqli_fetch_array($result);
             margin-bottom: 20px;
         }
 
-        .add-button {
-            margin-bottom: 10px;
+        h3 {
             text-align: center;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
         }
 
-        .add-button a {
-            display: inline-block;
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .button-row a {
             text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .button-row .cetak-button {
             background-color: #4CAF50;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 16px;
-            margin-right: 10px;
+            color: white;
         }
 
-        .back-button a {
-            display: inline-block;
-            text-decoration: none;
+        .button-row .back-button {
             background-color: #FF0000;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 16px;
+            color: white;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            overflow-x: auto;
         }
 
         th,
@@ -102,69 +132,51 @@ $data = mysqli_fetch_array($result);
             background-color: #e0e0e0;
         }
 
-        .details {
-        background-color: rgba(255, 255, 255, 0.5);
-        padding: 10px;
-        border: 1px solid #ddd;
-        }
-
-        .details table {
-        width: 100%;
-        border-collapse: collapse;
-        }
-
-        .details th,
-        .details td {
-        padding: 8px;
-        border: 1px solid #ddd;
-        }
-
-        .details th {
-        background-color: rgba(76, 175, 80, 0.5);
-        }
-
-        .action-links {
-            display: flex;
-            justify-content: center;
-        }
-
-        .action-links a {
-            display: inline-block;
-            text-decoration: none;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin-right: 5px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .action-links a.back img {
-            width: 25px; /* Ubah dengan lebar yang diinginkan */
-            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
-        }
-
-        tbody tr.kurang-lancar td {
+        .kurang-lancar td {
             color: red;
             font-weight: bold;
+        }
+
+        .chart-container {
+            max-width: 100%;
+            margin-top: 20px;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div>
-            <a href="dt_portopolio.php"><img src="../back_icon.png" alt="home"></a>
-        </div>
-        <h2>Biodata Santri</h2>
-        <div class="add-button">
-            <a href="cetak_portopolio.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Cetak Portopolio</a>
-        </div>
+    <div>
+    <a href="dt_portopolio.php"><img src="../back_icon.png" alt="home" style="width: 30px;"></a>
+</div>
+
+<?php
+// Ambil data foto santri dari database
+$query_foto = "SELECT pas_poto FROM putra_portopolio_isi WHERE nis='$nis' AND nama='$nama'";
+$result_foto = mysqli_query($koneksi, $query_foto);
+$row_foto = mysqli_fetch_assoc($result_foto);
+$pas_poto = $row_foto['pas_poto'];
+?>
+
+<h2 style="text-align: center; margin-bottom: 10px; font-size: 24px;">Biodata Santri</h2>
+
+<div class="add-button" style="text-align: center;">
+    <a href="cetak_portopolio.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50; width: 100%;">Cetak Portopolio</a>
+</div>
+
         <!-- <div class="add-button">
             <a href="form_tambahdata_setoran.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Hafalan</a>
         </div> -->
         <div class="details">
         <table>
+            <tr>
+            <th>Pas Foto Santri</th>
+            <td>
+            <div style="text-align: center; margin-bottom: 20px;">
+        <img src="<?php echo $pas_poto; ?>" alt="Pas Foto Santri" style="width: 200px; height: 200px; border-radius: 50%;">
+    </div>
+            </td>
+            </tr>
             <tr>
             <th>Nama Santri</th>
             <td><?php echo $data['nama']; ?></td>
@@ -184,6 +196,14 @@ $data = mysqli_fetch_array($result);
             <tr>
             <th>Alamat</th>
             <td><?php echo $data['alamat']; ?></td>
+            </tr>
+            <tr>
+            <th>Kab./Kota</th>
+            <td><?php echo $data['kabkota']; ?></td>
+            </tr>
+            <tr>
+            <th>Provinsi</th>
+            <td><?php echo $data['provinsi']; ?></td>
             </tr>
             <tr>
             <th>Kelas</th>
@@ -311,6 +331,73 @@ $data = mysqli_fetch_array($result);
                 ?>
             </tbody>
         </table>
+
+        <h3><center>Pengalaman Organisasi</center></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Organisasi</th>
+                    <th>Jabatan</th>
+                    <th>Periode</th>
+                    <th>Tingkat</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Tampilkan data dari tabel prestasi_isi berdasarkan NIS -->
+                <?php
+                $setoran_query = "SELECT * FROM putra_pengalaman_organisasi_isi WHERE nis='$nis'";
+                $setoran_result = mysqli_query($koneksi, $setoran_query);
+                $no = 1;
+                while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+                    ?>
+                    <tr>
+                        <td><?php echo $no; ?></td>
+                        <td><?php echo $setoran_data['nama_organisasi']; ?></td>
+                        <td><?php echo $setoran_data['jabatan']; ?></td>
+                        <td><?php echo $setoran_data['periode']; ?></td>
+                        <td><?php echo $setoran_data['tingkat']; ?></td>
+                    </tr>
+                    <?php
+                    $no++;
+                }
+                ?>
+            </tbody>
+        </table>
+
+        <br>
+        <h3><center>Pengalaman Kegiatan Tersertifikasi</center></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Kegiatan</th>
+                    <th>Waktu Kegiatan</th>
+                    <th>Penyelenggara</th>
+                    <th>Tingkat</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Tampilkan data dari tabel prestasi_isi berdasarkan NIS -->
+                <?php
+                $setoran_query = "SELECT * FROM putra_kegiatan_tersertifikasi_isi WHERE nis='$nis'";
+                $setoran_result = mysqli_query($koneksi, $setoran_query);
+                $no = 1;
+                while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+                    ?>
+                    <tr>
+                        <td><?php echo $no; ?></td>
+                        <td><?php echo $setoran_data['nama_kegiatan']; ?></td>
+                        <td><?php echo $setoran_data['waktu_kegiatan']; ?></td>
+                        <td><?php echo $setoran_data['penyelenggara']; ?></td>
+                        <td><?php echo $setoran_data['tingkat']; ?></td>
+                    </tr>
+                    <?php
+                    $no++;
+                }
+                ?>
+            </tbody>
+        </table>
         <table>
             <thead>
                 <tr>
@@ -359,7 +446,7 @@ $data = mysqli_fetch_array($result);
                 ?>
             </tbody>
         </table>
-        <center><h3>Rekapan Ujian Tahfizh</h3></center>
+        <center><h3>Rekapan Ujian Tasmi'</h3></center>
         <table>
         <thead>
             <tr>
@@ -447,6 +534,51 @@ $data = mysqli_fetch_array($result);
             ?>
         </tbody>
     </table>
+
+    <center><h3>Rekapan Ujian Tahfizh</h3></center>
+<table>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Tanggal</th>
+            <th>Hafalan</th>
+            <th>Nilai</th>
+            <th>Keterangan</th>
+            <!-- <th>Total Hafalan (Halaman)</th> -->
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $setoran_query = "SELECT * FROM putra_tasmik_isi WHERE nis='$nis'";
+        $setoran_result = mysqli_query($koneksi, $setoran_query);
+        $no = 1;
+        while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+            $nilai = $setoran_data['nilai'];
+            $keterangan = '';
+            if ($nilai == 'A') {
+                $keterangan = 'Sangat Baik';
+            } elseif ($nilai == 'B') {
+                $keterangan = 'Baik';
+            } elseif ($nilai == 'C') {
+                $keterangan = 'Kurang Lancar';
+            } elseif ($nilai == 'D') {
+                $keterangan = 'Tidak Lancar';
+            }
+            ?>
+            <tr>
+                <td><?php echo $no; ?></td>
+                <td><?php echo $setoran_data['tanggal']; ?></td>
+                <td><?php echo $setoran_data['ujian']; ?></td>
+                <td><?php echo $nilai; ?></td>
+                <td><?php echo $keterangan; ?></td>
+                <!-- <td><?php echo $setoran_data['total_hafalan']; ?></td> -->
+            </tr>
+            <?php
+            $no++;
+        }
+        ?>
+    </tbody>
+</table>
     <div class="total-hafalan">
     <?php
     // Menghitung jumlah total hafalan
@@ -464,7 +596,8 @@ $data = mysqli_fetch_array($result);
     </div>
     <center><h3>Grafik Kualitas Hafalan</h3></center>
 
-        <canvas id="chart"></canvas>
+    <canvas id="chart" style="max-width: 100%;"></canvas>
+
 
         <script>
             // Mendapatkan data nilai dari PHP

@@ -102,6 +102,15 @@ $hafalan = mysqli_real_escape_string($koneksi, $hafalan);
 
             <label for="hafalan">Hafalan:</label>
             <input type="text" id="hafalan" name="hafalan" required>
+            <h6>Contoh Penulisan 
+<br>1. Qs. Al Baqaroh 1-29 (Hal. 2-5) 
+(jika perhalaman)
+
+<br>2. Qs. An-Naba 1 -40 
+(Jika 1 surat)
+
+<br>3. Qs. An-Naba 31 - 40 dan An Naziat 1-15 (hal. 583)
+(jika beda surat tapi 1 halaman)</h6>
 
             <label for="nilai">Nilai:</label>
             <select id="nilai" name="nilai" required>
@@ -114,7 +123,7 @@ $hafalan = mysqli_real_escape_string($koneksi, $hafalan);
 
             <label for="total_hafalan">Total Hafalan (Per halaman):</label>
             <input type="number" id="total_hafalan" name="total_hafalan" step="0.1" min="0" max="604" required>
-            <h6>Catatan : 1 Juz = 20 halaman</h6>
+            
 
             <input type="submit" value="Tambah Setoran">
         </form>

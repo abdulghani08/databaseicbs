@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Database Santri - Login Form</title>
+    <title>wellcome - Database Santri - Login Form</title>
     <link rel="shortcut icon" href="logo.png">
     <style>
         body {
