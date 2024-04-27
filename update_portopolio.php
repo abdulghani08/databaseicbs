@@ -18,6 +18,7 @@ $data = mysqli_fetch_array($result);
 
 <!DOCTYPE html>
 <html>
+    
 <head>
     <title>Update Portopolio</title>
     <link rel="shortcut icon" href="logo.png">
@@ -38,6 +39,7 @@ $data = mysqli_fetch_array($result);
     }
     table {
         font-size: 14px;
+        overflow-x: auto;
     }
     .chart-container {
         margin-top: 10px;
@@ -65,6 +67,7 @@ $data = mysqli_fetch_array($result);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             margin: 0 auto;
             overflow: hidden;
+            overflow-x: auto;
         }
 
         h2 {
@@ -107,6 +110,7 @@ $data = mysqli_fetch_array($result);
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            overflow-x: auto;
         }
 
         th,
@@ -157,7 +161,7 @@ $pas_poto = $row_foto['pas_poto'];
 <h2 style="text-align: center; margin-bottom: 10px; font-size: 24px;">Biodata Santri</h2>
 
 <div class="add-button" style="text-align: center;">
-    <a href="cetak_portopolio.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50; width: 100%;">Cetak Portopolio</a>
+<input type="button" value="Download PDF" onclick="window.open('update_portopolio-cetak.php', '_blank')">
 </div>
 
         <!-- <div class="add-button">
@@ -442,7 +446,7 @@ $pas_poto = $row_foto['pas_poto'];
                 ?>
             </tbody>
         </table>
-        <center><h3>Rekapan Ujian Tahfizh</h3></center>
+        <center><h3>Rekapan Ujian Tasmi'</h3></center>
         <table>
         <thead>
             <tr>
@@ -531,7 +535,7 @@ $pas_poto = $row_foto['pas_poto'];
         </tbody>
     </table>
 
-    <center><h3>Rekapan Ujian Tasmi'</h3></center>
+    <center><h3>Rekapan Ujian Tahfizh</h3></center>
 <table>
     <thead>
         <tr>

@@ -12,15 +12,42 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 $nis = $_GET['nis'];
 $nama = $_GET['nama'];
 
+// Ambil informasi asrama berdasarkan NIS dan Nama
+$query_asrama = "SELECT asrama FROM putra_portopolio_isi WHERE nis = '$nis' AND nama = '$nama'";
+$result_asrama = mysqli_query($koneksi, $query_asrama);
+
+if ($result_asrama) {
+    $row_asrama = mysqli_fetch_assoc($result_asrama);
+    $asrama = $row_asrama['asrama'];
+} else {
+    // Handle jika terjadi kesalahan dalam mengambil data asrama
+    $asrama = ""; // Atur menjadi nilai default jika tidak ada data
+}
+
+
+// Ambil informasi asrama berdasarkan NIS dan Nama
+$query_kelas = "SELECT kelas FROM putra_portopolio_isi WHERE nis = '$nis' AND nama = '$nama'";
+$result_kelas = mysqli_query($koneksi, $query_kelas);
+
+if ($result_kelas) {
+    $row_kelas = mysqli_fetch_assoc($result_kelas);
+    $kelas = $row_kelas['kelas'];
+} else {
+    // Handle jika terjadi kesalahan dalam mengambil data asrama
+    $kelas = ""; // Atur menjadi nilai default jika tidak ada data
+}
+
 // Proses simpan data ujian tahfizh ke database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $asrama = $_POST['asrama'];
+    $kelas = $_POST['kelas'];
     $nama_organisasi = $_POST['nama_organisasi'];
     $jabatan = $_POST['jabatan'];
     $periode = $_POST['periode'];
     $tingkat = $_POST['tingkat'];
 
     // Query untuk menyimpan data ujian tahfizh
-    $query = "INSERT INTO putra_pengalaman_organisasi_isi (nis, nama, nama_organisasi, jabatan, periode, tingkat) VALUES ('$nis', '$nama', '$nama_organisasi', '$jabatan', '$periode', '$tingkat')";
+    $query = "INSERT INTO putra_pengalaman_organisasi_isi (nis, nama, asrama, kelas, nama_organisasi, jabatan, periode, tingkat) VALUES ('$nis', '$nama', '$asrama', '$kelas', '$nama_organisasi', '$jabatan', '$periode', '$tingkat')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -94,6 +121,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container">
         <h2>Form Tambah Pengalaman Organisasi</h2>
         <form method="POST">
+            <label for="asrama">Asrama:</label>
+            <input type="text" id="asrama" name="asrama" value="<?php echo $asrama; ?>" readonly>
+            <label for="kelas">Kelas:</label>
+            <input type="text" id="kelas" name="kelas" value="<?php echo $kelas; ?>" readonly>
+        
             <label for="nama_organisasi">Nama Organisasi:</label>
             <input type="text" id="nama_organisasi" name="nama_organisasi" required>
 

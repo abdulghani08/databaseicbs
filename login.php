@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Database Santri - Login Form</title>
+    <title>wellcome - Database Santri - Login Form</title>
     <link rel="shortcut icon" href="logo.png">
     <style>
         body {
@@ -113,7 +113,7 @@
         <div class="logo">
             <img src="logo.png" alt="Logo">
         </div>
-        <h2>ICBS PAYAKUMBUH</h2>
+        <h2>ICBS HARAU</h2>
         <form action="aksi_login.php?op=in" method="POST">
             <table>
                 <tr>

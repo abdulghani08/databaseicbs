@@ -1,5 +1,5 @@
 {
     "require": {
-        "nama-paket": "versi"
+        "mpdf/mpdf": "^6.1"
     }
 }

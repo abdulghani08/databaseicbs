@@ -12,8 +12,35 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 $nis = $_GET['nis'];
 $nama = $_GET['nama'];
 
+// Ambil informasi asrama berdasarkan NIS dan Nama
+$query_asrama = "SELECT asrama FROM portopolio_isi WHERE nis = '$nis' AND nama = '$nama'";
+$result_asrama = mysqli_query($koneksi, $query_asrama);
+
+if ($result_asrama) {
+    $row_asrama = mysqli_fetch_assoc($result_asrama);
+    $asrama = $row_asrama['asrama'];
+} else {
+    // Handle jika terjadi kesalahan dalam mengambil data asrama
+    $asrama = ""; // Atur menjadi nilai default jika tidak ada data
+}
+
+
+// Ambil informasi asrama berdasarkan NIS dan Nama
+$query_kelas = "SELECT kelas FROM portopolio_isi WHERE nis = '$nis' AND nama = '$nama'";
+$result_kelas = mysqli_query($koneksi, $query_kelas);
+
+if ($result_kelas) {
+    $row_kelas = mysqli_fetch_assoc($result_kelas);
+    $kelas = $row_kelas['kelas'];
+} else {
+    // Handle jika terjadi kesalahan dalam mengambil data asrama
+    $kelas = ""; // Atur menjadi nilai default jika tidak ada data
+}
+
 // Proses simpan data ujian tahfizh ke database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $asrama = $_POST['asrama'];
+    $kelas = $_POST['kelas'];
     $tanggal = $_POST['tanggal'];
     $jenis = $_POST['jenis'];
     $nilai = $_POST['nilai'];
@@ -22,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $catatan = $_POST['catatan'];
 
     // Query untuk menyimpan data ujian tahfizh
-    $query = "INSERT INTO kepesantrenan_isi (nis, nama, tanggal, jenis, nilai, penguji, keterangan, catatan) VALUES ('$nis', '$nama', '$tanggal', '$jenis', '$nilai', '$penguji', '$keterangan', '$catatan')";
+    $query = "INSERT INTO kepesantrenan_isi (nis, nama, asrama, kelas, tanggal, jenis, nilai, penguji, keterangan, catatan) VALUES ('$nis', '$nama', '$asrama', '$kelas', '$tanggal', '$jenis', '$nilai', '$penguji', '$keterangan', '$catatan')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -96,6 +123,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container">
         <h2>Form Tambah Ujian Kepesantrenan</h2>
         <form method="POST">
+            <label for="asrama">Asrama:</label>
+            <input type="text" id="asrama" name="asrama" value="<?php echo $asrama; ?>" readonly>
+
+            <label for="kelas">Kelas:</label>
+            <input type="text" id="kelas" name="kelas" value="<?php echo $kelas; ?>" readonly>
+
             <label for="tanggal">Tanggal:</label>
             <input type="date" id="tanggal" name="tanggal" required>
 
@@ -105,6 +138,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <option value="Ujian Bahasa Level 1">Ujian Bahasa Level 1</option>
                 <option value="Ujian Bahasa Level 2">Ujian Bahasa Level 2</option>
                 <option value="Ujian Bahasa Level 3">Ujian Bahasa Level 3</option>
+                <option value="Khatam Tilawah Quran">Khatam tilawah quran</option>
+                <option value="Khatam Membaca Terjemahan Alquran">Khatam membaca terjemahan Alquran</option>
+                <option value="Bacaan Sholat Beserta Terjemahan">Bacaan Sholat beserta terjemahan</option>
+                <option value="100 Hadist Pilihan">100 hadist pilihan</option>
+                <option value="Bahasa Arab">Bahasa Arab</option>
+                <option value="Fiqh">Fiqh</option>
                 <option value="Praktek Wudhu dan Tayamum">Praktek Wudhu dan Tayamum</option>
                 <option value="Praktek Sholat">Praktek Sholat</option>
                 <option value="Praktek menyelenggarakan Jenazah">Praktek menyelenggarakan Jenazah</option>

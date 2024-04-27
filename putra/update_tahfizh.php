@@ -356,7 +356,7 @@ $data = mysqli_fetch_array($result);
         <div class="total-hafalan">
         <?php
         // Menghitung jumlah total hafalan
-        $total_hafalan_query = "SELECT SUM(total_hafalan) AS total FROM tahfizh_hafalan WHERE nis='$nis'";
+        $total_hafalan_query = "SELECT SUM(total_hafalan) AS total FROM putra_tahfizh_hafalan WHERE nis='$nis'";
         $total_hafalan_result = mysqli_query($koneksi, $total_hafalan_query);
         $total_hafalan_data = mysqli_fetch_assoc($total_hafalan_result);
         $total_hafalan = $total_hafalan_data['total'];
@@ -376,22 +376,22 @@ $data = mysqli_fetch_array($result);
         <script>
             // Mendapatkan data nilai dari PHP
             <?php
-            $nilai_a_query = "SELECT COUNT(*) AS total FROM tahfizh_hafalan WHERE nis='$nis' AND nilai='A'";
+            $nilai_a_query = "SELECT COUNT(*) AS total FROM putra_tahfizh_hafalan WHERE nis='$nis' AND nilai='A'";
             $nilai_a_result = mysqli_query($koneksi, $nilai_a_query);
             $nilai_a_data = mysqli_fetch_assoc($nilai_a_result);
             $nilai_a_total = $nilai_a_data['total'];
 
-            $nilai_b_query = "SELECT COUNT(*) AS total FROM tahfizh_hafalan WHERE nis='$nis' AND nilai='B'";
+            $nilai_b_query = "SELECT COUNT(*) AS total FROM putra_tahfizh_hafalan WHERE nis='$nis' AND nilai='B'";
             $nilai_b_result = mysqli_query($koneksi, $nilai_b_query);
             $nilai_b_data = mysqli_fetch_assoc($nilai_b_result);
             $nilai_b_total = $nilai_b_data['total'];
 
-            $nilai_c_query = "SELECT COUNT(*) AS total FROM tahfizh_hafalan WHERE nis='$nis' AND nilai='C'";
+            $nilai_c_query = "SELECT COUNT(*) AS total FROM putra_tahfizh_hafalan WHERE nis='$nis' AND nilai='C'";
             $nilai_c_result = mysqli_query($koneksi, $nilai_c_query);
             $nilai_c_data = mysqli_fetch_assoc($nilai_c_result);
             $nilai_c_total = $nilai_c_data['total'];
 
-            $nilai_d_query = "SELECT COUNT(*) AS total FROM tahfizh_hafalan WHERE nis='$nis' AND nilai='D'";
+            $nilai_d_query = "SELECT COUNT(*) AS total FROM putra_tahfizh_hafalan WHERE nis='$nis' AND nilai='D'";
             $nilai_d_result = mysqli_query($koneksi, $nilai_d_query);
             $nilai_d_data = mysqli_fetch_assoc($nilai_d_result);
             $nilai_d_total = $nilai_d_data['total'];
