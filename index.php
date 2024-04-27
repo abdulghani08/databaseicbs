@@ -1,4 +1,4 @@
 <?php
-header("Location: tessantriicbs/index.html");
+header("Location: HalamanUtama/index.html");
 exit;
 ?>
