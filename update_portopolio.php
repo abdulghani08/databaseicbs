@@ -161,8 +161,9 @@ $pas_poto = $row_foto['pas_poto'];
 <h2 style="text-align: center; margin-bottom: 10px; font-size: 24px;">Biodata Santri</h2>
 
 <div class="add-button" style="text-align: center;">
-    <a href="cetak_portopolio.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50; width: 100%;">Cetak Portopolio</a>
+<input type="button" value="Download PDF" onclick="window.open('generate_pdf.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>', '_blank')">
 </div>
+
 
         <!-- <div class="add-button">
             <a href="form_tambahdata_setoran.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Hafalan</a>
@@ -408,6 +409,7 @@ $pas_poto = $row_foto['pas_poto'];
                     <th>Penguji</th>
                     <th>Kategori</th>
                     <th>Keterangan</th>
+                    <th>Catatan</th>
                 </tr>
             </thead>
             <tbody>
@@ -439,6 +441,7 @@ $pas_poto = $row_foto['pas_poto'];
                         <td><?php echo $setoran_data['penguji']; ?></td>
                         <td><?php echo $keterangan; ?></td>
                         <td><?php echo $setoran_data['keterangan']; ?></td>
+                        <td><?php echo $setoran_data['catatan']; ?></td>
                     </tr>
                     <?php
                     $no++;
@@ -720,7 +723,7 @@ $pas_poto = $row_foto['pas_poto'];
                     <?php
                     $no++;
                 }
-                ?>
+                ?>    
             </tbody>
         </table>
 
@@ -760,7 +763,7 @@ $pas_poto = $row_foto['pas_poto'];
                     ?>
                     <tr>
                         <td><?php echo $no; ?></td>
-                        <td><?php echo $setoran_data['tanggal']; ?></td>
+                        <td><?php echo $setoran_data['daritanggal']; ?></td>
                         <td><?php echo $setoran_data['keperluan']; ?></td>
                         <td><?php echo $setoran_data['durasi']; ?></td>
                     </tr>

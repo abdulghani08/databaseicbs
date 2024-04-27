@@ -240,6 +240,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             width: 50%;
         }
     </style>
+<<<<<<< HEAD
     
     <div class="container mb-6">
         <div class="tambahdata py-2" style="overflow-x: auto;">
@@ -284,6 +285,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 </section>
             </div>
+=======
+</head>
+
+<body>
+    <div class="container">
+        <h2>Form Tambah Data Pelanggaran</h2>
+        <form method="POST">
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" required>
+
+            <label for="jenis">Jenis:</label>
+            <input type="text" id="jenis" name="jenis" required>
+
+            <label for="klasifikasi">Klasifikasi:</label>
+            <input type="text" id="klasifikasi" name="klasifikasi" required>
+
+            <label for="poin">Poin:</label>
+            <input type="number" id="poin" name="poin" placeholder="1.0" step="0.01" min="0" max="1000" required>
+
+            <input type="submit" value="Tambah Data Pelanggaran">
+        </form>
+        <div class="add-button">
+            <a href="dt_pelanggaran.php">Kembali</a>
+>>>>>>> a74c40d8e2cfd4f937b47d5c5f55958d68767b2c
         </div>
     </div>
 

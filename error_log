@@ -30,6 +30,11 @@
 [04-Nov-2023 04:25:02 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/update_portopolio.php on line 570
 [04-Nov-2023 04:25:37 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/update_portopolio.php on line 570
 [04-Nov-2023 04:26:46 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/update_portopolio.php on line 570
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> a74c40d8e2cfd4f937b47d5c5f55958d68767b2c
 [04-Nov-2023 07:52:08 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/update_portopolio.php on line 570
 [04-Nov-2023 09:21:22 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/update_portopolio.php on line 571
 [04-Nov-2023 09:21:31 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/update_portopolio.php on line 571
@@ -498,6 +503,7 @@ Stack trace:
 [04-Jan-2024 15:13:06 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/update_portopoliotamu.php on line 574
 [04-Jan-2024 15:45:36 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/update_portopoliotamu.php on line 168
 [04-Jan-2024 15:45:36 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/update_portopoliotamu.php on line 574
+<<<<<<< HEAD
 [04-Jan-2024 16:56:09 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/update_portopolio.php on line 574
 [04-Jan-2024 18:50:47 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/update_portopolio.php on line 574
 [04-Jan-2024 18:50:50 UTC] PHP Warning:  Undefined array key "nis" in /home/sant5315/public_html/update_portopolio-cetak.php on line 12
@@ -617,3 +623,176 @@ Stack trace:
 [05-Feb-2024 11:43:39 UTC] PHP Warning:  Undefined array key "nama" in /home/sant5315/public_html/update_portopolio-cetak.php on line 13
 [05-Feb-2024 11:43:39 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/sant5315/public_html/update_portopolio-cetak.php on line 158
 [05-Feb-2024 11:43:39 UTC] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/sant5315/public_html/html2pdf/_tcpdf_5.0.002/tcpdf.php on line 2005
+=======
+[05-Jan-2024 03:06:49 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[05-Jan-2024 03:06:58 UTC] PHP Warning:  Undefined array key "nis" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio-cetak.php on line 12
+[05-Jan-2024 03:06:58 UTC] PHP Warning:  Undefined array key "nama" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio-cetak.php on line 13
+[05-Jan-2024 03:06:58 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio-cetak.php on line 158
+[05-Jan-2024 03:06:58 UTC] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/sant5315/public_html/harau.santriicbs.com/html2pdf/_tcpdf_5.0.002/tcpdf.php on line 2005
+[05-Jan-2024 03:12:59 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[05-Jan-2024 03:16:10 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[05-Jan-2024 03:16:10 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[05-Jan-2024 03:16:55 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[05-Jan-2024 03:16:55 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[05-Jan-2024 03:17:26 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[05-Jan-2024 03:17:26 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[05-Jan-2024 03:24:27 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[05-Jan-2024 03:24:27 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[05-Jan-2024 12:31:21 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[05-Jan-2024 12:31:21 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[05-Jan-2024 12:31:23 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 158
+[05-Jan-2024 12:31:23 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[05-Jan-2024 12:31:23 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 182
+[05-Jan-2024 12:32:28 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[05-Jan-2024 12:32:28 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[05-Jan-2024 23:34:24 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[05-Jan-2024 23:34:24 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[05-Jan-2024 23:40:12 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[05-Jan-2024 23:40:12 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[06-Jan-2024 07:00:58 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[06-Jan-2024 07:06:21 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[06-Jan-2024 07:06:21 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[06-Jan-2024 07:06:21 UTC] PHP Warning:  Undefined array key "tanggal" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 763
+[06-Jan-2024 07:08:23 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[06-Jan-2024 07:08:23 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[06-Jan-2024 07:09:05 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[06-Jan-2024 07:10:23 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[06-Jan-2024 07:10:23 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[06-Jan-2024 07:11:11 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[06-Jan-2024 07:11:11 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[06-Jan-2024 07:11:11 UTC] PHP Warning:  Undefined array key "tanggal" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 763
+[06-Jan-2024 07:12:27 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[06-Jan-2024 07:12:27 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[06-Jan-2024 07:13:08 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[06-Jan-2024 07:13:54 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[06-Jan-2024 07:13:54 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[06-Jan-2024 07:15:03 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[06-Jan-2024 14:24:42 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[06-Jan-2024 14:24:42 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[06-Jan-2024 14:26:50 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[06-Jan-2024 14:26:50 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[06-Jan-2024 14:30:39 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[06-Jan-2024 14:30:39 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[06-Jan-2024 14:31:36 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[06-Jan-2024 14:31:36 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[06-Jan-2024 14:33:24 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[06-Jan-2024 14:33:24 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[06-Jan-2024 14:38:12 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[06-Jan-2024 14:38:12 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[07-Jan-2024 01:22:14 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[07-Jan-2024 01:22:14 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[07-Jan-2024 04:59:44 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[07-Jan-2024 04:59:44 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[07-Jan-2024 04:59:46 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 158
+[07-Jan-2024 04:59:46 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[07-Jan-2024 04:59:46 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 182
+[07-Jan-2024 07:50:28 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[07-Jan-2024 07:50:28 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[07-Jan-2024 10:07:51 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[07-Jan-2024 10:07:51 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[07-Jan-2024 10:07:51 UTC] PHP Warning:  Undefined array key "tanggal" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 763
+[07-Jan-2024 10:09:15 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[07-Jan-2024 10:09:15 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[07-Jan-2024 10:09:15 UTC] PHP Warning:  Undefined array key "tanggal" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 763
+[07-Jan-2024 10:11:32 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[07-Jan-2024 10:11:32 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[07-Jan-2024 10:12:25 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[07-Jan-2024 10:12:25 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[07-Jan-2024 10:12:25 UTC] PHP Warning:  Undefined array key "tanggal" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 763
+[07-Jan-2024 10:13:00 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[07-Jan-2024 10:13:00 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[07-Jan-2024 10:13:00 UTC] PHP Warning:  Undefined array key "tanggal" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 763
+[07-Jan-2024 10:14:26 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[07-Jan-2024 10:14:26 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[07-Jan-2024 10:16:59 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[07-Jan-2024 10:16:59 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[07-Jan-2024 10:16:59 UTC] PHP Warning:  Undefined array key "tanggal" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 763
+[07-Jan-2024 17:13:27 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[08-Jan-2024 03:13:48 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[08-Jan-2024 03:14:28 UTC] PHP Warning:  Undefined array key "nis" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio-cetak.php on line 12
+[08-Jan-2024 03:14:28 UTC] PHP Warning:  Undefined array key "nama" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio-cetak.php on line 13
+[08-Jan-2024 03:14:28 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio-cetak.php on line 158
+[08-Jan-2024 03:14:28 UTC] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/sant5315/public_html/harau.santriicbs.com/html2pdf/_tcpdf_5.0.002/tcpdf.php on line 2005
+[08-Jan-2024 03:14:32 UTC] PHP Warning:  Undefined array key "nis" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio-cetak.php on line 12
+[08-Jan-2024 03:14:32 UTC] PHP Warning:  Undefined array key "nama" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio-cetak.php on line 13
+[08-Jan-2024 03:14:32 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio-cetak.php on line 158
+[08-Jan-2024 03:14:32 UTC] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/sant5315/public_html/harau.santriicbs.com/html2pdf/_tcpdf_5.0.002/tcpdf.php on line 2005
+[09-Jan-2024 06:19:29 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[09-Jan-2024 06:19:46 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[09-Jan-2024 06:20:43 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[09-Jan-2024 06:22:54 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[09-Jan-2024 06:23:11 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[09-Jan-2024 06:34:27 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[09-Jan-2024 06:40:19 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[12-Jan-2024 10:36:36 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[14-Jan-2024 03:59:33 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[14-Jan-2024 03:59:33 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[14-Jan-2024 03:59:33 UTC] PHP Warning:  Undefined array key "tanggal" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 763
+[14-Jan-2024 08:53:58 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[15-Jan-2024 10:26:08 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[17-Jan-2024 11:38:41 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[17-Jan-2024 11:38:43 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[17-Jan-2024 11:38:43 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[17-Jan-2024 11:40:24 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[17-Jan-2024 11:42:09 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[17-Jan-2024 11:42:09 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[17-Jan-2024 11:42:52 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[17-Jan-2024 11:42:52 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[17-Jan-2024 11:43:54 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[17-Jan-2024 11:43:54 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[17-Jan-2024 11:44:07 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[17-Jan-2024 11:44:07 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[17-Jan-2024 11:44:25 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[17-Jan-2024 11:44:25 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[17-Jan-2024 16:58:30 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[19-Jan-2024 04:31:11 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[19-Jan-2024 13:30:23 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[19-Jan-2024 13:30:54 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[19-Jan-2024 13:31:41 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[19-Jan-2024 13:33:33 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[19-Jan-2024 13:33:33 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[19-Jan-2024 13:34:48 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[19-Jan-2024 13:35:27 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[19-Jan-2024 13:36:18 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[19-Jan-2024 13:37:15 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[19-Jan-2024 13:37:15 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[19-Jan-2024 13:38:44 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[19-Jan-2024 13:38:44 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[19-Jan-2024 23:05:54 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[19-Jan-2024 23:05:54 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[19-Jan-2024 23:07:30 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[19-Jan-2024 23:07:30 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[20-Jan-2024 07:25:50 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[20-Jan-2024 07:28:02 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[20-Jan-2024 07:28:02 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[20-Jan-2024 07:29:05 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[20-Jan-2024 07:29:05 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[20-Jan-2024 07:30:29 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[20-Jan-2024 07:30:29 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[20-Jan-2024 07:33:17 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[20-Jan-2024 07:33:17 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[20-Jan-2024 07:57:01 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[20-Jan-2024 07:59:13 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[20-Jan-2024 07:59:13 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[20-Jan-2024 07:59:17 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[20-Jan-2024 07:59:25 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[22-Jan-2024 05:21:12 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[22-Jan-2024 13:44:31 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[22-Jan-2024 13:44:50 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[22-Jan-2024 13:45:09 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[27-Jan-2024 09:48:51 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[27-Jan-2024 09:57:44 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[28-Jan-2024 09:31:22 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[28-Jan-2024 09:31:22 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[30-Jan-2024 06:39:26 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[30-Jan-2024 06:39:26 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 574
+[30-Jan-2024 06:41:01 UTC] PHP Warning:  Undefined variable $nama in /home/sant5315/public_html/harau.santriicbs.com/update_portopoliotamu.php on line 168
+[05-Feb-2024 22:03:04 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[05-Feb-2024 22:03:04 UTC] PHP Warning:  Undefined array key "tanggal" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 763
+[06-Feb-2024 00:40:07 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+[06-Feb-2024 00:41:33 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+=======
+>>>>>>> 01920ce9b19512523aafc78a4fc400d04de2ebf6
+=======
+>>>>>>> 01920ce9b19512523aafc78a4fc400d04de2ebf6
+>>>>>>> a74c40d8e2cfd4f937b47d5c5f55958d68767b2c

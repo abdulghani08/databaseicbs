@@ -215,8 +215,94 @@ $end_page = min($total_pages, $page + 1); // Menampilkan 1 halaman setelah halam
         }
     }
 
+<<<<<<< HEAD
     </style>
 </head>
+=======
+        .action-links a.edit img{
+            width: 25px; /* Ubah dengan lebar yang diinginkan */
+            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
+        }
+
+        .action-links a.delete img{
+            width: 25px; /* Ubah dengan lebar yang diinginkan */
+            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
+        }
+
+        .add-santri-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .datax-santri-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .add-santri-button a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .datax-santri-button a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #000090;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+</style>
+</head>
+<body>
+    <div class="container">
+    <div class="navigation">
+            <a href="home.php"><img src="home_icon.png" alt="home"></a>
+        </div>
+        <h1>Data Portopolio Santri</h1>
+        <div class="add-santri-button">
+            <a href="form_tambahdata_santri_portopolio.php">Tambah Data Santri</a>
+        </div>
+        <div class="add-santri-button">
+            <a href="hapus_datasantri_portopolio.php">Hapus Data Santri</a>
+        </div>
+        <div class="datax-santri-button">
+            <a href="dt_ex_santri.php">Data EX Santri</a>
+        </div>
+        <div class="search-bar">
+            <form method="GET" action="search_portopolio.php">
+                <input type="text" name="search" placeholder="Cari NIS, Nama, kelas atau Asrama">
+                <input type="submit" value="Cari">
+            </form>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th><a href="?sort=nis&order=<?php echo ($sortColumn == 'nis' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">NIS</a></th>
+                    <th><a href="?sort=nama&order=<?php echo ($sortColumn == 'nama' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Nama</a></th>
+                    <th><a href="?sort=kelas&order=<?php echo ($sortColumn == 'kelas' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Kelas</a></th>
+                    <th><a href="?sort=asrama&order=<?php echo ($sortColumn == 'asrama' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Asrama</a></th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                    <tr>
+                        <td><?php echo $row['nis']; ?></td>
+                        <td><?php echo $row['nama']; ?></td>
+                        <td><?php echo $row['kelas']; ?></td>
+                        <td><?php echo $row['asrama']; ?></td>
+>>>>>>> a74c40d8e2cfd4f937b47d5c5f55958d68767b2c
 
 <body style="overflow-x: hidden; background-image: url('backgroundgedung.jpg');">
     <nav class="navbar navbar-expand-lg position-sticky top-0 z-index-3 w-100 shadow-none" style="background-color: #fff;">

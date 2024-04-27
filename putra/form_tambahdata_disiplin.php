@@ -264,9 +264,21 @@ $result_pelanggaran = mysqli_query($koneksi, $query_pelanggaran);
             <label for="hukuman">Hukuman :</label>
             <select id="hukuman" name="hukuman" required></select>
 
+<<<<<<< HEAD
             <label for="hukumantambahan">Hukuman Tambahan (Opsional)</label>
             <input type="text" id="hukumantambahan" name="hukumantambahan">
 
+=======
+<<<<<<< HEAD
+=======
+            <br><br>
+            <label for="hukumantambahan">Hukuman Tambahan (Opsional)</label>
+            <input type="text" id="hukumantambahan" name="hukumantambahan">
+
+            <br>
+            <br>
+>>>>>>> 01920ce9b19512523aafc78a4fc400d04de2ebf6
+>>>>>>> a74c40d8e2cfd4f937b47d5c5f55958d68767b2c
             <label for="keterangan">Keterangan :</label>
             <select id="keterangan" name="keterangan" required>
                 <option value="Tuntas">Tuntas</option>

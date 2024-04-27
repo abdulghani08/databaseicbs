@@ -12,11 +12,38 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 $nis = $_GET['nis'];
 $nama = $_GET['nama'];
 
+// Ambil informasi asrama berdasarkan NIS dan Nama
+$query_asrama = "SELECT asrama FROM portopolio_isi WHERE nis = '$nis' AND nama = '$nama'";
+$result_asrama = mysqli_query($koneksi, $query_asrama);
+
+if ($result_asrama) {
+    $row_asrama = mysqli_fetch_assoc($result_asrama);
+    $asrama = $row_asrama['asrama'];
+} else {
+    // Handle jika terjadi kesalahan dalam mengambil data asrama
+    $asrama = ""; // Atur menjadi nilai default jika tidak ada data
+}
+
+
+// Ambil informasi asrama berdasarkan NIS dan Nama
+$query_kelas = "SELECT kelas FROM portopolio_isi WHERE nis = '$nis' AND nama = '$nama'";
+$result_kelas = mysqli_query($koneksi, $query_kelas);
+
+if ($result_kelas) {
+    $row_kelas = mysqli_fetch_assoc($result_kelas);
+    $kelas = $row_kelas['kelas'];
+} else {
+    // Handle jika terjadi kesalahan dalam mengambil data asrama
+    $kelas = ""; // Atur menjadi nilai default jika tidak ada data
+}
+
 // Proses simpan data setoran ke database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nis = $_POST['nis']; // Ambil NIS dari form
     $nama = $_POST['nama']; // Ambil Nama dari form
 
+    $asrama = $_POST['asrama'];
+    $kelas = $_POST['kelas'];
     $daritanggal = $_POST['daritanggal'];
     $sampaitanggal = $_POST['sampaitanggal'];
     $keperluan = mysqli_real_escape_string($koneksi, $_POST['keperluan']);
@@ -38,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $next_id = $row_max_id['max_id'] + 1;
 
     // Query untuk menyimpan data perizinan
-    $query = "INSERT INTO perizinan_isi (id, nis, nama, daritanggal, sampaitanggal, keperluan, durasi) VALUES ('$next_id', '$nis', '$nama', '$daritanggal', '$sampaitanggal', '$keperluan', '$durasi')";
+    $query = "INSERT INTO perizinan_isi (id, nis, nama, asrama, kelas, daritanggal, sampaitanggal, keperluan, durasi) VALUES ('$next_id', '$nis', '$nama', '$asrama', '$kelas', '$daritanggal', '$sampaitanggal', '$keperluan', '$durasi')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -196,6 +223,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 
+<<<<<<< HEAD
 <body style="overflow-x: hidden; background-image: url('backgroundgedung.jpg');">
     <nav class="navbar navbar-expand-lg position-sticky top-0 z-index-3 w-100 shadow-none" style="background-color: #fff;">
         <div class="container">
@@ -330,6 +358,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </nav>
+=======
+<body>
+    <div class="container">
+        <h2>Form Tambah Perizinan Santri</h2>
+        <form method="POST">
+            <input type="hidden" name="nis" value="<?php echo $nis; ?>">
+            <input type="hidden" name="nama" value="<?php echo $nama; ?>">
+            <label for="asrama">Asrama:</label>
+            <input type="text" id="asrama" name="asrama" value="<?php echo $asrama; ?>" readonly>
+
+            <label for="kelas">Kelas:</label>
+            <input type="text" id="kelas" name="kelas" value="<?php echo $kelas; ?>" readonly>
+>>>>>>> a74c40d8e2cfd4f937b47d5c5f55958d68767b2c
 
     <div class="container py-2">
         <h2 class="text-center text-dark" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Form Tambah Perizinan Santri</h2>

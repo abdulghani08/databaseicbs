@@ -12,11 +12,38 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 $nis = $_GET['nis'];
 $nama = $_GET['nama'];
 
+// Ambil informasi asrama berdasarkan NIS dan Nama
+$query_asrama = "SELECT asrama FROM portopolio_isi WHERE nis = '$nis' AND nama = '$nama'";
+$result_asrama = mysqli_query($koneksi, $query_asrama);
+
+if ($result_asrama) {
+    $row_asrama = mysqli_fetch_assoc($result_asrama);
+    $asrama = $row_asrama['asrama'];
+} else {
+    // Handle jika terjadi kesalahan dalam mengambil data asrama
+    $asrama = ""; // Atur menjadi nilai default jika tidak ada data
+}
+
+
+// Ambil informasi asrama berdasarkan NIS dan Nama
+$query_kelas = "SELECT kelas FROM portopolio_isi WHERE nis = '$nis' AND nama = '$nama'";
+$result_kelas = mysqli_query($koneksi, $query_kelas);
+
+if ($result_kelas) {
+    $row_kelas = mysqli_fetch_assoc($result_kelas);
+    $kelas = $row_kelas['kelas'];
+} else {
+    // Handle jika terjadi kesalahan dalam mengambil data asrama
+    $kelas = ""; // Atur menjadi nilai default jika tidak ada data
+}
+
 // Proses simpan data setoran ke database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nis = $_POST['nis']; // Ambil NIS dari form
     $nama = $_POST['nama']; // Ambil Nama dari form
 
+    $kelas = $_POST['kelas'];
+    $asrama = $_POST['asrama'];
     $nama_prestasi = mysqli_real_escape_string($koneksi, $_POST['nama_prestasi']);
     $penyelenggara = mysqli_real_escape_string($koneksi, $_POST['penyelenggara']);
     $waktu = $_POST['waktu'];
@@ -33,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Query untuk menyimpan data prestasi
-    $query = "INSERT INTO prestasi_isi (nis, nama, nama_prestasi, penyelenggara, waktu, tingkat, juara) VALUES ('$nis', '$nama', '$nama_prestasi', '$penyelenggara', '$waktu', '$tingkat', '$juara')";
+    $query = "INSERT INTO prestasi_isi (nis, nama, asrama, kelas, nama_prestasi, penyelenggara, waktu, tingkat, juara) VALUES ('$nis', '$nama', '$asrama', '$kelas', '$nama_prestasi', '$penyelenggara', '$waktu', '$tingkat', '$juara')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -190,6 +217,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 
+<<<<<<< HEAD
 <body style="overflow-x: hidden; background-image: url('backgroundgedung.jpg');">
     <nav class="navbar navbar-expand-lg position-sticky top-0 z-index-3 w-100 shadow-none" style="background-color: #fff;">
         <div class="container">
@@ -327,6 +355,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container py-2">
         <h2 class="text-center text-dark" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Form Tambah Prestasi Santri</h2>
     </div>
+=======
+<body>
+    <div class="container">
+        <h2>Form Tambah Prestasi Santri</h2>
+        <form method="POST">
+            <input type="hidden" name="nis" value="<?php echo $nis; ?>">
+            <input type="hidden" name="nama" value="<?php echo $nama; ?>">
+            <label for="asrama">Asrama:</label>
+            <input type="text" id="asrama" name="asrama" value="<?php echo $asrama; ?>" readonly>
+
+            <label for="kelas">Kelas:</label>
+            <input type="text" id="kelas" name="kelas" value="<?php echo $kelas; ?>" readonly>
+>>>>>>> a74c40d8e2cfd4f937b47d5c5f55958d68767b2c
 
     <style>
         .form-control2 {

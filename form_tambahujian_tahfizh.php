@@ -12,14 +12,41 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 $nis = $_GET['nis'];
 $nama = $_GET['nama'];
 
+// Ambil informasi asrama berdasarkan NIS dan Nama
+$query_asrama = "SELECT asrama FROM portopolio_isi WHERE nis = '$nis' AND nama = '$nama'";
+$result_asrama = mysqli_query($koneksi, $query_asrama);
+
+if ($result_asrama) {
+    $row_asrama = mysqli_fetch_assoc($result_asrama);
+    $asrama = $row_asrama['asrama'];
+} else {
+    // Handle jika terjadi kesalahan dalam mengambil data asrama
+    $asrama = ""; // Atur menjadi nilai default jika tidak ada data
+}
+
+
+// Ambil informasi asrama berdasarkan NIS dan Nama
+$query_kelas = "SELECT kelas FROM portopolio_isi WHERE nis = '$nis' AND nama = '$nama'";
+$result_kelas = mysqli_query($koneksi, $query_kelas);
+
+if ($result_kelas) {
+    $row_kelas = mysqli_fetch_assoc($result_kelas);
+    $kelas = $row_kelas['kelas'];
+} else {
+    // Handle jika terjadi kesalahan dalam mengambil data asrama
+    $kelas = ""; // Atur menjadi nilai default jika tidak ada data
+}
+
 // Proses simpan data ujian tahfizh ke database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $asrama = $_POST['asrama'];
+    $kelas = $_POST['kelas'];
     $tanggal = $_POST['tanggal'];
     $ujian = $_POST['ujian'];
     $nilai = $_POST['nilai'];
 
     // Query untuk menyimpan data ujian tahfizh
-    $query = "INSERT INTO tahfizh_ujian (nis, nama, tanggal, ujian, nilai) VALUES ('$nis', '$nis', '$tanggal', '$ujian', '$nilai')";
+    $query = "INSERT INTO tahfizh_ujian (nis, nama, asrama, kelas, tanggal, ujian, nilai) VALUES ('$nis', '$nama', '$asrama', '$kelas', '$tanggal', '$ujian', '$nilai')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -93,6 +120,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container">
         <h2>Form Tambah Ujian Tasmi'</h2>
         <form method="POST">
+            <label for="asrama">Asrama:</label>
+            <input type="text" id="asrama" name="asrama" value="<?php echo $asrama; ?>" readonly>
+
+            <label for="kelas">Kelas:</label>
+            <input type="text" id="kelas" name="kelas" value="<?php echo $kelas; ?>" readonly>
+            
             <label for="tanggal">Tanggal:</label>
             <input type="date" id="tanggal" name="tanggal" required>
 

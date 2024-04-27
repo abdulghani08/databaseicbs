@@ -23,6 +23,17 @@ Stack trace:
 #2 {main}
   thrown in /home/sant5315/public_html/rekapan_putri/connection.php on line 8
 [04-Nov-2023 04:15:33 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/rekapan_putri/rekapan_tasmik_isi.php on line 179
+<<<<<<< HEAD
 [06-Nov-2023 05:01:25 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/rekapan_putri/rekapan_tasmik_isi.php on line 179
 [13-Nov-2023 03:32:17 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/rekapan_putri/rekapan_tasmik_isi.php on line 179
 [05-Feb-2024 03:39:50 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/rekapan_putri/rekapan_tasmik_isi.php on line 179
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+[06-Nov-2023 05:01:25 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/rekapan_putri/rekapan_tasmik_isi.php on line 179
+[13-Nov-2023 03:32:17 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/rekapan_putri/rekapan_tasmik_isi.php on line 179
+=======
+>>>>>>> 01920ce9b19512523aafc78a4fc400d04de2ebf6
+=======
+>>>>>>> 01920ce9b19512523aafc78a4fc400d04de2ebf6
+>>>>>>> a74c40d8e2cfd4f937b47d5c5f55958d68767b2c
