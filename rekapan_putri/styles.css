@@ -1,0 +1,63 @@
+body {
+    background-color: #f3f3f3;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    background-color: #0078a8;
+    color: #fff;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #005b8a;
+}
+
+.button img {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+.button span {
+    font-size: 18px;
+    flex: 1;
+    text-align: left;
+}
+
+/* Tambahkan gaya khusus untuk tombol-tombol lain di sini */
+
+@media (max-width: 480px) {
+    .button {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+}

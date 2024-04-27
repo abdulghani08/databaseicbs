@@ -210,7 +210,7 @@ $data = mysqli_fetch_array($result);
             <tbody>
                 <!-- Tampilkan data dari tabel prestasi_isi berdasarkan NIS -->
                 <?php
-                $setoran_query = "SELECT * FROM minat_bakat_isi WHERE nis='$nis'";
+                $setoran_query = "SELECT * FROM putra_minat_bakat_isi WHERE nis='$nis'";
                 $setoran_result = mysqli_query($koneksi, $setoran_query);
                 $no = 1;
                 while ($setoran_data = mysqli_fetch_array($setoran_result)) {
@@ -247,7 +247,7 @@ $data = mysqli_fetch_array($result);
             <tbody>
                 <!-- Tampilkan data dari tabel prestasi_isi berdasarkan NIS -->
                 <?php
-                $setoran_query = "SELECT * FROM pengalaman_organisasi_isi WHERE nis='$nis'";
+                $setoran_query = "SELECT * FROM putra_pengalaman_organisasi_isi WHERE nis='$nis'";
                 $setoran_result = mysqli_query($koneksi, $setoran_query);
                 $no = 1;
                 while ($setoran_data = mysqli_fetch_array($setoran_result)) {
@@ -286,7 +286,7 @@ $data = mysqli_fetch_array($result);
             <tbody>
                 <!-- Tampilkan data dari tabel prestasi_isi berdasarkan NIS -->
                 <?php
-                $setoran_query = "SELECT * FROM kegiatan_tersertifikasi_isi WHERE nis='$nis'";
+                $setoran_query = "SELECT * FROM putra_kegiatan_tersertifikasi_isi WHERE nis='$nis'";
                 $setoran_result = mysqli_query($koneksi, $setoran_query);
                 $no = 1;
                 while ($setoran_data = mysqli_fetch_array($setoran_result)) {

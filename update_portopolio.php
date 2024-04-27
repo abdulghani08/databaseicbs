@@ -18,6 +18,7 @@ $data = mysqli_fetch_array($result);
 
 <!DOCTYPE html>
 <html>
+    
 <head>
     <title>Update Portopolio</title>
     <link rel="shortcut icon" href="logo.png">
@@ -38,6 +39,7 @@ $data = mysqli_fetch_array($result);
     }
     table {
         font-size: 14px;
+        overflow-x: auto;
     }
     .chart-container {
         margin-top: 10px;
@@ -65,6 +67,7 @@ $data = mysqli_fetch_array($result);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             margin: 0 auto;
             overflow: hidden;
+            overflow-x: auto;
         }
 
         h2 {
@@ -107,6 +110,7 @@ $data = mysqli_fetch_array($result);
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            overflow-x: auto;
         }
 
         th,
@@ -157,8 +161,9 @@ $pas_poto = $row_foto['pas_poto'];
 <h2 style="text-align: center; margin-bottom: 10px; font-size: 24px;">Biodata Santri</h2>
 
 <div class="add-button" style="text-align: center;">
-    <a href="cetak_portopolio.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50; width: 100%;">Cetak Portopolio</a>
+<input type="button" value="Download PDF" onclick="window.open('generate_pdf.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>', '_blank')">
 </div>
+
 
         <!-- <div class="add-button">
             <a href="form_tambahdata_setoran.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Hafalan</a>
@@ -404,6 +409,7 @@ $pas_poto = $row_foto['pas_poto'];
                     <th>Penguji</th>
                     <th>Kategori</th>
                     <th>Keterangan</th>
+                    <th>Catatan</th>
                 </tr>
             </thead>
             <tbody>
@@ -435,6 +441,7 @@ $pas_poto = $row_foto['pas_poto'];
                         <td><?php echo $setoran_data['penguji']; ?></td>
                         <td><?php echo $keterangan; ?></td>
                         <td><?php echo $setoran_data['keterangan']; ?></td>
+                        <td><?php echo $setoran_data['catatan']; ?></td>
                     </tr>
                     <?php
                     $no++;
@@ -442,7 +449,7 @@ $pas_poto = $row_foto['pas_poto'];
                 ?>
             </tbody>
         </table>
-        <center><h3>Rekapan Ujian Tahfizh</h3></center>
+        <center><h3>Rekapan Ujian Tasmi'</h3></center>
         <table>
         <thead>
             <tr>
@@ -531,7 +538,7 @@ $pas_poto = $row_foto['pas_poto'];
         </tbody>
     </table>
 
-    <center><h3>Rekapan Ujian Tasmi'</h3></center>
+    <center><h3>Rekapan Ujian Tahfizh</h3></center>
 <table>
     <thead>
         <tr>
@@ -716,7 +723,7 @@ $pas_poto = $row_foto['pas_poto'];
                     <?php
                     $no++;
                 }
-                ?>
+                ?>    
             </tbody>
         </table>
 
@@ -756,7 +763,7 @@ $pas_poto = $row_foto['pas_poto'];
                     ?>
                     <tr>
                         <td><?php echo $no; ?></td>
-                        <td><?php echo $setoran_data['tanggal']; ?></td>
+                        <td><?php echo $setoran_data['daritanggal']; ?></td>
                         <td><?php echo $setoran_data['keperluan']; ?></td>
                         <td><?php echo $setoran_data['durasi']; ?></td>
                     </tr>

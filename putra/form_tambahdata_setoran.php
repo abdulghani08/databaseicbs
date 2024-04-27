@@ -12,8 +12,34 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 $nis = $_GET['nis'];
 $nama = $_GET['nama'];
 
+// Ambil informasi asrama berdasarkan NIS dan Nama
+$query_asrama = "SELECT asrama FROM putra_portopolio_isi WHERE nis = '$nis' AND nama = '$nama'";
+$result_asrama = mysqli_query($koneksi, $query_asrama);
+
+if ($result_asrama) {
+    $row_asrama = mysqli_fetch_assoc($result_asrama);
+    $asrama = $row_asrama['asrama'];
+} else {
+    // Handle jika terjadi kesalahan dalam mengambil data asrama
+    $asrama = ""; // Atur menjadi nilai default jika tidak ada data
+}
+
+// Ambil informasi asrama berdasarkan NIS dan Nama
+$query_kelas = "SELECT kelas FROM putra_portopolio_isi WHERE nis = '$nis' AND nama = '$nama'";
+$result_kelas = mysqli_query($koneksi, $query_kelas);
+
+if ($result_kelas) {
+    $row_kelas = mysqli_fetch_assoc($result_kelas);
+    $kelas = $row_kelas['kelas'];
+} else {
+    // Handle jika terjadi kesalahan dalam mengambil data asrama
+    $kelas = ""; // Atur menjadi nilai default jika tidak ada data
+}
+
 // Proses simpan data setoran ke database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $asrama = $_POST['asrama'];
+    $kelas = $_POST['kelas'];
     $tanggal = $_POST['tanggal'];
     $hafalan = mysqli_real_escape_string($koneksi, $_POST['hafalan']);
     $nilai = $_POST['nilai'];
@@ -23,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $hafalan = mysqli_real_escape_string($koneksi, $hafalan);
 
     // Query untuk menyimpan data setoran
-    $query = "INSERT INTO putra_tahfizh_hafalan (nis, tanggal, hafalan, nilai, total_hafalan) VALUES ('$nis', '$tanggal', '$hafalan', '$nilai', '$totalHafalan')";
+    $query = "INSERT INTO putra_tahfizh_hafalan (nis, nama, asrama, kelas, tanggal, hafalan, nilai, total_hafalan) VALUES ('$nis', '$nama', '$asrama', '$kelas', '$tanggal', '$hafalan', '$nilai', '$totalHafalan')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -97,11 +123,26 @@ $hafalan = mysqli_real_escape_string($koneksi, $hafalan);
     <div class="container">
         <h2>Form Tambah Setoran</h2>
         <form method="POST">
+            <label for="asrama">Asrama:</label>
+            <input type="text" id="asrama" name="asrama" value="<?php echo $asrama; ?>" readonly>
+
+            <label for="kelas">Kelas:</label>
+            <input type="text" id="kelas" name="kelas" value="<?php echo $kelas; ?>" readonly>
+        
             <label for="tanggal">Tanggal:</label>
             <input type="date" id="tanggal" name="tanggal" required>
 
             <label for="hafalan">Hafalan:</label>
             <input type="text" id="hafalan" name="hafalan" required>
+            <h6>Contoh Penulisan 
+<br>1. Qs. Al Baqaroh 1-29 (Hal. 2-5) 
+(jika perhalaman)
+
+<br>2. Qs. An-Naba 1 -40 
+(Jika 1 surat)
+
+<br>3. Qs. An-Naba 31 - 40 dan An Naziat 1-15 (hal. 583)
+(jika beda surat tapi 1 halaman)</h6>
 
             <label for="nilai">Nilai:</label>
             <select id="nilai" name="nilai" required>
@@ -114,7 +155,7 @@ $hafalan = mysqli_real_escape_string($koneksi, $hafalan);
 
             <label for="total_hafalan">Total Hafalan (Per halaman):</label>
             <input type="number" id="total_hafalan" name="total_hafalan" step="0.1" min="0" max="604" required>
-            <h6>Catatan : 1 Juz = 20 halaman</h6>
+            
 
             <input type="submit" value="Tambah Setoran">
         </form>

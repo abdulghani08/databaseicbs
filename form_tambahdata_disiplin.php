@@ -12,11 +12,38 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 $nis = $_GET['nis'];
 $nama = $_GET['nama'];
 
+// Ambil informasi asrama berdasarkan NIS dan Nama
+$query_asrama = "SELECT asrama FROM portopolio_isi WHERE nis = '$nis' AND nama = '$nama'";
+$result_asrama = mysqli_query($koneksi, $query_asrama);
+
+if ($result_asrama) {
+    $row_asrama = mysqli_fetch_assoc($result_asrama);
+    $asrama = $row_asrama['asrama'];
+} else {
+    // Handle jika terjadi kesalahan dalam mengambil data asrama
+    $asrama = ""; // Atur menjadi nilai default jika tidak ada data
+}
+
+
+// Ambil informasi asrama berdasarkan NIS dan Nama
+$query_kelas = "SELECT kelas FROM portopolio_isi WHERE nis = '$nis' AND nama = '$nama'";
+$result_kelas = mysqli_query($koneksi, $query_kelas);
+
+if ($result_kelas) {
+    $row_kelas = mysqli_fetch_assoc($result_kelas);
+    $kelas = $row_kelas['kelas'];
+} else {
+    // Handle jika terjadi kesalahan dalam mengambil data asrama
+    $kelas = ""; // Atur menjadi nilai default jika tidak ada data
+}
+
 // Proses simpan data setoran ke database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nis = $_POST['nis']; // Ambil NIS dari form
     $nama = $_POST['nama']; // Ambil Nama dari form
 
+    $kelas = $_POST['kelas'];
+    $asrama = $_POST['asrama'];
     $tanggal = $_POST['tanggal'];
     $pelanggaran = $_POST['pelanggaran'];
     $poin = $_POST['poin'];
@@ -59,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     // Query untuk menyimpan data prestasi
-    $query = "INSERT INTO disiplin_isi (nis, nama, tanggal, pelanggaran, poin, klasifikasi, hukuman, hukumantambahan, keterangan) VALUES ('$nis', '$nama', '$tanggal', '$pelanggaran', '$poin', '$klasifikasi', '$hukuman', '$hukumantambahan', '$keterangan')";
+    $query = "INSERT INTO disiplin_isi (nis, nama, asrama, kelas, tanggal, pelanggaran, poin, klasifikasi, hukuman, hukumantambahan, keterangan) VALUES ('$nis', '$nama', '$asrama', '$kelas', '$tanggal', '$pelanggaran', '$poin', '$klasifikasi', '$hukuman', '$hukumantambahan', '$keterangan')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -79,6 +106,12 @@ $result_pelanggaran = mysqli_query($koneksi, $query_pelanggaran);
 $query_hukuman = "SELECT ringan, sedang, berat FROM disiplin_sanksi";
 $result_hukuman = mysqli_query($koneksi, $query_hukuman);
 $data_hukuman = mysqli_fetch_array($result_hukuman);
+
+// Ambil data pelanggaran dari tabel daftar_pelanggaran berdasarkan kriteria pencarian
+$search = isset($_GET['search']) ? mysqli_real_escape_string($koneksi, $_GET['search']) : '';
+$query_pelanggaran = "SELECT nama, poin, klasifikasi FROM daftar_pelanggaran WHERE nama LIKE '%$search%'";
+$result_pelanggaran = mysqli_query($koneksi, $query_pelanggaran);
+
 ?>
 
 <!DOCTYPE html>
@@ -96,7 +129,7 @@ $data_hukuman = mysqli_fetch_array($result_hukuman);
         }
 
         .container {
-            max-width: 300px;
+            max-width: 600px;
             margin: 0 auto;
             background-color: #fff;
             padding: 20px;
@@ -114,9 +147,12 @@ $data_hukuman = mysqli_fetch_array($result_hukuman);
         }
 
         label,
-        input {
+        input,
+        select {
             display: block;
             margin-bottom: 15px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         input[type="submit"] {
@@ -131,8 +167,55 @@ $data_hukuman = mysqli_fetch_array($result_hukuman);
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+
+        .add-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .add-button a {
+            text-decoration: none;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Library -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+<!-- JavaScript Library -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $('#search').on('input', function() {
+        var searchText = $(this).val().toLowerCase();
+        $.ajax({
+            url: 'search_nama_pelanggaran.php',
+            method: 'GET',
+            data: {search: searchText},
+            dataType: 'json',
+            success: function(response) {
+                var pelanggaranDropdown = $('#pelanggaran');
+                pelanggaranDropdown.empty();
+                
+                // Tambahkan opsi "Silahkan pilih pelanggaran"
+                pelanggaranDropdown.append('<option value="" selected disabled>Silahkan pilih pelanggaran</option>');
+
+                // Tambahkan opsi pelanggaran hasil pencarian
+                response.forEach(function(item) {
+                    pelanggaranDropdown.append('<option value="' + item.nama + '" data-poin="' + item.poin + '" data-klasifikasi="' + item.klasifikasi + '">' + item.nama + '</option>');
+                });
+            }
+        });
+    });
+});
+
+</script>
+
 </head>
 
 <body>
@@ -142,21 +225,36 @@ $data_hukuman = mysqli_fetch_array($result_hukuman);
             <!-- Form elements -->
             <input type="hidden" name="nis" value="<?php echo $nis; ?>">
             <input type="hidden" name="nama" value="<?php echo $nama; ?>">
-            
+            <label for="asrama">Asrama:</label>
+            <input type="text" id="asrama" name="asrama" value="<?php echo $asrama; ?>" readonly>
+            <label for="kelas">Kelas:</label>
+            <input type="text" id="kelas" name="kelas" value="<?php echo $kelas; ?>" readonly>
+
             <label for="tanggal">Tanggal :</label>
             <input type="date" id="tanggal" name="tanggal" required>
 
-            <label for="pelanggaran">Pelanggaran :</label>
-            <select id="pelanggaran" name="pelanggaran" required style="width: 100%;">
-                <?php
-                while ($row_pelanggaran = mysqli_fetch_array($result_pelanggaran)) {
-                    echo '<option value="' . $row_pelanggaran['nama'] . '" data-poin="' . $row_pelanggaran['poin'] . '" data-klasifikasi="' . $row_pelanggaran['klasifikasi'] . '">' . $row_pelanggaran['nama'] . '</option>';
-                }
-                ?>
-            </select>
+            <label for="search">Cari Pelanggaran:</label>
+            <input type="text" id="search" name="search" onkeyup="searchPelanggaran()" placeholder="Masukkan nama pelanggaran...">
 
-            <br>
-            <br>
+            <label for="pelanggaran">Pelanggaran :</label>
+            <select id="pelanggaran" name="pelanggaran" required>
+    <option value="" selected disabled>Silahkan pilih pelanggaran</option>
+    <?php
+    while ($row_pelanggaran = mysqli_fetch_array($result_pelanggaran)) {
+        echo '<option value="' . $row_pelanggaran['nama'] . '" data-poin="' . $row_pelanggaran['poin'] . '" data-klasifikasi="' . $row_pelanggaran['klasifikasi'] . '">' . $row_pelanggaran['nama'] . '</option>';
+    }
+    ?>
+</select>
+
+
+
+
+<script>
+    $(document).ready(function() {
+        $('#pelanggaran').select2();
+    });
+</script>
+
             <label for="klasifikasi">Klasifikasi :</label>
             <input type="text" id="klasifikasi" name="klasifikasi" required readonly>
 
@@ -164,23 +262,18 @@ $data_hukuman = mysqli_fetch_array($result_hukuman);
             <input type="text" id="poin" name="poin" required readonly>
 
             <label for="hukuman">Hukuman :</label>
-            <select id="hukuman" name="hukuman" required style="width: 100%;"></select>
+            <select id="hukuman" name="hukuman" required></select>
 
-            <br><br>
             <label for="hukumantambahan">Hukuman Tambahan (Opsional)</label>
             <input type="text" id="hukumantambahan" name="hukumantambahan">
 
-            <br>
-            <br>
             <label for="keterangan">Keterangan :</label>
             <select id="keterangan" name="keterangan" required>
                 <option value="Tuntas">Tuntas</option>
                 <option value="Belum Tuntas">Belum Tuntas</option>
             </select>
 
-            <br>
-            <br>
-            <center><input type="submit" value="Simpan"></center>
+            <input type="submit" value="Simpan">
         </form>
         <div class="add-button">
             <a href="dt_disiplin.php">Kembali</a>
@@ -266,5 +359,97 @@ $data_hukuman = mysqli_fetch_array($result_hukuman);
             }
         });
     </script>
+
+<script>
+  function searchPelanggaran() {
+    const input = document.getElementById('search').value.toLowerCase();
+    const pelanggaranDropdown = document.getElementById('pelanggaran');
+    const options = pelanggaranDropdown.options;
+
+    // Simpan daftar pelanggaran sebelum pencarian dilakukan
+    let pelanggaranList = [];
+    for (let i = 0; i < options.length; i++) {
+        pelanggaranList.push(options[i]);
+    }
+
+    // Hapus semua opsi di dropdown pelanggaran
+    pelanggaranDropdown.innerHTML = '';
+
+    // Tambahkan opsi "Silahkan pilih pelanggaran" ke dropdown
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.text = 'Silahkan pilih pelanggaran';
+    pelanggaranDropdown.appendChild(defaultOption);
+
+    // Tampilkan kembali daftar pelanggaran yang disimpan sebelumnya
+    for (let i = 0; i < pelanggaranList.length; i++) {
+        pelanggaranDropdown.appendChild(pelanggaranList[i].cloneNode(true));
+    }
+
+    // Saring daftar pelanggaran berdasarkan input pengguna
+    for (let i = 0; i < options.length; i++) {
+        const option = options[i];
+        const text = option.text.toLowerCase();
+        const contains = text.includes(input);
+
+        if (contains || input === '') {
+            option.style.display = "block";
+        } else {
+            option.style.display = "none";
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    $(document).ready(function() {
+    // Simpan semua opsi pelanggaran ke dalam sebuah variabel saat halaman dimuat
+    var pelanggaranOptions = $('#pelanggaran').html();
+
+    // Fungsi untuk menampilkan kembali opsi-opsi pelanggaran saat pencarian dilakukan
+    $('#search').on('input', function() {
+        var input = $(this).val().toLowerCase();
+        var pelanggaranDropdown = $('#pelanggaran');
+
+        // Kosongkan dropdown pelanggaran
+        pelanggaranDropdown.empty();
+
+        // Tambahkan kembali semua opsi pelanggaran
+        pelanggaranDropdown.append(pelanggaranOptions);
+
+        // Saring opsi pelanggaran berdasarkan input pengguna
+        pelanggaranDropdown.find('option').each(function() {
+            var optionText = $(this).text().toLowerCase();
+            var contains = optionText.includes(input);
+
+            if (contains || input === '') {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+
+    // Reset pilihan pelanggaran saat kotak pencarian dikosongkan
+    $('#search').on('keyup', function(event) {
+        if (event.key === "Backspace" || event.key === "Delete") {
+            $('#pelanggaran').val('').trigger('change');
+        }
+    });
+});
+
+</script>
+
+
 </body>
 </html>

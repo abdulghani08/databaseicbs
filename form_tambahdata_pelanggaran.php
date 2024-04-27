@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" id="klasifikasi" name="klasifikasi" required>
 
             <label for="poin">Poin:</label>
-            <input type="number" id="poin" name="poin" placeholder="1.0" step="0.01" min="0" max="10" required>
+            <input type="number" id="poin" name="poin" placeholder="1.0" step="0.01" min="0" max="1000" required>
 
             <input type="submit" value="Tambah Data Pelanggaran">
         </form>

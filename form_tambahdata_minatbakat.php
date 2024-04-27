@@ -12,6 +12,30 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 $nis = $_GET['nis'];
 $nama = $_GET['nama'];
 
+// Ambil informasi asrama berdasarkan NIS dan Nama
+$query_asrama = "SELECT asrama FROM portopolio_isi WHERE nis = '$nis' AND nama = '$nama'";
+$result_asrama = mysqli_query($koneksi, $query_asrama);
+
+if ($result_asrama) {
+    $row_asrama = mysqli_fetch_assoc($result_asrama);
+    $asrama = $row_asrama['asrama'];
+} else {
+    // Handle jika terjadi kesalahan dalam mengambil data asrama
+    $asrama = ""; // Atur menjadi nilai default jika tidak ada data
+}
+
+// Ambil informasi asrama berdasarkan NIS dan Nama
+$query_kelas = "SELECT kelas FROM portopolio_isi WHERE nis = '$nis' AND nama = '$nama'";
+$result_kelas = mysqli_query($koneksi, $query_kelas);
+
+if ($result_kelas) {
+    $row_kelas = mysqli_fetch_assoc($result_kelas);
+    $kelas = $row_kelas['kelas'];
+} else {
+    // Handle jika terjadi kesalahan dalam mengambil data asrama
+    $kelas = ""; // Atur menjadi nilai default jika tidak ada data
+}
+
 // Query untuk mendapatkan data bakat dari tabel minat_bakat
 $query_bakat = "SELECT * FROM minat_bakat";
 $result_bakat = mysqli_query($koneksi, $query_bakat);
@@ -20,6 +44,8 @@ $result_bakat = mysqli_query($koneksi, $query_bakat);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nis = $_POST['nis'];
     $nama = $_POST['nama'];
+    $asrama = $_POST['asrama'];
+    $kelas = $_POST['kelas'];
     $bakat = mysqli_real_escape_string($koneksi, $_POST['bakat']);
 
     // Query untuk mendapatkan jenis berdasarkan foreign key dari bakat
@@ -29,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $jenis = $row_jenis['jenis'];
 
     // Query untuk menyimpan data minat bakat
-    $query = "INSERT INTO minat_bakat_isi (nis, nama, bakat, jenis) VALUES ('$nis', '$nama', '$bakat', '$jenis')";
+    $query = "INSERT INTO minat_bakat_isi (nis, nama, asrama, kelas, bakat, jenis) VALUES ('$nis', '$nama', '$asrama', '$kelas', '$bakat', '$jenis')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -108,6 +134,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <label for="nama">Nama:</label>
             <input type="text" id="nama" name="nama" value="<?php echo $nama; ?>" required readonly>
+
+            <label for="asrama">Asrama:</label>
+            <input type="text" id="asrama" name="asrama" value="<?php echo $asrama; ?>" readonly>
+
+            <label for="kelas">Kelas:</label>
+            <input type="text" id="kelas" name="kelas" value="<?php echo $kelas; ?>" readonly>
 
             <label for="bakat">Bakat:</label>
             <select id="bakat" name="bakat" required>

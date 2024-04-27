@@ -148,10 +148,27 @@ $result = mysqli_query($koneksi, $query);
             margin-top: 20px;
         }
 
+        .datax-santri-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
         .add-santri-button a {
             display: inline-block;
             text-decoration: none;
             background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .datax-santri-button a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #000090;
             color: #fff;
             padding: 10px 20px;
             border-radius: 5px;
@@ -172,6 +189,9 @@ $result = mysqli_query($koneksi, $query);
         </div>
         <div class="add-santri-button">
             <a href="hapus_datasantri_portopolio.php">Hapus Data Santri</a>
+        </div>
+        <div class="datax-santri-button">
+            <a href="dt_ex_santri.php">Data EX Santri</a>
         </div>
         <div class="search-bar">
             <form method="GET" action="search_portopolio.php">

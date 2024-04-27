@@ -206,13 +206,13 @@ $data = mysqli_fetch_array($query);
             <div class="col">
               <div class="row">
                 <div class="box" id="row2">
-                 <a href="akun.php">
+                 <a href="rekapan_putri/rekapan.php">
                    <img src="img/profil.png" alt="clock">
                  </a> 
                 </div>
               </div>
               <div class="row">
-                <p id="title6">Akun</p> 
+                <p id="title6">Rekapan</p> 
               </div>
             </div>
           </div>
@@ -225,12 +225,15 @@ $data = mysqli_fetch_array($query);
               <div class="row">
                 <div class="col">
                   <h5 id="title-footer">
-                    Grafik Tahfizh  |  Grafik Disiplin  | Logout
+                    Akun | Grafik Tahfizh  |  Grafik Disiplin  | Logout
                   </h5>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-auto">
+                  <a href="akun.php">
+                    <img src="img/profil.png" alt="wa" id="sosmed">
+                  </a>
                   <a href="grafik_tahfizh.php">
                     <img src="img/icon_grafiktahfizh.png" alt="wa" id="sosmed">
                   </a>

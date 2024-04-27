@@ -173,39 +173,78 @@ $result = mysqli_query($koneksi, $query);
     </script>
 </head>
 <body>
-    <div class="container">
+<div class="container">
     <div class="navigation">
-            <a href="dt_kepesantrenan.php"><img src="../back_icon.png" alt="back"></a>
-        </div>
-        <h1>Daftar Ujian Kepesantrenan</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th><a href="?sort=jenis&order=<?php echo ($sortColumn == 'jenis' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Nama Ujian</a></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                    <tr>
-                        <td onclick="toggleImage('<?php echo $row['id']; ?>')" style="cursor: pointer;">
-                            <?php echo $row['jenis']; ?>
-                        </td>
-                    </tr>
-                    <tr style="display: none;" id="img_<?php echo $row['id']; ?>">
-                        <td>
-                            <?php
-                            $gambarPath = 'gambar_ujian/' . $row['id'] . '.jpg'; // Path gambar
-                            if (file_exists($gambarPath)) {
-                                echo '<img src="' . $gambarPath . '" alt="Gambar Ujian" />';
-                            } else {
-                                echo 'Gambar tidak ditemukan';
-                            }
-                            ?>
-                        </td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+        <a href="dt_kepesantrenan.php"><img src="../back_icon.png" alt="back"></a>
     </div>
+    <h1>Daftar Ujian Kepesantrenan</h1>
+
+    <div class="download-buttons">
+        <a href="https://drive.google.com/file/d/1D_sEnzroZeRX-oKjVksSqeqot7RMP86O/view?usp=sharing" target="_blank" class="download-btn">Download Ujian Bahasa 1 (PDF)</a><br>
+        <a href="https://drive.google.com/file/d/1BF6ackhz1OQpXi7fqImKpelPLwkYMxYj/view?usp=sharing" target="_blank" class="download-btn">Download Ujian Bahasa 2 (PDF)</a><br>
+        <a href="https://drive.google.com/file/d/1ZxtOl3uq_RyyI3-zNPCIRj_k2_ACBsmw/view?usp=sharing" target="_blank" class="download-btn">Download Ujian Bahasa 3 (PDF)</a><br>
+        <a href="https://drive.google.com/file/d/125_k3JND8wgbFGmeQ2cUk5InzE4vAGvD/view?usp=sharing" target="_blank" class="download-btn">100 Hadist Pilihan (PDF)</a><br>
+        <a href="https://drive.google.com/file/d/1StbUJnE8Xve-D1APNTYrbYBRc-mX4jNJ/view?usp=sharing" target="_blank" class="download-btn">Download Pidato Santri (PDF)</a><br>
+        <a href="https://drive.google.com/file/d/1yD1wiZJaZIPlS9XWQEOqh9C0aL41S5c3/view?usp=sharing" target="_blank" class="download-btn">Download Doa Ba'da Shalat (PDF)</a><br>
+        <a href="https://drive.google.com/file/d/15n0IHIJjw3ZXNI8coxYbKMDaLf19BxIY/view?usp=sharing" target="_blank" class="download-btn">Download Bacaan Sholat & Dzikir Ba'da Shalat (PDF)</a><br>
+        <a href="https://drive.google.com/file/d/1u0zMUvtjk6rncoD9N3DEoWf9UmBWP1fx/view?usp=sharing" target="_blank" class="download-btn">Download dan lihat Doa sehari-hari (PDF)</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th><a href="?sort=jenis&order=<?php echo ($sortColumn == 'jenis' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Nama Ujian</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                <tr>
+                    <td onclick="toggleImage('<?php echo $row['id']; ?>')" style="cursor: pointer;">
+                        <?php echo $row['jenis']; ?>
+                    </td>
+                </tr>
+                <tr style="display: none;" id="img_<?php echo $row['id']; ?>">
+                    <!-- Bagian yang menampilkan gambar -->
+                    <td>
+                        <?php
+                        $gambarPath = 'gambar_ujian/' . $row['id'] . '.jpg'; // Path gambar
+                        if (file_exists($gambarPath)) {
+                            // Menambahkan atribut style untuk mengatur lebar maksimum gambar
+                            echo '<img src="' . $gambarPath . '" alt="Gambar Ujian" style="max-width: 100%; height: auto;" />';
+                        } else {
+                            echo 'Gambar tidak ditemukan';
+                        }
+                        ?>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>
+
+<style>
+    /* Tambahkan gaya CSS berikut di dalam tag <style> */
+    .download-buttons {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .download-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        transition: background-color 0.3s;
+    }
+
+    .download-btn:hover {
+        background-color: #45a049;
+    }
+</style>
 </body>
 </html>

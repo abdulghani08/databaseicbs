@@ -1,0 +1,27 @@
+[29-Oct-2023 22:47:47 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/sant5315/public_html/rekapan_putri/connection.php:8
+Stack trace:
+#0 /home/sant5315/public_html/rekapan_putri/connection.php(8): mysqli->__construct()
+#1 /home/sant5315/public_html/rekapan_putri/rekapan_tahfizh_hafalan.php(3): include('/home/sant5315/...')
+#2 {main}
+  thrown in /home/sant5315/public_html/rekapan_putri/connection.php on line 8
+[29-Oct-2023 22:48:58 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'abdulghani08'@'localhost' (using password: YES) in /home/sant5315/public_html/rekapan_putri/connection.php:8
+Stack trace:
+#0 /home/sant5315/public_html/rekapan_putri/connection.php(8): mysqli->__construct()
+#1 /home/sant5315/public_html/rekapan_putri/rekapan_tahfizh_hafalan.php(3): include('/home/sant5315/...')
+#2 {main}
+  thrown in /home/sant5315/public_html/rekapan_putri/connection.php on line 8
+[29-Oct-2023 22:48:59 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'abdulghani08'@'localhost' (using password: YES) in /home/sant5315/public_html/rekapan_putri/connection.php:8
+Stack trace:
+#0 /home/sant5315/public_html/rekapan_putri/connection.php(8): mysqli->__construct()
+#1 /home/sant5315/public_html/rekapan_putri/rekapan_tahfizh_hafalan.php(3): include('/home/sant5315/...')
+#2 {main}
+  thrown in /home/sant5315/public_html/rekapan_putri/connection.php on line 8
+[29-Oct-2023 22:49:04 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'abdulghani08'@'localhost' (using password: YES) in /home/sant5315/public_html/rekapan_putri/connection.php:8
+Stack trace:
+#0 /home/sant5315/public_html/rekapan_putri/connection.php(8): mysqli->__construct()
+#1 /home/sant5315/public_html/rekapan_putri/rekapan_tahfizh_hafalan.php(3): include('/home/sant5315/...')
+#2 {main}
+  thrown in /home/sant5315/public_html/rekapan_putri/connection.php on line 8
+[04-Nov-2023 04:15:33 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/rekapan_putri/rekapan_tasmik_isi.php on line 179
+[06-Nov-2023 05:01:25 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/rekapan_putri/rekapan_tasmik_isi.php on line 179
+[13-Nov-2023 03:32:17 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/rekapan_putri/rekapan_tasmik_isi.php on line 179
