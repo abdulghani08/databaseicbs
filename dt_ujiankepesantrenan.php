@@ -18,149 +18,55 @@ $result = mysqli_query($koneksi, $query);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Daftar Ujian Kepesantrenan</title>
-    <link rel="shortcut icon" href="logo.png">
-    <style>
-       body {
-            font-family: Arial, sans-serif;
-            background-image: url('backgroundgedung.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color:#000066;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th,
-        td {
-            padding: 8px;
-            border: 1px solid #ccc;
-            text-align: center;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tbody tr:hover {
-            background-color: #e0e0e0;
-        }
-
-        .add-button {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .search-bar input[type="submit"] {
-            padding: 5px 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .navigation {
-            text-align: left;
-            margin-bottom: 10px;
-        }
-
-        .navigation a {
-            text-decoration: none;
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 5px;
-            margin-right: 5px;
-            font-weight: bold;
-        }
-
-        .navigation a.home {
-            background-color: #4CAF50;
-        }
-
-        .navigation a.logout {
-            background-color: #F44336;
-        }
-
-        .action-links {
-            display: flex;
-            justify-content: center;
-        }
-
-        .action-links a {
-            display: inline-block;
-            text-decoration: none;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin-right: 5px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .action-links a.home img {
-            width: 25px; /* Ubah dengan lebar yang diinginkan */
-            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
-        }
-
-        .action-links a.update img {
-            width: 25px; /* Ubah dengan lebar yang diinginkan */
-            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
-        }
-
-        .action-links a.edit img{
-            width: 25px; /* Ubah dengan lebar yang diinginkan */
-            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
-        }
-
-        .action-links a.delete img{
-            width: 25px; /* Ubah dengan lebar yang diinginkan */
-            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
-        }
-
-        .add-santri-button {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .add-santri-button a {
-            display: inline-block;
-            text-decoration: none;
-            background-color: #4CAF50;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-</style>
-<script>
+    <meta charset="utf-8" />
+        <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+        rel="apple-touch-icon"
+        sizes="76x76"
+        href="img/apple-icon.png"
+    />
+    <link rel="icon" type="image/png" href="img/rilisan.png" />
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <title>Database Santri ICBS Putri</title>
+    <!--     Fonts and icons     -->
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700"
+    />
+    <!-- Nucleo Icons -->
+    <link href="css/nucleo-icons.css" rel="stylesheet" />
+    <link href="css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script
+        src="https://kit.fontawesome.com/42d5adcbca.js"
+        crossorigin="anonymous"
+    ></script>
+    <!-- Material Icons -->
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+        rel="stylesheet"
+    />
+    <!-- CSS Files -->
+    <link
+        id="pagestyle"
+        href="css/material-kit.css"
+        rel="stylesheet"
+    />
+    <!-- Nepcha Analytics (nepcha.com) -->
+    <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
+    <script
+        defer
+        data-site="YOUR_DOMAIN_HERE"
+        src="https://api.nepcha.com/js/nepcha-analytics.js"
+    ></script>
+    <script>
         // Fungsi JavaScript untuk menampilkan/menyembunyikan gambar
         function toggleImage(rowId) {
             var img = document.getElementById('img_' + rowId);
@@ -172,79 +78,185 @@ $result = mysqli_query($koneksi, $query);
         }
     </script>
 </head>
-<body>
-<div class="container">
-    <div class="navigation">
-        <a href="dt_kepesantrenan.php"><img src="../back_icon.png" alt="back"></a>
+<body style="overflow-x: hidden; background-image: url('backgroundgedung.jpg');">
+    <nav class="navbar navbar-expand-lg position-sticky top-0 z-index-3 w-100 shadow-none" style="background-color: #fff;">
+        <div class="container">
+            <img src="img/rilisan.png" style="width: 4%; margin-right: 2%;" alt="logo">
+            <a class="navbar-brand  text-dark fw-bold "rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank" href="homeadmin.php">
+            Database Santri ICSB Putri
+            </a>
+            <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon mt-2">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0 ms-lg-12 ps-lg-5" id="navigation">
+                <ul class="navbar-nav navbar-nav-hover ms-auto">
+                    <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-6">
+                        <a class="nav-link ps-2 text-dark fw-bold d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuPages8" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="material-icons text-dark opacity-6 me-2 text-md">dashboard</i>
+                        Program
+                        <img src="img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-block d-none">
+                        <img src="img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-none d-block">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages8">
+                        <div class="d-none d-lg-block">
+                            <a href="dt_kepesantrenan.php" class="dropdown-item border-radius-md">
+                            <span>Kepesantrenan</span>
+                            </a>
+                            <a href="dt_tahfizh.php" class="dropdown-item border-radius-md">
+                            <span>Tahfizh</span>
+                            </a>
+                            <a href="dt_prestasi.php" class="dropdown-item border-radius-md">
+                            <span>Prestasi</span>
+                            </a>
+                            <a href="dt_disiplin.php" class="dropdown-item border-radius-md">
+                            <span>Disiplin</span>
+                            </a>
+                            <a href="dt_perizinan.php" class="dropdown-item border-radius-md">
+                            <span>Perizinan</span>
+                            </a>
+                            <a href="dt_minatbakat.php" class="dropdown-item border-radius-md">
+                            <span>Minat</span>
+                            </a>
+                            <a href="dt_portopolio.php" class="dropdown-item border-radius-md">
+                            <span>Portopolio</span>
+                            </a>
+                            <a href="rekapan_putri/rekapan.php" class="dropdown-item border-radius-md">
+                            <span>Rekapan</span>
+                            </a>
+                        </div>
+                        <div class="d-lg-none">
+                        <a href="dt_kepesantrenan.php" class="dropdown-item border-radius-md">
+                            <span>Kepesantrenan</span>
+                            </a>
+                            <a href="dt_tahfizh.php" class="dropdown-item border-radius-md">
+                            <span>Tahfizh</span>
+                            </a>
+                            <a href="dt_prestasi.php" class="dropdown-item border-radius-md">
+                            <span>Prestasi</span>
+                            </a>
+                            <a href="dt_disiplin.php" class="dropdown-item border-radius-md">
+                            <span>Disiplin</span>
+                            </a>
+                            <a href="dt_perizinan.php" class="dropdown-item border-radius-md">
+                            <span>Perizinan</span>
+                            </a>
+                            <a href="dt_minatbakat.php" class="dropdown-item border-radius-md">
+                            <span>Minat</span>
+                            </a>
+                            <a href="dt_portopolio.php" class="dropdown-item border-radius-md">
+                            <span>Portopolio</span>
+                            </a>
+                            <a href="rekapan_putri/rekapan.php" class="dropdown-item border-radius-md">
+                            <span>Rekapan</span>
+                            </a>
+                        </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-6">
+                        <a class="nav-link ps-2 text-dark fw-bold d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuPages8" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="material-icons text-dark opacity-6 me-2 text-md">dashboard</i>
+                        Grafik
+                        <img src="img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-block d-none">
+                        <img src="img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-none d-block">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages8">
+                        <div class="d-none d-lg-block">
+                            <a href="grafik_tahfizh.php" class="dropdown-item border-radius-md">
+                            <span>Grafik Tahfizh</span>
+                            </a>
+                            <a href="grafik_kedisiplinan.php" class="dropdown-item border-radius-md">
+                            <span>Grafik Disiplin</span>
+                            </a>
+                        </div>
+                        <div class="d-lg-none">
+                        <a href="grafik_tahfizh.php" class="dropdown-item border-radius-md">
+                            <span>Grafik Tahfizh</span>
+                            </a>
+                            <a href="grafik_kedisiplinan.php" class="dropdown-item border-radius-md">
+                            <span>Grafik Disiplin</span>
+                            </a>
+                        </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-6">
+                        <a class="nav-link ps-2 text-dark fw-bold d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuPages8" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="material-icons text-dark opacity-6 me-2 text-md">dashboard</i>
+                        Akun
+                        <img src="img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-block d-none">
+                        <img src="img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-none d-block">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages8">
+                        <div class="d-none d-lg-block">
+                            <a href="akun.php" class="dropdown-item border-radius-md">
+                            <span>Kelola Akun</span>
+                            </a>
+                            <a href="logout.php" class="dropdown-item border-radius-md">
+                            <span>Logout</span>
+                            </a>
+                        </div>
+                        <div class="d-lg-none">
+                            <a href="akun.php" class="dropdown-item border-radius-md">
+                                <span>Kelola Akun</span>
+                            </a>
+                            <a href="logout.php" class="dropdown-item border-radius-md">
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-2">
+        <h1 class="text-center text-dark" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Daftar Ujian Kepesantrenan</h1>
     </div>
-    <h1>Daftar Ujian Kepesantrenan</h1>
 
-    <div class="download-buttons">
-        <a href="https://drive.google.com/file/d/1D_sEnzroZeRX-oKjVksSqeqot7RMP86O/view?usp=sharing" target="_blank" class="download-btn">Download Ujian Bahasa 1 (PDF)</a><br>
-        <a href="https://drive.google.com/file/d/1BF6ackhz1OQpXi7fqImKpelPLwkYMxYj/view?usp=sharing" target="_blank" class="download-btn">Download Ujian Bahasa 2 (PDF)</a><br>
-        <a href="https://drive.google.com/file/d/1ZxtOl3uq_RyyI3-zNPCIRj_k2_ACBsmw/view?usp=sharing" target="_blank" class="download-btn">Download Ujian Bahasa 3 (PDF)</a><br>
-        <a href="https://drive.google.com/file/d/125_k3JND8wgbFGmeQ2cUk5InzE4vAGvD/view?usp=sharing" target="_blank" class="download-btn">100 Hadist Pilihan (PDF)</a><br>
-        <a href="https://drive.google.com/file/d/1StbUJnE8Xve-D1APNTYrbYBRc-mX4jNJ/view?usp=sharing" target="_blank" class="download-btn">Download Pidato Santri (PDF)</a><br>
-        <a href="https://drive.google.com/file/d/1yD1wiZJaZIPlS9XWQEOqh9C0aL41S5c3/view?usp=sharing" target="_blank" class="download-btn">Download Doa Ba'da Shalat (PDF)</a><br>
-        <a href="https://drive.google.com/file/d/15n0IHIJjw3ZXNI8coxYbKMDaLf19BxIY/view?usp=sharing" target="_blank" class="download-btn">Download Bacaan Sholat & Dzikir Ba'da Shalat (PDF)</a><br>
-        <a href="https://drive.google.com/file/d/1u0zMUvtjk6rncoD9N3DEoWf9UmBWP1fx/view?usp=sharing" target="_blank" class="download-btn">Download dan lihat Doa sehari-hari (PDF)</a>
+    <div class="container mb-6">
+        <div class="card" style="overflow-x: auto;">
+            <div class="navigation">
+                <a style="font-size: 13px;" href="dt_kepesantrenan.php"><img style="width: 3%;" src="back_icon.png" alt="back"> Kembali Ke Halaman Kepesantrenan</a>
+            </div>
+            <div class="card-form shadow p-4 mb-2 bg-body-tertiary rounded">
+                <section>
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead class="text-center">
+                            <tr>
+                                <th><a href="?sort=jenis&order=<?php echo ($sortColumn == 'jenis' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Nama Ujian</a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                                <tr>
+                                    <td onclick="toggleImage('<?php echo $row['id']; ?>')" style="cursor: pointer;">
+                                        <?php echo $row['jenis']; ?>
+                                    </td>
+                                </tr>
+                                <tr style="display: none;" id="img_<?php echo $row['id']; ?>">
+                                    <td>
+                                        <?php
+                                        $gambarPath = 'gambar_ujian/' . $row['id'] . '.jpg'; // Path gambar
+                                        if (file_exists($gambarPath)) {
+                                            echo '<img src="' . $gambarPath . '" alt="Gambar Ujian" />';
+                                        } else {
+                                            echo 'Gambar tidak ditemukan';
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                    </div>
+                </section>
+            </div>
+        </div>
     </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th><a href="?sort=jenis&order=<?php echo ($sortColumn == 'jenis' && $sortOrder == 'asc') ? 'desc' : 'asc'; ?>">Nama Ujian</a></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                <tr>
-                    <td onclick="toggleImage('<?php echo $row['id']; ?>')" style="cursor: pointer;">
-                        <?php echo $row['jenis']; ?>
-                    </td>
-                </tr>
-                <tr style="display: none;" id="img_<?php echo $row['id']; ?>">
-                    <!-- Bagian yang menampilkan gambar -->
-                    <td>
-                        <?php
-                        $gambarPath = 'gambar_ujian/' . $row['id'] . '.jpg'; // Path gambar
-                        if (file_exists($gambarPath)) {
-                            // Menambahkan atribut style untuk mengatur lebar maksimum gambar
-                            echo '<img src="' . $gambarPath . '" alt="Gambar Ujian" style="max-width: 100%; height: auto;" />';
-                        } else {
-                            echo 'Gambar tidak ditemukan';
-                        }
-                        ?>
-                    </td>
-                </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-</div>
-
-<style>
-    /* Tambahkan gaya CSS berikut di dalam tag <style> */
-    .download-buttons {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .download-btn {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: #fff;
-        text-decoration: none;
-        font-size: 16px;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        margin-right: 10px;
-        transition: background-color 0.3s;
-    }
-
-    .download-btn:hover {
-        background-color: #45a049;
-    }
-</style>
 </body>
 </html>

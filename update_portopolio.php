@@ -161,7 +161,7 @@ $pas_poto = $row_foto['pas_poto'];
 <h2 style="text-align: center; margin-bottom: 10px; font-size: 24px;">Biodata Santri</h2>
 
 <div class="add-button" style="text-align: center;">
-<input type="button" value="Download PDF" onclick="window.open('update_portopolio-cetak.php', '_blank')">
+    <a href="cetak_portopolio.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50; width: 100%;">Cetak Portopolio</a>
 </div>
 
         <!-- <div class="add-button">
