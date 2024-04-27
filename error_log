@@ -30,6 +30,7 @@
 [04-Nov-2023 04:25:02 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/update_portopolio.php on line 570
 [04-Nov-2023 04:25:37 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/update_portopolio.php on line 570
 [04-Nov-2023 04:26:46 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/update_portopolio.php on line 570
+<<<<<<< HEAD
 [04-Nov-2023 07:52:08 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/update_portopolio.php on line 570
 [04-Nov-2023 09:21:22 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/update_portopolio.php on line 571
 [04-Nov-2023 09:21:31 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/update_portopolio.php on line 571
@@ -665,3 +666,5 @@ Stack trace:
 [05-Feb-2024 22:03:04 UTC] PHP Warning:  Undefined array key "tanggal" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 763
 [06-Feb-2024 00:40:07 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
 [06-Feb-2024 00:41:33 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/harau.santriicbs.com/update_portopolio.php on line 574
+=======
+>>>>>>> 01920ce9b19512523aafc78a4fc400d04de2ebf6
