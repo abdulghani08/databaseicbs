@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     // Query untuk menyimpan data prestasi
-    $query = "INSERT INTO putra_disiplin_isi (nis, nama, tanggal, pelanggaran, poin, hukuman, keterangan) VALUES ('$nis', '$nama', '$tanggal', '$pelanggaran', '$poin', '$hukuman', '$keterangan')";
+    $query = "INSERT INTO putra_disiplin_isi (nis, nama, tanggal, pelanggaran, poin, klasifikasi, hukuman, hukumantambahan, keterangan) VALUES ('$nis', '$nama', '$tanggal', '$pelanggaran', '$poin', '$klasifikasi', '$hukuman', '$hukumantambahan', '$keterangan')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -264,6 +264,15 @@ $result_pelanggaran = mysqli_query($koneksi, $query_pelanggaran);
             <label for="hukuman">Hukuman :</label>
             <select id="hukuman" name="hukuman" required style="width: 100%;"></select>
 
+<<<<<<< HEAD
+=======
+            <br><br>
+            <label for="hukumantambahan">Hukuman Tambahan (Opsional)</label>
+            <input type="text" id="hukumantambahan" name="hukumantambahan">
+
+            <br>
+            <br>
+>>>>>>> 01920ce9b19512523aafc78a4fc400d04de2ebf6
             <label for="keterangan">Keterangan :</label>
             <select id="keterangan" name="keterangan" required>
                 <option value="Tuntas">Tuntas</option>
