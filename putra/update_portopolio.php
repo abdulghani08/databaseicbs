@@ -1,6 +1,6 @@
 <?php
 // session_start();
-include "../connection.php";
+include "connection.php";
 // error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 // if (empty($_SESSION['username'])) {
 //     die("Anda belum login");
@@ -21,7 +21,7 @@ $data = mysqli_fetch_array($result);
     
 <head>
     <title>Update Portopolio</title>
-    <link rel="shortcut icon" href="../logo.png">
+    <link rel="shortcut icon" href="logo.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
@@ -49,7 +49,7 @@ $data = mysqli_fetch_array($result);
         body {
             font-family: Arial, sans-serif;
             font-size: 14px;
-            background-image: url('../backgroundgedung.jpg');
+            background-image: url('backgroundgedung.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -147,7 +147,7 @@ $data = mysqli_fetch_array($result);
 <body>
     <div class="container">
     <div>
-    <a href="dt_portopolio.php"><img src="../back_icon.png" alt="home" style="width: 30px;"></a>
+    <a href="dt_portopolio.php"><img src="back_icon.png" alt="home" style="width: 30px;"></a>
 </div>
 
 <?php
@@ -161,8 +161,9 @@ $pas_poto = $row_foto['pas_poto'];
 <h2 style="text-align: center; margin-bottom: 10px; font-size: 24px;">Biodata Santri</h2>
 
 <div class="add-button" style="text-align: center;">
-    <a href="cetak_portopolio.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50; width: 100%;">Cetak Portopolio</a>
+<input type="button" value="Download PDF" onclick="window.open('generate_pdf.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>', '_blank')">
 </div>
+
 
         <!-- <div class="add-button">
             <a href="form_tambahdata_setoran.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Hafalan</a>
@@ -720,7 +721,7 @@ $pas_poto = $row_foto['pas_poto'];
                     <?php
                     $no++;
                 }
-                ?>
+                ?>    
             </tbody>
         </table>
 
@@ -760,7 +761,7 @@ $pas_poto = $row_foto['pas_poto'];
                     ?>
                     <tr>
                         <td><?php echo $no; ?></td>
-                        <td><?php echo $setoran_data['tanggal']; ?></td>
+                        <td><?php echo $setoran_data['daritanggal']; ?></td>
                         <td><?php echo $setoran_data['keperluan']; ?></td>
                         <td><?php echo $setoran_data['durasi']; ?></td>
                     </tr>
