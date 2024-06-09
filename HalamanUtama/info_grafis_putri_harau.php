@@ -68,7 +68,8 @@
     <h1>INFO GRAFIS PUTRI HARAU</h1>
     <div class="button-group">
         <button onclick="window.location.href='https://drive.google.com/file/d/1hkUUMDzm3Mn1aGCXPn_6BTBnseZOFbaf/view?usp=sharing'">Maret 2024</button>
-        <button onclick="window.location.href='dt_santri_lulus_sma.php'">April 2024</button>
+        <button onclick="window.location.href='https://drive.google.com/file/d/1MqKIYjX4v2_7oTPa_X_198FDCaLiL-Et/view?usp=sharing'">April 2024</button>
+        <button onclick="window.location.href='https://drive.google.com/file/d/1yHquNIFBACqfB9LL5G7asMYRc1FktX5r/view?usp=sharing'">Mei 2024</button>
     </div>
 </div>
 
