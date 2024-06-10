@@ -597,9 +597,9 @@ $pas_poto = $row_foto['pas_poto'];
     <p>Jumlah Total Hafalan: <?php echo $total_hafalan; ?> Halaman</p>
     <p>Jumlah Total Hafalan per Juz: <?php echo $jumlah_total_hafalan_per_juz; ?></p>
     </div>
-    <center><h3>Grafik Kualitas Hafalan</h3></center>
+    <!-- <center><h3>Grafik Kualitas Hafalan</h3></center> -->
 
-    <canvas id="chart" style="max-width: 100%;"></canvas>
+    <!-- <canvas id="chart" style="max-width: 100%;"></canvas> -->
 
 
         <script>
@@ -627,37 +627,37 @@ $pas_poto = $row_foto['pas_poto'];
             ?>
 
                 // Menampilkan diagram
-                var ctx = document.getElementById('chart').getContext('2d');
-                var chart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['A (Sangat Baik)', 'B (Baik)', 'C (Kurang Lancar)', 'D (Tidak Lancar)'],
-                        datasets: [{
-                            label: 'Grafik',
-                            data: [<?php echo $nilai_a_total; ?>, <?php echo $nilai_b_total; ?>, <?php echo $nilai_c_total; ?>, <?php echo $nilai_d_total; ?>],
-                            backgroundColor: [
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(255, 99, 132, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(255, 99, 132, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
+                // var ctx = document.getElementById('chart').getContext('2d');
+                // var chart = new Chart(ctx, {
+                //     type: 'bar',
+                //     data: {
+                //         labels: ['A (Sangat Baik)', 'B (Baik)', 'C (Kurang Lancar)', 'D (Tidak Lancar)'],
+                //         datasets: [{
+                //             label: 'Grafik',
+                //             data: [<?php echo $nilai_a_total; ?>, <?php echo $nilai_b_total; ?>, <?php echo $nilai_c_total; ?>, <?php echo $nilai_d_total; ?>],
+                //             backgroundColor: [
+                //                 'rgba(75, 192, 192, 0.2)',
+                //                 'rgba(54, 162, 235, 0.2)',
+                //                 'rgba(255, 206, 86, 0.2)',
+                //                 'rgba(255, 99, 132, 0.2)'
+                //             ],
+                //             borderColor: [
+                //                 'rgba(75, 192, 192, 1)',
+                //                 'rgba(54, 162, 235, 1)',
+                //                 'rgba(255, 206, 86, 1)',
+                //                 'rgba(255, 99, 132, 1)'
+                //             ],
+                //             borderWidth: 1
+                //         }]
+                //     },
+                //     options: {
+                //         scales: {
+                //             y: {
+                //                 beginAtZero: true
+                //             }
+                //         }
+                //     }
+                // });
         </script>
 
         <center><h3>Rekapan Prestasi</h3></center>
