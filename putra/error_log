@@ -95,7 +95,10 @@
 [30-Oct-2023 06:58:39 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19730
 [30-Oct-2023 06:58:39 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 2465
 <<<<<<< HEAD
+=======
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> a74c40d8e2cfd4f937b47d5c5f55958d68767b2c
 [04-Nov-2023 09:28:52 UTC] PHP Warning:  include(..,connection.php): Failed to open stream: No such file or directory in /home/sant5315/public_html/putra/form_tambahdata_setoran.php on line 3
 [04-Nov-2023 09:28:52 UTC] PHP Warning:  include(): Failed opening '..,connection.php' for inclusion (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/sant5315/public_html/putra/form_tambahdata_setoran.php on line 3
 [04-Nov-2023 09:28:52 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user ''@'localhost' (using password: NO) in /home/sant5315/public_html/putra/form_tambahdata_setoran.php:9
@@ -145,6 +148,34 @@ Stack trace:
 #0 /home/sant5315/public_html/putra/form_tambahdata_disiplin.php(63): mysqli_query()
 #1 {main}
   thrown in /home/sant5315/public_html/putra/form_tambahdata_disiplin.php on line 63
+<<<<<<< HEAD
+[05-Jan-2024 02:50:27 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/putra/update_portopolio.php on line 574
+[05-Jan-2024 03:17:28 UTC] PHP Warning:  Undefined array key "thead" in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 16648
+[05-Jan-2024 03:17:28 UTC] PHP Warning:  Undefined array key "trids" in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19698
+[05-Jan-2024 03:17:28 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19698
+[05-Jan-2024 03:17:28 UTC] PHP Warning:  Undefined array key "trids" in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19730
+[05-Jan-2024 03:17:28 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19730
+[05-Jan-2024 03:17:28 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 2465
+[09-Jan-2024 01:24:34 UTC] PHP Warning:  Undefined array key "thead" in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 16648
+[09-Jan-2024 01:24:34 UTC] PHP Warning:  Undefined array key "trids" in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19698
+[09-Jan-2024 01:24:34 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19698
+[09-Jan-2024 01:24:34 UTC] PHP Warning:  Undefined array key "trids" in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19730
+[09-Jan-2024 01:24:34 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19730
+[09-Jan-2024 01:24:34 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 2465
+[27-Jan-2024 02:59:54 UTC] PHP Warning:  Undefined array key "total_hafalan" in /home/sant5315/public_html/putra/update_portopolio.php on line 574
+[01-Feb-2024 02:03:03 UTC] PHP Warning:  Undefined array key "thead" in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 16648
+[01-Feb-2024 02:03:03 UTC] PHP Warning:  Undefined array key "trids" in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19698
+[01-Feb-2024 02:03:03 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19698
+[01-Feb-2024 02:03:03 UTC] PHP Warning:  Undefined array key "trids" in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19730
+[01-Feb-2024 02:03:03 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19730
+[01-Feb-2024 02:03:03 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 2465
+[01-Feb-2024 02:03:41 UTC] PHP Warning:  Undefined array key "thead" in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 16648
+[01-Feb-2024 02:03:41 UTC] PHP Warning:  Undefined array key "trids" in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19698
+[01-Feb-2024 02:03:41 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19698
+[01-Feb-2024 02:03:41 UTC] PHP Warning:  Undefined array key "trids" in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19730
+[01-Feb-2024 02:03:41 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 19730
+[01-Feb-2024 02:03:41 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/sant5315/public_html/putra/tcpdf/tcpdf.php on line 2465
+=======
 [05-Jan-2024 03:18:26 UTC] PHP Warning:  Undefined array key "thead" in /home/sant5315/public_html/harau.santriicbs.com/putra/tcpdf/tcpdf.php on line 16648
 [05-Jan-2024 03:18:26 UTC] PHP Warning:  Undefined array key "trids" in /home/sant5315/public_html/harau.santriicbs.com/putra/tcpdf/tcpdf.php on line 19698
 [05-Jan-2024 03:18:26 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/sant5315/public_html/harau.santriicbs.com/putra/tcpdf/tcpdf.php on line 19698
@@ -227,3 +258,4 @@ Stack trace:
 >>>>>>> 01920ce9b19512523aafc78a4fc400d04de2ebf6
 =======
 >>>>>>> 01920ce9b19512523aafc78a4fc400d04de2ebf6
+>>>>>>> a74c40d8e2cfd4f937b47d5c5f55958d68767b2c

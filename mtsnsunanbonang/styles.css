@@ -1,0 +1,43 @@
+/* Styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .guru {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .guru-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+  }
+  
+  .guru-card img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #fff; /* Untuk memberikan efek border putih pada foto */
+  }
+  
+  .guru-card h2 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .guru-card p {
+    color: #666;
+  }
+  

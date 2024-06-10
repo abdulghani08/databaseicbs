@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+<?php
+header("Location: HalamanUtama/index.html");
+exit;
+?>
+=======
 <!DOCTYPE html>
 <html>
 <head>
@@ -137,3 +143,4 @@
 </div>
 </body>
 </html>
+>>>>>>> a74c40d8e2cfd4f937b47d5c5f55958d68767b2c

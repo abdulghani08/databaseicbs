@@ -1,0 +1,24 @@
+[03-Jan-2024 07:54:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function exec() in /home/sant5315/public_html/waktusholat.santriicbs.com/display/index.php:148
+Stack trace:
+#0 {main}
+  thrown in /home/sant5315/public_html/waktusholat.santriicbs.com/display/index.php on line 148
+[03-Jan-2024 08:01:54 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function exec() in /home/sant5315/public_html/waktusholat.santriicbs.com/display/index.php:148
+Stack trace:
+#0 {main}
+  thrown in /home/sant5315/public_html/waktusholat.santriicbs.com/display/index.php on line 148
+[03-Jan-2024 11:43:45 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function exec() in /home/sant5315/public_html/waktusholat.santriicbs.com/display/index.php:148
+Stack trace:
+#0 {main}
+  thrown in /home/sant5315/public_html/waktusholat.santriicbs.com/display/index.php on line 148
+[12-Jan-2024 15:37:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function exec() in /home/sant5315/public_html/waktusholat.santriicbs.com/display/index.php:148
+Stack trace:
+#0 {main}
+  thrown in /home/sant5315/public_html/waktusholat.santriicbs.com/display/index.php on line 148
+[12-Jan-2024 15:37:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function exec() in /home/sant5315/public_html/waktusholat.santriicbs.com/display/index.php:148
+Stack trace:
+#0 {main}
+  thrown in /home/sant5315/public_html/waktusholat.santriicbs.com/display/index.php on line 148
+[12-Jan-2024 15:37:30 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function exec() in /home/sant5315/public_html/waktusholat.santriicbs.com/display/index.php:148
+Stack trace:
+#0 {main}
+  thrown in /home/sant5315/public_html/waktusholat.santriicbs.com/display/index.php on line 148
