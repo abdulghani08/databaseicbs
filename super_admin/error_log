@@ -1,0 +1,21 @@
+[26-Jul-2024 10:41:02 UTC] PHP Warning:  include(connection.php): Failed to open stream: No such file or directory in /home/sant5315/public_html/harau.santriicbs.com/super_admin/dt_ujiankepesantrenan.php on line 3
+[26-Jul-2024 10:41:02 UTC] PHP Warning:  include(): Failed opening 'connection.php' for inclusion (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/sant5315/public_html/harau.santriicbs.com/super_admin/dt_ujiankepesantrenan.php on line 3
+[26-Jul-2024 10:41:02 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user ''@'localhost' (using password: NO) in /home/sant5315/public_html/harau.santriicbs.com/super_admin/dt_ujiankepesantrenan.php:10
+Stack trace:
+#0 /home/sant5315/public_html/harau.santriicbs.com/super_admin/dt_ujiankepesantrenan.php(10): mysqli_connect()
+#1 {main}
+  thrown in /home/sant5315/public_html/harau.santriicbs.com/super_admin/dt_ujiankepesantrenan.php on line 10
+[26-Jul-2024 10:41:06 UTC] PHP Warning:  include(connection.php): Failed to open stream: No such file or directory in /home/sant5315/public_html/harau.santriicbs.com/super_admin/dt_ujiankepesantrenan.php on line 3
+[26-Jul-2024 10:41:06 UTC] PHP Warning:  include(): Failed opening 'connection.php' for inclusion (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/sant5315/public_html/harau.santriicbs.com/super_admin/dt_ujiankepesantrenan.php on line 3
+[26-Jul-2024 10:41:06 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user ''@'localhost' (using password: NO) in /home/sant5315/public_html/harau.santriicbs.com/super_admin/dt_ujiankepesantrenan.php:10
+Stack trace:
+#0 /home/sant5315/public_html/harau.santriicbs.com/super_admin/dt_ujiankepesantrenan.php(10): mysqli_connect()
+#1 {main}
+  thrown in /home/sant5315/public_html/harau.santriicbs.com/super_admin/dt_ujiankepesantrenan.php on line 10
+[26-Jul-2024 10:44:50 UTC] PHP Warning:  include(connection.php): Failed to open stream: No such file or directory in /home/sant5315/public_html/harau.santriicbs.com/super_admin/update_kepesantrenan.php on line 3
+[26-Jul-2024 10:44:50 UTC] PHP Warning:  include(): Failed opening 'connection.php' for inclusion (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/sant5315/public_html/harau.santriicbs.com/super_admin/update_kepesantrenan.php on line 3
+[26-Jul-2024 10:44:50 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user ''@'localhost' (using password: NO) in /home/sant5315/public_html/harau.santriicbs.com/super_admin/update_kepesantrenan.php:10
+Stack trace:
+#0 /home/sant5315/public_html/harau.santriicbs.com/super_admin/update_kepesantrenan.php(10): mysqli_connect()
+#1 {main}
+  thrown in /home/sant5315/public_html/harau.santriicbs.com/super_admin/update_kepesantrenan.php on line 10

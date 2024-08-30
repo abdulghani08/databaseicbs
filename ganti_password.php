@@ -48,30 +48,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ganti Password</title>
     <link rel="shortcut icon" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+        :root {
+            --primary-color: #1e88e5;
+            --secondary-color: #64b5f6;
+            --background-color: #f5f5f5;
+            --text-color: #333;
+            --input-bg: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: var(--input-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
             text-align: center;
-            margin-top: 0;
-            position: relative;
+            color: var(--primary-color);
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 20px;
         }
 
         .back-button {
@@ -81,46 +106,77 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         .back-button a {
             display: inline-block;
-            padding: 5px;
-            background: url('home_icon.png') no-repeat center center;
-            background-size: 100%;
-            width: 20px;
-            height: 20px;
-            text-indent: -9999px;
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button a:hover {
+            background-color: #42a5f5;
         }
 
         form {
-            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         label {
-            display: block;
-            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--primary-color);
         }
 
         input[type="password"] {
             width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+            padding: 12px;
+            border: 1px solid var(--secondary-color);
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="password"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
         }
 
         .error {
-            color: red;
-            margin-top: 10px;
+            color: #f44336;
+            font-size: 14px;
+            margin-top: 5px;
         }
 
         button[type="submit"] {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: #fff;
+            padding: 12px 20px;
+            background-color: var(--primary-color);
+            color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
         }
 
         button[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: #1565c0;
+        }
+
+        @media (max-width: 390px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            input[type="password"],
+            button[type="submit"] {
+                font-size: 14px;
+            }
         }
     </style>
 </head>

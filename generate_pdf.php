@@ -4,6 +4,11 @@ require_once __DIR__ . '/vendor/autoload.php'; // Ubah path sesuai dengan kebutu
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
+$options = new Options();
+$options->set('isRemoteEnabled', true);
+$options->set('chroot', '/public_html/harau.santriicbs.com');
+$dompdf = new Dompdf($options);
+
 // Ambil data dari database atau sesuai dengan kebutuhan Anda
 $nis = $_GET['nis'];
 $nama = $_GET['nama'];
@@ -22,7 +27,7 @@ $minat_bakat_html = '';
 $minat_bakat_query = "SELECT * FROM minat_bakat_isi WHERE nis='$nis'";
 $minat_bakat_result = mysqli_query($koneksi, $minat_bakat_query);
 if (mysqli_num_rows($minat_bakat_result) > 0) {
-    $minat_bakat_html = '<center><h3>Minat Bakat</h3></center>
+    $minat_bakat_html = '
         <table>
             <thead>
                 <tr>
@@ -50,7 +55,7 @@ $pengalaman_organisasi_html = '';
 $pengalaman_organisasi_query = "SELECT * FROM pengalaman_organisasi_isi WHERE nis='$nis'";
 $pengalaman_organisasi_result = mysqli_query($koneksi, $pengalaman_organisasi_query);
 if (mysqli_num_rows($pengalaman_organisasi_result) > 0) {
-    $pengalaman_organisasi_html = '<center><h3>Pengalaman Organisasi</h3></center>
+    $pengalaman_organisasi_html = '
         <table>
             <thead>
                 <tr>
@@ -82,7 +87,7 @@ $kegiatan_tersertifikasi_html = '';
 $kegiatan_tersertifikasi_query = "SELECT * FROM kegiatan_tersertifikasi_isi WHERE nis='$nis'";
 $kegiatan_tersertifikasi_result = mysqli_query($koneksi, $kegiatan_tersertifikasi_query);
 if (mysqli_num_rows($kegiatan_tersertifikasi_result) > 0) {
-    $kegiatan_tersertifikasi_html = '<center><h3>Kegiatan Tersertifikasi</h3></center>
+    $kegiatan_tersertifikasi_html = '
         <table>
             <thead>
                 <tr>
@@ -114,7 +119,7 @@ $kepesantrenan_html = '';
 $kepesantrenan_query = "SELECT * FROM kepesantrenan_isi WHERE nis='$nis'";
 $kepesantrenan_result = mysqli_query($koneksi, $kepesantrenan_query);
 if (mysqli_num_rows($kepesantrenan_result) > 0) {
-    $kepesantrenan_html = '<center><h3>Ujian Kepesantrenan</h3></center>
+    $kepesantrenan_html = '
         <table>
             <thead>
                 <tr>
@@ -150,7 +155,7 @@ $tasmik_html = '';
 $tasmik_query = "SELECT * FROM tahfizh_ujian WHERE nis='$nis'";
 $tasmik_result = mysqli_query($koneksi, $tasmik_query);
 if (mysqli_num_rows($tasmik_result) > 0) {
-    $tasmik_html = '<center><h3>Ujian Tasmik</h3></center>
+    $tasmik_html = '
         <table>
             <thead>
                 <tr>
@@ -180,7 +185,7 @@ $hafalan_tahfizh_html = '';
 $hafalan_tahfizh_query = "SELECT * FROM tahfizh_hafalan WHERE nis='$nis'";
 $hafalan_tahfizh_result = mysqli_query($koneksi, $hafalan_tahfizh_query);
 if (mysqli_num_rows($hafalan_tahfizh_result) > 0) {
-    $hafalan_tahfizh_html = '<center><h3>Hafalan Tahfizh</h3></center>
+    $hafalan_tahfizh_html = '
         <table>
             <thead>
                 <tr>
@@ -212,7 +217,7 @@ $ujian_tahfizh_html = '';
 $ujian_tahfizh_query = "SELECT * FROM tasmik_isi WHERE nis='$nis'";
 $ujian_tahfizh_result = mysqli_query($koneksi, $ujian_tahfizh_query);
 if (mysqli_num_rows($ujian_tahfizh_result) > 0) {
-    $ujian_tahfizh_html = '<center><h3>Ujian Tahfizh</h3></center>
+    $ujian_tahfizh_html = '
         <table>
             <thead>
                 <tr>
@@ -244,7 +249,7 @@ $prestasi_html = '';
 $prestasi_query = "SELECT * FROM prestasi_isi WHERE nis='$nis'";
 $prestasi_result = mysqli_query($koneksi, $prestasi_query);
 if (mysqli_num_rows($prestasi_result) > 0) {
-    $prestasi_html = '<center><h3>Prestasi</h3></center>
+    $prestasi_html = '
         <table>
             <thead>
                 <tr>
@@ -278,7 +283,7 @@ $kedisiplinan_html = '';
 $kedisiplinan_query = "SELECT * FROM disiplin_isi WHERE nis='$nis'";
 $kedisiplinan_result = mysqli_query($koneksi, $kedisiplinan_query);
 if (mysqli_num_rows($kedisiplinan_result) > 0) {
-    $kedisiplinan_html = '<center><h3>Kedisiplinan</h3></center>
+    $kedisiplinan_html = '
         <table>
             <thead>
                 <tr>
@@ -308,12 +313,13 @@ $perizinan_html = '';
 $perizinan_query = "SELECT * FROM perizinan_isi WHERE nis='$nis'";
 $perizinan_result = mysqli_query($koneksi, $perizinan_query);
 if (mysqli_num_rows($perizinan_result) > 0) {
-    $perizinan_html = '<center><h3>Perizinan</h3></center>
+    $perizinan_html = '
         <table>
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Tanggal</th>
+                    <th>Dari Tanggal</th>
+                    <th>Sampai Tanggal</th>
                     <th>Keperluan</th>
                     <th>Durasi (Hari)</th>
                 </tr>
@@ -323,7 +329,8 @@ if (mysqli_num_rows($perizinan_result) > 0) {
     while ($perizinan_data = mysqli_fetch_array($perizinan_result)) {
         $perizinan_html .= '<tr>
                         <td>' . $no . '</td>
-                        <td>' . $perizinan_data['tanggal'] . '</td>
+                        <td>' . $perizinan_data['daritanggal'] . '</td>
+                        <td>' . $perizinan_data['sampaitanggal'] . '</td>
                         <td>' . $perizinan_data['keperluan'] . '</td>
                         <td>' . $perizinan_data['durasi'] . '</td>
                     </tr>';
@@ -348,37 +355,63 @@ $html = '
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biodata Santri</title>
     <style>
-        /* Gaya CSS untuk PDF */
+        @page {
+            margin: 2cm;
+            border: 2px solid #333;
+        }
         body {
             font-family: Arial, sans-serif;
-            font-size: 14px;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #333;
         }
-
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #1a5f7a;
+            margin: 0;
+            padding: 10px 0;
+            border-bottom: 2px solid #1a5f7a;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
         }
-
-        th {
-            padding: 8px;
-            border: 1px solid #ccc;
-            text-align: left;
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
         }
-        td {
-            padding: 8px;
-            border: 1px solid #ccc;
-            text-align: left;
-        }
-
         th {
             background-color: #f2f2f2;
+            font-weight: bold;
+            text-align: left;
+            width: 30%;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .section-title {
+            background-color: #1a5f7a;
+            color: white;
+            padding: 10px;
+            margin-top: 30px;
+            margin-bottom: 15px;
         }
     </style>
 </head>
 
 <body>
-<center><img src="logo.png" style="display: block; margin: 0 auto;"></center>
-    <center><h2>BIODATA SANTRI</h2></center>
+    <div class="header">
+        <h2>BIODATA SANTRI</h2>
+    </div>
     <table>
         <tr>
             <th>Nama Santri</th>
@@ -506,15 +539,34 @@ $html = '
         </tr>
         <!-- Tambahkan informasi biodata lainnya sesuai kebutuhan -->
     </table>
+    <div class="section-title"><center>MINAT BAKAT</center></div>
     ' . $minat_bakat_html . '
+
+    <div class="section-title"><center>PENGALAMAN ORGANISASI</center></div>
     ' . $pengalaman_organisasi_html . '
+
+    <div class="section-title"><center>KEGIATAN TERSERTIFIKASI</center></div>
     ' . $kegiatan_tersertifikasi_html . '
+
+    <div class="section-title"><center>UJIAN KEPESANTRENAN</center></div>
     ' . $kepesantrenan_html . '
+
+    <div class="section-title"><center>UJIAN TASMIK</center></div>
     ' . $tasmik_html . '
+
+    <div class="section-title"><center>HAFALAN TAHFIZH</center></div>
     ' . $hafalan_tahfizh_html . '
+
+    <div class="section-title"><center>UJIAN TAHFIZH</center></div>
     ' . $ujian_tahfizh_html . '
+
+    <div class="section-title"><center>PRESTASI</center></div>
     ' . $prestasi_html . '
+
+    <div class="section-title"><center>KEDISIPLINAN</center></div>
     ' . $kedisiplinan_html . '
+
+    <div class="section-title"><center>PERIZINAN</center></div>
     ' . $perizinan_html . '
 </body>
 

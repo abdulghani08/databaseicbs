@@ -3,7 +3,8 @@ session_start();
 include "connection.php";
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 if (empty($_SESSION['username'])) {
-    die("Anda belum login");
+    header("Location: belum_login.php");
+    exit();
 }
 
 $koneksi = mysqli_connect($host, $username, $password, $database);
@@ -51,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hukuman = $_POST['hukuman'];
     $hukumantambahan = $_POST['hukumantambahan'];
     $keterangan = $_POST['keterangan'];
+    $penginput = $_POST['penginput'];
 
     // Ambil data santri berdasarkan NIS dari tabel dt_prestasi
     $query = "SELECT * FROM portopolio_isi WHERE nis='$nis'";
@@ -86,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     // Query untuk menyimpan data prestasi
-    $query = "INSERT INTO disiplin_isi (nis, nama, asrama, kelas, tanggal, pelanggaran, poin, klasifikasi, hukuman, hukumantambahan, keterangan) VALUES ('$nis', '$nama', '$asrama', '$kelas', '$tanggal', '$pelanggaran', '$poin', '$klasifikasi', '$hukuman', '$hukumantambahan', '$keterangan')";
+    $query = "INSERT INTO disiplin_isi (nis, nama, asrama, kelas, tanggal, pelanggaran, poin, klasifikasi, hukuman, hukumantambahan, keterangan, penginput) VALUES ('$nis', '$nama', '$asrama', '$kelas', '$tanggal', '$pelanggaran', '$poin', '$klasifikasi', '$hukuman', '$hukumantambahan', '$keterangan', '$penginput')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -115,57 +117,100 @@ $result_pelanggaran = mysqli_query($koneksi, $query_pelanggaran);
 ?>
 
 <!DOCTYPE html>
-<html>
-
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Form Tambah Pelanggaran</title>
     <link rel="shortcut icon" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f1f1f1;
+        :root {
+            --primary-color: #FF8C00;
+            --secondary-color: #FFA500;
+            --background-color: #FFF5E6;
+            --text-color: #333;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
             padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .container {
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 100%;
+            width: 400px;
             background-color: #fff;
-            padding: 20px;
+            padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
         }
 
         h4 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            font-weight: 600;
         }
 
         form {
-            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
         }
 
-        label,
-        input,
-        select {
-            display: block;
-            margin-bottom: 15px;
-            width: 100%;
-            box-sizing: border-box;
+        label {
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        input, select {
+            margin-bottom: 20px;
+            padding: 12px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(255, 140, 0, 0.2);
         }
 
         input[type="submit"] {
-            background-color: #4CAF50;
+            background-color: var(--primary-color);
             color: white;
-            padding: 10px 15px;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
         }
 
         input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: var(--secondary-color);
         }
 
         .add-button {
@@ -175,10 +220,23 @@ $result_pelanggaran = mysqli_query($koneksi, $query_pelanggaran);
 
         .add-button a {
             text-decoration: none;
-            background-color: #3498db;
+            background-color: var(--secondary-color);
             color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-button a:hover {
+            background-color: var(--primary-color);
+        }
+
+        @media (max-width: 428px) {
+            .container {
+                width: 100%;
+                padding: 20px;
+            }
         }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -225,6 +283,8 @@ $result_pelanggaran = mysqli_query($koneksi, $query_pelanggaran);
             <!-- Form elements -->
             <input type="hidden" name="nis" value="<?php echo $nis; ?>">
             <input type="hidden" name="nama" value="<?php echo $nama; ?>">
+            <label for="penginput">Penginput:</label>
+            <input type="text" id="penginput" name="penginput" value="<?php echo $_SESSION['username']; ?>" readonly>
             <label for="asrama">Asrama:</label>
             <input type="text" id="asrama" name="asrama" value="<?php echo $asrama; ?>" readonly>
             <label for="kelas">Kelas:</label>
@@ -250,10 +310,20 @@ $result_pelanggaran = mysqli_query($koneksi, $query_pelanggaran);
 
 
 <script>
-    $(document).ready(function() {
-        $('#pelanggaran').select2();
-    });
-</script>
+        $(document).ready(function() {
+            $('#pelanggaran').select2({
+                theme: 'classic',
+                placeholder: 'Pilih pelanggaran',
+                allowClear: true
+            });
+
+            $('form').on('submit', function() {
+                $('input[type="submit"]').addClass('loading');
+            });
+
+            // Add more JavaScript for animations and interactions
+        });
+    </script>
 
             <label for="klasifikasi">Klasifikasi :</label>
             <input type="text" id="klasifikasi" name="klasifikasi" required readonly>

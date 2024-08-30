@@ -3,7 +3,8 @@ session_start();
 include "connection.php";
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 if (empty($_SESSION['username'])) {
-    die("Anda belum login");
+    header("Location: belum_login.php");
+    exit();
 }
 
 $koneksi = mysqli_connect($host, $username, $password, $database);
@@ -44,9 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tanggal = $_POST['tanggal'];
     $ujian = $_POST['ujian'];
     $nilai = $_POST['nilai'];
+    $penginput = $_POST['penginput'];
 
     // Query untuk menyimpan data ujian tahfizh
-    $query = "INSERT INTO tahfizh_ujian (nis, nama, asrama, kelas, tanggal, ujian, nilai) VALUES ('$nis', '$nama', '$asrama', '$kelas', '$tanggal', '$ujian', '$nilai')";
+    $query = "INSERT INTO tahfizh_ujian (nis, nama, asrama, kelas, tanggal, ujian, nilai, penginput) VALUES ('$nis', '$nama', '$asrama', '$kelas', '$tanggal', '$ujian', '$nilai', '$penginput')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -60,66 +62,132 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Tambah Ujian Tasmik</title>
     <link rel="shortcut icon" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('backgroundgedung.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+        :root {
+            --primary-color: #FF8C00;
+            --secondary-color: #FFA500;
+            --background-color: #FFF5E6;
+            --text-color: #333;
+        }
+
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
             padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 100%;
+            width: 400px;
             background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            color: var(--primary-color);
         }
 
         form {
-            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
         }
 
-        label,
-        input {
-            display: block;
-            margin-bottom: 10px;
+        label {
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        input, select {
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--primary-color);
         }
 
         input[type="submit"] {
-            background-color: #4CAF50;
+            background-color: var(--primary-color);
             color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
             cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
         }
 
         input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: var(--secondary-color);
+        }
+
+        .add-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .add-button a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .add-button a:hover {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 100%;
+                padding: 20px;
+            }
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <h2>Form Tambah Ujian Tasmi'</h2>
         <form method="POST">
+            <label for="penginput">Penginput:</label>
+            <input type="text" id="penginput" name="penginput" value="<?php echo $_SESSION['username']; ?>" readonly>
+            
             <label for="asrama">Asrama:</label>
             <input type="text" id="asrama" name="asrama" value="<?php echo $asrama; ?>" readonly>
 
@@ -128,10 +196,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             <label for="tanggal">Tanggal:</label>
             <input type="date" id="tanggal" name="tanggal" required>
-
-            <!-- <label for="hafalan">Ujian Tasmi' :</label>
-            <input type="text" id="hafalan" name="hafalan" required> -->
-            
 
             <label for="ujian">Ujian Tasmi' :</label>
             <select id="ujian" name="ujian" required>
@@ -144,36 +208,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <option value="Tasmi 20 Juz">Tasmi 20 Juz</option>
                 <option value="Tasmi 25 Juz">Tasmi 25 Juz</option>
                 <option value="Tasmi 30 Juz">Tasmi 30 Juz</option>
-                <option value="Ujian Juz 1">Ujian Juz 1</option>
-                <option value="Ujian Juz 2">Ujian Juz 2</option>
-                <option value="Ujian Juz 3">Ujian Juz 3</option>
-                <option value="Ujian Juz 4">Ujian Juz 4</option>
-                <option value="Ujian Juz 5">Ujian Juz 5</option>
-                <option value="Ujian Juz 6">Ujian Juz 6</option>
-                <option value="Ujian Juz 7">Ujian Juz 7</option>
-                <option value="Ujian Juz 8">Ujian Juz 8</option>
-                <option value="Ujian Juz 9">Ujian Juz 9</option>
-                <option value="Ujian Juz 10">Ujian Juz 10</option>
-                <option value="Ujian Juz 11">Ujian Juz 11</option>
-                <option value="Ujian Juz 12">Ujian Juz 12</option>
-                <option value="Ujian Juz 13">Ujian Juz 13</option>
-                <option value="Ujian Juz 14">Ujian Juz 14</option>
-                <option value="Ujian Juz 15">Ujian Juz 15</option>
-                <option value="Ujian Juz 16">Ujian Juz 16</option>
-                <option value="Ujian Juz 17">Ujian Juz 17</option>
-                <option value="Ujian Juz 18">Ujian Juz 18</option>
-                <option value="Ujian Juz 19">Ujian Juz 19</option>
-                <option value="Ujian Juz 20">Ujian Juz 20</option>
-                <option value="Ujian Juz 21">Ujian Juz 21</option>
-                <option value="Ujian Juz 22">Ujian Juz 22</option>
-                <option value="Ujian Juz 23">Ujian Juz 23</option>
-                <option value="Ujian Juz 24">Ujian Juz 24</option>
-                <option value="Ujian Juz 25">Ujian Juz 25</option>
-                <option value="Ujian Juz 26">Ujian Juz 26</option>
-                <option value="Ujian Juz 27">Ujian Juz 27</option>
-                <option value="Ujian Juz 28">Ujian Juz 28</option>
-                <option value="Ujian Juz 29">Ujian Juz 29</option>
-                <option value="Ujian Juz 30">Ujian Juz 30</option>
+                <?php for ($i = 1; $i <= 30; $i++) : ?>
+                    <option value="Ujian Juz <?php echo $i; ?>">Ujian Juz <?php echo $i; ?></option>
+                <?php endfor; ?>
             </select>
 
             <label for="nilai">Nilai:</label>
@@ -185,11 +222,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <option value="D">D</option>
             </select>
 
-            <!-- <label for="total_hafalan">Total Hafalan (Per halaman):</label>
-            <input type="number" id="total_hafalan" name="total_hafalan" step="0.1" min="0" max="604" required>
-            <h6>Catatan : 1 Juz = 20 halaman</h6> -->
-
-            <br><br>
             <input type="submit" value="Tambah Ujian Tahfizh">
         </form>
         <div class="add-button">
@@ -197,5 +229,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </body>
-
 </html>

@@ -17,130 +17,181 @@ $data = mysqli_fetch_array($result);
 ?>
 
 <!DOCTYPE html>
-<html>
-    
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Update Portopolio</title>
     <link rel="shortcut icon" href="logo.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        @media (max-width: 600px) {
-    .container {
-        padding: 10px;
-    }
-    .button-row {
-        flex-direction: column;
-        align-items: center;
-    }
-    .button-row a {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    table {
-        font-size: 14px;
-        overflow-x: auto;
-    }
-    .chart-container {
-        margin-top: 10px;
-    }
-}
+        :root {
+            --primary-color: #FF8C00; /* Dark Orange */
+    --secondary-color: #FFA500; /* Orange */
+    --background-color: #FFF5E6; /* Light Orange */
+    --text-color: #333;
+    --input-bg: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            background-image: url('backgroundgedung.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-color: white; /* Ubah warna latar belakang menjadi putih */
-            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
             padding: 10px;
         }
 
         .container {
             max-width: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            background-color: var(--input-bg);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin: 0 auto;
             overflow: hidden;
-            overflow-x: auto;
         }
 
-        h2 {
+        h2, h3 {
+            color: var(--primary-color);
             text-align: center;
             margin-bottom: 20px;
         }
 
+        h2 {
+            font-size: 24px;
+        }
+
         h3 {
+            font-size: 20px;
+            margin-top: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .back-button img {
+            width: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-button img:hover {
+            transform: scale(1.1);
+        }
+
+        .add-button {
             text-align: center;
-            font-size: 16px;
-            margin-top: 20px;
-            margin-bottom: 10px;
+            margin: 20px 0;
         }
 
-        .button-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .button-row a {
-            text-decoration: none;
+        .add-button input[type="button"] {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
             padding: 10px 20px;
             border-radius: 5px;
-            font-weight: bold;
-            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        .button-row .cetak-button {
-            background-color: #4CAF50;
-            color: white;
+        .add-button input[type="button"]:hover {
+            background-color: #1565c0;
         }
-
-        .button-row .back-button {
-            background-color: #FF0000;
-            color: white;
-        }
+        .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
 
         table {
-            width: 100%;
+            min-width: 100%;
+            width: auto;
             border-collapse: collapse;
             margin-top: 20px;
-            overflow-x: auto;
+            background-color: var(--input-bg);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        th,
-        td {
-            padding: 8px;
-            border: 1px solid #ccc;
+        th, td {
+            padding: 12px;
             text-align: left;
+            border-bottom: 1px solid #e0e0e0;
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
         }
 
-        tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tbody tr:hover {
-            background-color: #e0e0e0;
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
         }
 
         .kurang-lancar td {
-            color: red;
-            font-weight: bold;
+            color: #f44336;
+            font-weight: 500;
+        }
+
+        .total-hafalan {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 500;
+            color: var(--primary-color);
         }
 
         .chart-container {
             max-width: 100%;
-            margin-top: 20px;
+            margin-top: 30px;
         }
+
+        @media (max-width: 390px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+        @media (max-width: 767px) {
+    .table-wrapper {
+        margin: 0 -15px;
+        padding: 0 15px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px 10px;
+    }
+}
     </style>
 </head>
 
@@ -152,13 +203,13 @@ $data = mysqli_fetch_array($result);
 
 <?php
 // Ambil data foto santri dari database
-$query_foto = "SELECT pas_poto FROM portopolio_isi WHERE nis='$nis' AND nama='$nama'";
+$query_foto = "SELECT pas_poto FROM portopolio_isi WHERE nis='$nis'";
 $result_foto = mysqli_query($koneksi, $query_foto);
 $row_foto = mysqli_fetch_assoc($result_foto);
 $pas_poto = $row_foto['pas_poto'];
 ?>
 
-<h2 style="text-align: center; margin-bottom: 10px; font-size: 24px;">Biodata Santri</h2>
+<h2 style="text-align: center; margin-bottom: 10px; font-size: 24px;">BIODATA SANTRI</h2>
 
 <div class="add-button" style="text-align: center;">
 <input type="button" value="Download PDF" onclick="window.open('generate_pdf.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>', '_blank')">
@@ -170,14 +221,14 @@ $pas_poto = $row_foto['pas_poto'];
         </div> -->
         <div class="details">
         <table>
-            <tr>
+            <!-- <tr>
             <th>Pas Foto Santri</th>
             <td>
             <div style="text-align: center; margin-bottom: 20px;">
         <img src="<?php echo $pas_poto; ?>" alt="Pas Foto Santri" style="width: 200px; height: 200px; border-radius: 50%;">
     </div>
             </td>
-            </tr>
+            </tr> -->
             <tr>
             <th>Nama Santri</th>
             <td><?php echo $data['nama']; ?></td>
@@ -304,7 +355,44 @@ $pas_poto = $row_foto['pas_poto'];
             </tr>
         </table>
         </div>
+        <center><h3>Kesehatan</h3></center>
+        <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Tanggal</th>
+                    <th>Tenaga Kesehatan</th>
+                    <th>Diagnosa</th>
+                    <th>Tindakan</th>
+                    <th>Rujukan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Tampilkan data dari tabel prestasi_isi berdasarkan NIS -->
+                <?php
+                $setoran_query = "SELECT * FROM kesehatan_isi WHERE nis='$nis'";
+                $setoran_result = mysqli_query($koneksi, $setoran_query);
+                $no = 1;
+                while ($setoran_data = mysqli_fetch_array($setoran_result)) {
+                    ?>
+                    <tr>
+                        <td><?php echo $no; ?></td>
+                        <td><?php echo $setoran_data['tanggal']; ?></td>
+                        <td><?php echo $setoran_data['nakes']; ?></td>
+                        <td><?php echo $setoran_data['diagnosa']; ?></td>
+                        <td><?php echo $setoran_data['tindakan']; ?></td>
+                        <td><?php echo $setoran_data['rujukan']; ?></td>
+                    </tr>
+                    <?php
+                    $no++;
+                }
+                ?>
+            </tbody>
+        </table>
+        </div>
         <center><h3>Minat Bakat</h3></center>
+        <div class="table-wrapper">
         <table>
             <thead>
                 <tr>
@@ -332,8 +420,10 @@ $pas_poto = $row_foto['pas_poto'];
                 ?>
             </tbody>
         </table>
+        </div>
 
         <h3><center>Pengalaman Organisasi</center></h3>
+        <div class="table-wrapper">
         <table>
             <thead>
                 <tr>
@@ -365,9 +455,11 @@ $pas_poto = $row_foto['pas_poto'];
                 ?>
             </tbody>
         </table>
+        </div>
 
         <br>
         <h3><center>Pengalaman Kegiatan Tersertifikasi</center></h3>
+        <div class="table-wrapper">
         <table>
             <thead>
                 <tr>
@@ -399,6 +491,9 @@ $pas_poto = $row_foto['pas_poto'];
                 ?>
             </tbody>
         </table>
+        </div>
+        <center><h3>Rekapan Ujian Kepesantrenan</h3></center>
+        <div class="table-wrapper">
         <table>
             <thead>
                 <tr>
@@ -409,11 +504,10 @@ $pas_poto = $row_foto['pas_poto'];
                     <th>Penguji</th>
                     <th>Kategori</th>
                     <th>Keterangan</th>
-                    <th>Catatan</th>
                 </tr>
             </thead>
             <tbody>
-            <center><h3>Rekapan Ujian Kepesantrenan</h3></center>
+            
                 <!-- Tampilkan data dari tabel prestasi_isi berdasarkan NIS -->
                 <?php
                 $setoran_query = "SELECT * FROM kepesantrenan_isi WHERE nis='$nis'";
@@ -441,7 +535,6 @@ $pas_poto = $row_foto['pas_poto'];
                         <td><?php echo $setoran_data['penguji']; ?></td>
                         <td><?php echo $keterangan; ?></td>
                         <td><?php echo $setoran_data['keterangan']; ?></td>
-                        <td><?php echo $setoran_data['catatan']; ?></td>
                     </tr>
                     <?php
                     $no++;
@@ -449,7 +542,9 @@ $pas_poto = $row_foto['pas_poto'];
                 ?>
             </tbody>
         </table>
+        </div>
         <center><h3>Rekapan Ujian Tasmi'</h3></center>
+        <div class="table-wrapper">
         <table>
         <thead>
             <tr>
@@ -492,7 +587,9 @@ $pas_poto = $row_foto['pas_poto'];
             ?>
         </tbody>
         </table>
+        </div>
     <center><h3>Rekapan Hafalan</h3></center>
+    <div class="table-wrapper">
     <table>
         <thead>
             <tr>
@@ -537,8 +634,10 @@ $pas_poto = $row_foto['pas_poto'];
             ?>
         </tbody>
     </table>
+    </div>
 
     <center><h3>Rekapan Ujian Tahfizh</h3></center>
+    <div class="table-wrapper">
 <table>
     <thead>
         <tr>
@@ -582,6 +681,7 @@ $pas_poto = $row_foto['pas_poto'];
         ?>
     </tbody>
 </table>
+</div>
     <div class="total-hafalan">
     <?php
     // Menghitung jumlah total hafalan
@@ -597,9 +697,9 @@ $pas_poto = $row_foto['pas_poto'];
     <p>Jumlah Total Hafalan: <?php echo $total_hafalan; ?> Halaman</p>
     <p>Jumlah Total Hafalan per Juz: <?php echo $jumlah_total_hafalan_per_juz; ?></p>
     </div>
-    <!-- <center><h3>Grafik Kualitas Hafalan</h3></center> -->
+    <center><h3>Grafik Kualitas Hafalan</h3></center>
 
-    <!-- <canvas id="chart" style="max-width: 100%;"></canvas> -->
+    <canvas id="chart" style="max-width: 100%;"></canvas>
 
 
         <script>
@@ -627,40 +727,41 @@ $pas_poto = $row_foto['pas_poto'];
             ?>
 
                 // Menampilkan diagram
-                // var ctx = document.getElementById('chart').getContext('2d');
-                // var chart = new Chart(ctx, {
-                //     type: 'bar',
-                //     data: {
-                //         labels: ['A (Sangat Baik)', 'B (Baik)', 'C (Kurang Lancar)', 'D (Tidak Lancar)'],
-                //         datasets: [{
-                //             label: 'Grafik',
-                //             data: [<?php echo $nilai_a_total; ?>, <?php echo $nilai_b_total; ?>, <?php echo $nilai_c_total; ?>, <?php echo $nilai_d_total; ?>],
-                //             backgroundColor: [
-                //                 'rgba(75, 192, 192, 0.2)',
-                //                 'rgba(54, 162, 235, 0.2)',
-                //                 'rgba(255, 206, 86, 0.2)',
-                //                 'rgba(255, 99, 132, 0.2)'
-                //             ],
-                //             borderColor: [
-                //                 'rgba(75, 192, 192, 1)',
-                //                 'rgba(54, 162, 235, 1)',
-                //                 'rgba(255, 206, 86, 1)',
-                //                 'rgba(255, 99, 132, 1)'
-                //             ],
-                //             borderWidth: 1
-                //         }]
-                //     },
-                //     options: {
-                //         scales: {
-                //             y: {
-                //                 beginAtZero: true
-                //             }
-                //         }
-                //     }
-                // });
+                var ctx = document.getElementById('chart').getContext('2d');
+                var chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['A (Sangat Baik)', 'B (Baik)', 'C (Kurang Lancar)', 'D (Tidak Lancar)'],
+                        datasets: [{
+                            label: 'Grafik',
+                            data: [<?php echo $nilai_a_total; ?>, <?php echo $nilai_b_total; ?>, <?php echo $nilai_c_total; ?>, <?php echo $nilai_d_total; ?>],
+                            backgroundColor: [
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(255, 99, 132, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 99, 132, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
         </script>
 
         <center><h3>Rekapan Prestasi</h3></center>
+        <div class="table-wrapper">
         <table>
             <thead>
                 <tr>
@@ -694,8 +795,10 @@ $pas_poto = $row_foto['pas_poto'];
                 ?>
             </tbody>
         </table>
+        </div>
 
         <center><h3>Rekapan Kedisiplinan</h3></center>
+        <div class="table-wrapper">
 
         <table>
             <thead>
@@ -723,9 +826,10 @@ $pas_poto = $row_foto['pas_poto'];
                     <?php
                     $no++;
                 }
-                ?>    
+                ?>
             </tbody>
         </table>
+        </div>
 
         <div class="total-hafalan">
         <?php
@@ -743,12 +847,14 @@ $pas_poto = $row_foto['pas_poto'];
         </div>
 
         <center><h3>Rekapan Perizinan</h3></center>
+        <div class="table-wrapper">
 
         <table>
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Tanggal</th>
+                    <th>Dari Tanggal</th>
+                    <th>Sampai Tanggal</th>
                     <th>Keperluan</th>
                     <th>Durasi (Hari)</th>
                 </tr>
@@ -764,6 +870,7 @@ $pas_poto = $row_foto['pas_poto'];
                     <tr>
                         <td><?php echo $no; ?></td>
                         <td><?php echo $setoran_data['daritanggal']; ?></td>
+                        <td><?php echo $setoran_data['sampaitanggal']; ?></td>
                         <td><?php echo $setoran_data['keperluan']; ?></td>
                         <td><?php echo $setoran_data['durasi']; ?></td>
                     </tr>
@@ -773,6 +880,7 @@ $pas_poto = $row_foto['pas_poto'];
                 ?>
             </tbody>
         </table>
+        </div>
 
 
         

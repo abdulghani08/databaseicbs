@@ -1,9 +1,10 @@
 <?php
 session_start();
-include "../connection.php";
+include "connection.php";
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 if (empty($_SESSION['username'])) {
-    die("Anda belum login");
+    header("Location: belum_login.php");
+    exit();
 }
 
 $koneksi = mysqli_connect($host, $username, $password, $database);
@@ -17,145 +18,199 @@ $data = mysqli_fetch_array($result);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Update Minat Bakat Santri</title>
-    <link rel="shortcut icon" href="../logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REKAPAN PERIZINAN</title>
+    <link rel="shortcut icon" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+       :root {
+            --primary-color: #1a237e; /* Biru dongker */
+            --secondary-color: #283593; /* Biru dongker lebih terang */
+            --background-color: #e8eaf6;
+            --text-color: #333;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-image: url('../backgroundgedung.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
             margin: 0;
             padding: 20px;
+            color: var(--text-color);
+            transition: all 0.3s ease;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
             background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 20px;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-weight: 600;
         }
 
-        .add-button {
-            margin-bottom: 10px;
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .action-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            width: 150px;
             text-align: center;
         }
 
-        .add-button a {
-            display: inline-block;
-            text-decoration: none;
-            background-color: #4CAF50;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 16px;
-            margin-right: 10px;
+        .action-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .back-button a {
-            display: inline-block;
-            text-decoration: none;
-            background-color: #FF0000;
+        .action-button i {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .action-button span {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .details {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .details table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+
+        .details th, .details td {
+            padding: 15px;
+            text-align: left;
+            border: none;
+        }
+
+        .details th {
+            background-color: var(--primary-color);
             color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0 10px;
             margin-top: 20px;
         }
 
-        th,
-        td {
-            padding: 8px;
-            border: 1px solid #ccc;
+        th, td {
+            padding: 15px;
             text-align: left;
+            border: none;
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: var(--primary-color);
+            color: #fff;
+            font-weight: 600;
         }
 
-        tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
+        tbody tr {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
 
         tbody tr:hover {
-            background-color: #e0e0e0;
-        }
-
-        .details {
-        background-color: rgba(255, 255, 255, 0.5);
-        padding: 10px;
-        border: 1px solid #ddd;
-        }
-
-        .details table {
-        width: 100%;
-        border-collapse: collapse;
-        }
-
-        .details th,
-        .details td {
-        padding: 8px;
-        border: 1px solid #ddd;
-        }
-
-        .details th {
-        background-color: rgba(0, 120, 255, 0.5);
-        }
-        
-        .action-links {
-            display: flex;
-            justify-content: center;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .action-links a {
             display: inline-block;
-            text-decoration: none;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin-right: 5px;
-            font-weight: bold;
-            font-size: 14px;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
         }
 
-        .action-links a.back img {
-            width: 25px; /* Ubah dengan lebar yang diinginkan */
-            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
+        .action-links a:hover {
+            background-color: var(--secondary-color);
         }
 
-        .action-links a.delete img{
-            width: 25px; /* Ubah dengan lebar yang diinginkan */
-            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
+        .action-links img {
+            width: 20px;
+            height: 20px;
         }
 
-        .action-links a.edit img{
-            width: 25px; /* Ubah dengan lebar yang diinginkan */
-            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
-        }
+        @media (max-width: 767px) {
+            body {
+                padding: 10px;
+            }
 
-        tbody tr.kurang-lancar td {
-            color: red;
-            font-weight: bold;
+            .container {
+                padding: 15px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .action-button {
+                width: 80%;
+                max-width: 200px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 8px 4px;
+            }
+
+            .hide-mobile {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -163,15 +218,22 @@ $data = mysqli_fetch_array($result);
 <body>
     <div class="container">
         <div>
-            <a href="dt_minatbakat.php"><img src="../back_icon.png" alt="back"></a>
+            <a href="dt_minatbakat.php"><img src="back_icon.png" alt="home"></a>
         </div>
         <h2>MINAT BAKAT SANTRI</h2>
-        <div class="add-button">
-            <a href="form_tambahdata_minatbakat.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>">Tambah Minat Bakat</a>
-            <a href="form_tambahdata_pengalaman_organisasi.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>">Tambah Pengalaman Organisasi</a>
-        </div>
-        <div class="add-button">
-            <a href="form_tambahdata_sertifikasi.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>">Tambah Pengalaman Kegiatan Tersertifikasi</a>
+        <div class="action-buttons">
+            <a href="form_tambahdata_minatbakat.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" class="action-button">
+                <i class="fas fa-plus-circle"></i>
+                <span>Tambah Minat Bakat</span>
+            </a>
+            <a href="form_tambahdata_pengalaman_organisasi.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" class="action-button">
+                <i class="fas fa-book-reader"></i>
+                <span>Tambah Pengalaman Organisasi</span>
+            </a>
+            <a href="form_tambahdata_sertifikasi.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" class="action-button">
+                <i class="fas fa-clipboard-check"></i>
+                <span>Tambah Kegiatan Tersertifikasi</span>
+            </a>
         </div>
        <div class="details">
         <table>
@@ -198,6 +260,7 @@ $data = mysqli_fetch_array($result);
         </table>
         </div>
         <h3><center>Peminatan dan Bakat</center></h3>
+        <div class="table-container">
         <table>
             <thead>
                 <tr>
@@ -221,7 +284,7 @@ $data = mysqli_fetch_array($result);
                         <td><?php echo $setoran_data['jenis']; ?></td>
                         <td class="action-links">
                             <!-- <a class="edit" href="edit_minatbakat.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a> -->
-                            <a class="delete" href="aksi_hapus_minatbakat.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="../delete_icon.png" alt="Delete"></a>
+                            <a class="delete" href="aksi_hapus_minatbakat.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
                         </td>
                     </tr>
                     <?php
@@ -230,9 +293,11 @@ $data = mysqli_fetch_array($result);
                 ?>
             </tbody>
         </table>
+            </div>
 
         <br>
         <h3><center>Pengalaman Organisasi</center></h3>
+        <div class="table-container">
         <table>
             <thead>
                 <tr>
@@ -269,9 +334,11 @@ $data = mysqli_fetch_array($result);
                 ?>
             </tbody>
         </table>
+            </div>
 
         <br>
         <h3><center>Pengalaman Kegiatan Tersertifikasi</center></h3>
+        <div class="table-container">
         <table>
             <thead>
                 <tr>
@@ -308,7 +375,32 @@ $data = mysqli_fetch_array($result);
                 ?>
             </tbody>
         </table>
+            </div>
     </div>
+    <script>
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add fade-in animation to elements as they enter the viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        });
+
+        document.querySelectorAll('table, .details').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 
 </html>

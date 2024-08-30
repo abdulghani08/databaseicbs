@@ -1,4 +1,4 @@
 <?php
-header("Location: HalamanUtama/index.html");
+header("Location: login.php");
 exit;
 ?>

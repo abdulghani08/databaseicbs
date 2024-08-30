@@ -1,9 +1,12 @@
 <?php
 session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 include "connection.php";
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 if (empty($_SESSION['username'])) {
-    die("Anda belum login");
+    header("Location: belum_login.php");
+    exit();
 }
 
 $koneksi = mysqli_connect($host, $username, $password, $database);
@@ -30,83 +33,128 @@ mysqli_close($koneksi);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Tambah Data Peminatan</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Tambah Data Peminatan</title>
     <link rel="shortcut icon" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('backgroundgedung.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+        :root {
+            --primary-color: #FF8C00;
+            --secondary-color: #FFA500;
+            --background-color: #FFF5E6;
+            --text-color: #333;
+        }
+
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
             padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 100%;
+            width: 400px;
             background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            color: var(--primary-color);
         }
 
         form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        input {
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
+        input[type="submit"] {
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .add-button {
+            text-align: center;
             margin-top: 20px;
         }
 
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: bold;
-        }
-
-        .form-group input[type="text"] {
-            width: 100%;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .form-group input[type="submit"] {
-            padding: 5px 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .button a {
-            display: inline-block;
+        .add-button a {
+            color: var(--primary-color);
             text-decoration: none;
-            background-color: #4CAF50;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 16px;
-            margin-bottom: 10px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .add-button a:hover {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 100%;
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="button">
-            <a href="daftar_minatbakat.php">Kembali</a>
-        </div>
+        <center>
         <h2>Tambah Data Peminatan</h2>
         <form method="POST" action="">
             <div class="form-group">
@@ -120,6 +168,10 @@ mysqli_close($koneksi);
             <div class="form-group">
                 <input type="submit" value="Tambah">
             </div>
+            <div class="add-button">
+            <a href="daftar_minatbakat.php">Kembali</a>
+    </center>
+        </div>
         </form>
     </div>
 </body>

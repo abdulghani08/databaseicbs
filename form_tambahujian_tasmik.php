@@ -3,7 +3,8 @@ session_start();
 include "connection.php";
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 if (empty($_SESSION['username'])) {
-    die("Anda belum login");
+    header("Location: belum_login.php");
+    exit();
 }
 
 $koneksi = mysqli_connect($host, $username, $password, $database);
@@ -45,9 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ujian = mysqli_real_escape_string($koneksi, $_POST['ujian']);
     $nilai = $_POST['nilai'];
     $total_halaman = $_POST['total_halaman'];
+    $penginput = $_POST['penginput'];
 
     // Query untuk menyimpan data ujian tahfizh
-    $query = "INSERT INTO tasmik_isi (nis, nama, asrama, kelas, tanggal, ujian, nilai, total_halaman) VALUES ('$nis', '$nama', '$asrama', '$kelas', '$tanggal', '$ujian', '$nilai', '$total_halaman')";
+    $query = "INSERT INTO tasmik_isi (nis, nama, asrama, kelas, tanggal, ujian, nilai, total_halaman, penginput) VALUES ('$nis', '$nama', '$asrama', '$kelas', '$tanggal', '$ujian', '$nilai', '$total_halaman', '$penginput')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -61,58 +63,122 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Form Tambah Ujian Tahfizh</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Tambah Ujian Tasmik</title>
     <link rel="shortcut icon" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('backgroundgedung.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+        :root {
+            --primary-color: #FF8C00;
+            --secondary-color: #FFA500;
+            --background-color: #FFF5E6;
+            --text-color: #333;
+        }
+
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
             padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 100%;
+            width: 400px;
             background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            color: var(--primary-color);
         }
 
         form {
-            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
         }
 
-        label,
-        input {
-            display: block;
-            margin-bottom: 10px;
+        label {
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        input, select {
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--primary-color);
         }
 
         input[type="submit"] {
-            background-color: #4CAF50;
+            background-color: var(--primary-color);
             color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
             cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
         }
 
         input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: var(--secondary-color);
+        }
+
+        .add-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .add-button a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .add-button a:hover {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 100%;
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -121,6 +187,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container">
         <h2>Form Tambah Ujian Tahfizh</h2>
         <form method="POST">
+            <label for="penginput">Penginput:</label>
+            <input type="text" id="penginput" name="penginput" value="<?php echo $_SESSION['username']; ?>" readonly>
+
             <label for="asrama">Asrama:</label>
             <input type="text" id="asrama" name="asrama" value="<?php echo $asrama; ?>" readonly>
 

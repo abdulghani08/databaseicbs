@@ -3,9 +3,9 @@ session_start();
 include "connection.php";
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 if (empty($_SESSION['username'])) {
-    die("Anda belum login");
+    header("Location: belum_login.php");
+    exit();
 }
-
 $koneksi = mysqli_connect($host, $username, $password, $database);
 
 // Ambil ID dari parameter URL

@@ -1,9 +1,10 @@
 <?php
 session_start();
-include "../connection.php";
+include "connection.php";
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 if (empty($_SESSION['username'])) {
-    die("Anda belum login");
+    header("Location: belum_login.php");
+    exit();
 }
 
 $koneksi = mysqli_connect($host, $username, $password, $database);
@@ -17,146 +18,236 @@ $data = mysqli_fetch_array($result);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Tahfizh</title>
-    <link rel="shortcut icon" href="../logo.png">
+    <link rel="shortcut icon" href="logo.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #1a237e; /* Biru dongker */
+            --secondary-color: #283593; /* Biru dongker lebih terang */
+            --background-color: #e8eaf6;
+            --text-color: #333;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-image: url('../backgroundgedung.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
             margin: 0;
             padding: 20px;
+            color: var(--text-color);
+            transition: all 0.3s ease;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
             background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease;
         }
 
-        h2 {
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2, h3 {
             text-align: center;
-            margin-bottom: 20px;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-weight: 600;
         }
 
         .add-button {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             text-align: center;
         }
 
         .add-button a {
             display: inline-block;
             text-decoration: none;
-            background-color: #4CAF50;
+            background-color: var(--primary-color);
             color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
             font-size: 16px;
-            margin-right: 10px;
+            margin: 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .back-button a {
-            display: inline-block;
-            text-decoration: none;
-            background-color: #FF0000;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 16px;
+        .add-button a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
         }
 
         table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0 10px;
             margin-top: 20px;
         }
 
-        th,
-        td {
-            padding: 8px;
-            border: 1px solid #ccc;
+        th, td {
+            padding: 15px;
             text-align: left;
+            border: none;
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: var(--primary-color);
+            color: #fff;
+            font-weight: 600;
         }
 
-        tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
+        tbody tr {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
 
         tbody tr:hover {
-            background-color: #e0e0e0;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .details {
-        background-color: rgba(255, 255, 255, 0.5);
-        padding: 10px;
-        border: 1px solid #ddd;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
         }
 
-        .details table {
-        width: 100%;
-        border-collapse: collapse;
-        }
-
-        .details th,
-        .details td {
-        padding: 8px;
-        border: 1px solid #ddd;
-        }
-
-        .details th {
-        background-color: rgba(76, 175, 80, 0.5);
-        }
-
-        .action-links {
+        .action-buttons {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .action-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            width: 150px;
+            text-align: center;
+        }
+
+        .action-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-button i {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .action-button span {
+            font-size: 14px;
+            font-weight: 600;
         }
 
         .action-links a {
             display: inline-block;
-            text-decoration: none;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .action-links a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .action-links img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .total-hafalan {
+            background-color: var(--primary-color);
             color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin-right: 5px;
-            font-weight: bold;
-            font-size: 14px;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: center;
+            font-weight: 600;
         }
 
-        .action-links a.back img {
-            width: 25px; /* Ubah dengan lebar yang diinginkan */
-            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
+        canvas {
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
-        .action-links a.delete img{
-            width: 25px; /* Ubah dengan lebar yang diinginkan */
-            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
-        }
+        @media (max-width: 767px) {
+            body {
+                padding: 10px;
+            }
 
-        .action-links a.edit img{
-            width: 25px; /* Ubah dengan lebar yang diinginkan */
-            height: auto; /* Atau ubah dengan tinggi yang diinginkan */
-        }
+            .container {
+                padding: 15px;
+            }
 
-        tbody tr.kurang-lancar td {
-            color: red;
-            font-weight: bold;
+            .add-button a {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 8px 4px;
+            }
+
+            .hide-mobile {
+                display: none;
+            }
+
+            .table-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .details {
+                font-size: 14px;
+            }
+
+            .action-links img {
+                width: 16px;
+                height: 16px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .action-button {
+                width: 80%;
+                max-width: 200px;
+            }
         }
     </style>
 </head>
@@ -164,13 +255,22 @@ $data = mysqli_fetch_array($result);
 <body>
     <div class="container">
         <div>
-            <a href="dt_tahfizh.php"><img src="../back_icon.png" alt="home"></a>
+            <a href="dt_tahfizh.php"><img src="back_icon.png" alt="home"></a>
         </div>
         <h2>REKAPAN HAFALAN</h2>
-        <div class="add-button">
-            <a href="form_tambahdata_setoran.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Hafalan</a>
-            <a href="form_tambahujian_tahfizh.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Ujian Tasmi' Qur'an Perjuz</a>
-            <a href="form_tambahujian_tasmik.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" style="background-color: #4CAF50;">Tambah Ujian Tahfizh</a>
+        <div class="action-buttons">
+            <a href="form_tambahdata_setoran.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" class="action-button">
+                <i class="fas fa-plus-circle"></i>
+                <span>Tambah Hafalan</span>
+            </a>
+            <a href="form_tambahujian_tahfizh.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" class="action-button">
+                <i class="fas fa-book-reader"></i>
+                <span>Tambah Ujian Tasmi' Qur'an Perjuz</span>
+            </a>
+            <a href="form_tambahujian_tasmik.php?nis=<?php echo $nis; ?>&nama=<?php echo $nama; ?>" class="action-button">
+                <i class="fas fa-clipboard-check"></i>
+                <span>Tambah Ujian Tahfizh</span>
+            </a>
         </div>
         <div class="details">
         <table>
@@ -202,6 +302,7 @@ $data = mysqli_fetch_array($result);
         </div>
 
 <center><h3>Rekapan Hafalan</h3></center>
+<div class="table-container">
 <table>
     <thead>
         <tr>
@@ -241,8 +342,8 @@ $data = mysqli_fetch_array($result);
                 <td><?php echo $setoran_data['total_hafalan']; ?></td>
                 <td class="action-links">
                     <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_rekapan_hafalan.php -->
-                    <a class="edit" href="edit_setoran_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="../edit_icon.png" alt="Edit"></a>
-                    <a class="delete" href="aksi_hapus_rekapan_hafalan.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="../delete_icon.png" alt="Delete"></a>
+                    <a class="edit" href="edit_setoran_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a>
+                    <a class="delete" href="aksi_hapus_rekapan_hafalan.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
                     <!-- Tambahkan tombol edit dengan link ke edit_setoran_tahfizh.php -->
                 </td>
             </tr>
@@ -252,8 +353,10 @@ $data = mysqli_fetch_array($result);
         ?>
     </tbody>
 </table>
+    </div>
 
 <center><h3>Rekapan Ujian Tasmi' Qur'an Perjuz / Ujian Kenaikan Juz</h3></center>
+<div class="table-container">
 <table>
     <thead>
         <tr>
@@ -290,8 +393,8 @@ $data = mysqli_fetch_array($result);
                 <td><?php echo $nilai; ?></td>
                 <td><?php echo $keterangan; ?></td>
                 <td class="action-links">
-                    <a class="edit" href="edit_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="../edit_icon.png" alt="Edit"></a>
-                    <a class="delete" href="aksi_hapus_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="../delete_icon.png" alt="Delete"></a>
+                    <a class="edit" href="edit_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a>
+                    <a class="delete" href="aksi_hapus_ujian_tahfizh.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
                 </td>
             </tr>
             <?php
@@ -300,8 +403,10 @@ $data = mysqli_fetch_array($result);
         ?>
     </tbody>
 </table>
+<div>
 
 <center><h3>Rekapan Ujian Tahfizh</h3></center>
+<div class="table-container">
 <table>
     <thead>
         <tr>
@@ -342,7 +447,7 @@ $data = mysqli_fetch_array($result);
                 <td class="action-links">
                     <!-- Tambahkan tombol hapus dengan link ke aksi_hapus_rekapan_hafalan.php -->
                     <!-- <a class="edit" href="edit_setoran_tahfizh.php?id=<?php echo $setoran_data['id']; ?>"><img src="edit_icon.png" alt="Edit"></a> -->
-                    <a class="delete" href="aksi_hapus_ujian_tasmik.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="../delete_icon.png" alt="Delete"></a>
+                    <a class="delete" href="aksi_hapus_ujian_tasmik.php?id=<?php echo $setoran_data['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><img src="delete_icon.png" alt="Delete"></a>
                     <!-- Tambahkan tombol edit dengan link ke edit_setoran_tahfizh.php -->
                 </td>
             </tr>
@@ -352,6 +457,7 @@ $data = mysqli_fetch_array($result);
         ?>
     </tbody>
 </table>
+    </div>
 
         <div class="total-hafalan">
         <?php
@@ -376,22 +482,22 @@ $data = mysqli_fetch_array($result);
         <script>
             // Mendapatkan data nilai dari PHP
             <?php
-            $nilai_a_query = "SELECT COUNT(*) AS total FROM putra_tahfizh_hafalan WHERE nis='$nis' AND nilai='A'";
+            $nilai_a_query = "SELECT COUNT(*) AS total FROM tahfizh_hafalan WHERE nis='$nis' AND nilai='A'";
             $nilai_a_result = mysqli_query($koneksi, $nilai_a_query);
             $nilai_a_data = mysqli_fetch_assoc($nilai_a_result);
             $nilai_a_total = $nilai_a_data['total'];
 
-            $nilai_b_query = "SELECT COUNT(*) AS total FROM putra_tahfizh_hafalan WHERE nis='$nis' AND nilai='B'";
+            $nilai_b_query = "SELECT COUNT(*) AS total FROM tahfizh_hafalan WHERE nis='$nis' AND nilai='B'";
             $nilai_b_result = mysqli_query($koneksi, $nilai_b_query);
             $nilai_b_data = mysqli_fetch_assoc($nilai_b_result);
             $nilai_b_total = $nilai_b_data['total'];
 
-            $nilai_c_query = "SELECT COUNT(*) AS total FROM putra_tahfizh_hafalan WHERE nis='$nis' AND nilai='C'";
+            $nilai_c_query = "SELECT COUNT(*) AS total FROM tahfizh_hafalan WHERE nis='$nis' AND nilai='C'";
             $nilai_c_result = mysqli_query($koneksi, $nilai_c_query);
             $nilai_c_data = mysqli_fetch_assoc($nilai_c_result);
             $nilai_c_total = $nilai_c_data['total'];
 
-            $nilai_d_query = "SELECT COUNT(*) AS total FROM putra_tahfizh_hafalan WHERE nis='$nis' AND nilai='D'";
+            $nilai_d_query = "SELECT COUNT(*) AS total FROM tahfizh_hafalan WHERE nis='$nis' AND nilai='D'";
             $nilai_d_result = mysqli_query($koneksi, $nilai_d_query);
             $nilai_d_data = mysqli_fetch_assoc($nilai_d_result);
             $nilai_d_total = $nilai_d_data['total'];
@@ -429,6 +535,29 @@ $data = mysqli_fetch_array($result);
                         }
                     }
                 });
+
+                // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add fade-in animation to elements as they enter the viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        });
+
+        document.querySelectorAll('table, .details, .total-hafalan, canvas').forEach(el => {
+            observer.observe(el);
+        });
         </script>
 
     </div>

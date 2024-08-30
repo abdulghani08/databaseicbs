@@ -1,9 +1,10 @@
 <?php
 session_start();
 include "connection.php";
-error_reporting(E_ALL^(E_NOTICE|E_WARNING));
-if(empty($_SESSION['username'])){ 
-    die("Anda belum login"); 
+error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+if (empty($_SESSION['username'])) {
+    header("Location: belum_login.php");
+    exit();
 }
 
 $koneksi = mysqli_connect($host, $username, $password, $database);
@@ -13,244 +14,222 @@ $query = mysqli_query($koneksi, $sql);
 $data = mysqli_fetch_array($query);
 ?>
 
-<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Font -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Santri Putri Harau</title>
     <link rel="shortcut icon" href="logo.png">
-  </head>
-  <body>
-
-      <div class="header">
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <img id="logo" src="img/rilisan.png" alt="logo">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <h6 id="title-header">Selamat Datang di <br>Database Santri ICSB Putri<br>Harau</h6>
-            </div>
-          </div>
-        </div>  
-      </div>
-
-
-      <div class="background">
-          <img id="background" src="img/background.png" alt="background">
-        <div class="slider">
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img class="d-block w-100" src="img/slider1.png" alt="First slide" id="slider1">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/slider2.png" alt="First slide" id="slider1">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/slider3.png" alt="First slide" id="slider1">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/slider4.png" alt="First slide" id="slider1">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/slider5.png" alt="First slide" id="slider1">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/slider6.png" alt="First slide" id="slider1">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/slider7.png" alt="First slide" id="slider1">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/slider8.png" alt="First slide" id="slider1">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/slider9.png" alt="First slide" id="slider1">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/slider10.png" alt="First slide" id="slider1">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/slider11.png" alt="First slide" id="slider1">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/slider12.png" alt="First slide" id="slider1">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/slider13.png" alt="First slide" id="slider1">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/slider14.png" alt="First slide" id="slider1">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/slider15.png" alt="First slide" id="slider1">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="img/slider16.png" alt="First slide" id="slider1">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FF8C00;
+            --secondary-color: #FFA500;
+            --text-color: #333;
+            --bg-color: #FFF5E6;
+        }
         
-
-      <div class="content ">
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <div class="row">
-                <div class="box">
-                  <a href="dt_kepesantrenan.php">
-                    <img src="img/kepesantrenan.png" alt="user">
-                  </a>
-                </div>
-              <div class="row">
-                <p id="title1">Kpesantrenan</p>
-              </div> 
-              </div>  
-            </div>
-            <div class="col">
-              <div class="row">
-                <div class="box">
-                  <a href="dt_tahfizh.php"> 
-                    <img src="img/tahfizh.png" alt="search">
-                  </a>
-              </div>
-              <div class="row">
-                <p id="title2">Tahfizh</p>
-              </div>
-              </div> 
-            </div>
-            <div class="col">
-              <div class="row">
-                <div class="box">
-                  <a href="dt_prestasi.php">
-                    <img src="img/prestasi.png" alt="doc">
-                  </a>
-              </div>
-              <div class="row">
-                <p id="title3">Prestasi</p> 
-              </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="row">
-                <div class="box">
-                  <a href="dt_disiplin.php">
-                    <img src="img/kedisiplinan.png" alt="doc">
-                  </a>
-              </div>
-              <div class="row">
-                <p id="title3">disiplin</p> 
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <div class="row">
-                <div class="box" id="row2">
-                  <a href="dt_perizinan.php">
-                    <img src="img/perizinan.png" alt="phone">
-                  </a>
-                </div>
-              <div class="row">
-                <p id="title4">Perizinan</p>
-              </div> 
-              </div>  
-            </div>
-            <div class="col">
-              <div class="row">
-                <div class="box" id="row2">
-                  <a href="dt_minatbakat.php">
-                    <img src="img/minat.png" alt="galeri">
-                  </a>
-                </div>
-              </div>
-              <div class="row">
-                <p id="title5">Minat</p>
-              </div>
-            </div>
-            <div class="col">
-              <div class="row">
-                <div class="box" id="row2">
-                 <a href="dt_portopolio.php">
-                   <img src="img/portopolio.png" alt="clock">
-                 </a> 
-                </div>
-              </div>
-              <div class="row">
-                <p id="title6">Portopolio</p> 
-              </div>
-            </div>
-            <div class="col">
-              <div class="row">
-                <div class="box" id="row2">
-                 <a href="akun.php">
-                   <img src="img/profil.png" alt="clock">
-                 </a> 
-                </div>
-              </div>
-              <div class="row">
-                <p id="title6">Akun</p> 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> 
-    </div> 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
-          <div class="footer">
-            <div class="container">
-              <div class="row">
-                <div class="col">
-                  <h5 id="title-footer">
-                    Grafik Tahfizh  |  Grafik Disiplin  | Logout
-                  </h5>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-auto">
-                  <a href="grafik_tahfizh.php">
-                    <img src="img/icon_grafiktahfizh.png" alt="wa" id="sosmed">
-                  </a>
-                  <a href="grafik_kedisiplinan.php">
-                    <img src="img/icon_grafikdisiplin.png" alt="fb" id="sosmed">
-                  </a>
-                  <a href="logout.php">
-                    <img src="img/logout_icon.png" alt="ig" id="sosmed">
-                  </a>
-                </div>
-              </div>
-            </div>  
-          </div>
-        </div>
-       
+        body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    min-height: 100vh;
+    padding-bottom: 60px;
+    position: relative;
+    background: linear-gradient(135deg, var(--bg-color), var(--secondary-color));
+}
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('backgroundhome.jpg') no-repeat center center/cover;
+    opacity: 0.2;
+    z-index: -1;
+}
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .header img {
+            max-width: 150px;
+        }
+        
+        .header h1 {
+            margin-top: 10px;
+            font-size: 1.5rem;
+            color: #ffffff; /* Mengubah warna teks menjadi putih */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .menu-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .menu-item img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+        
+        .menu-item p {
+            text-decoration: none;
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .menu-item i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+a {
+    text-decoration: none;
+}
+        
+        .bottom-navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--primary-color);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            font-size: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .nav-item i {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="img/rilisan.png" alt="logo">
+            <h1>DATABASE SANTRI ICBS PUTRI HARAU</h1>
+        </header>
+        
+        <main class="menu-grid">
+    <a href="dt_kepesantrenan.php" class="menu-item">
+        <i class="fas fa-mosque"></i>
+        <p>Kepesantrenan</p>
+    </a>
+    <a href="dt_tahfizh.php" class="menu-item">
+        <i class="fas fa-quran"></i>
+        <p>Tahfizh</p>
+    </a>
+    <a href="dt_prestasi.php" class="menu-item">
+        <i class="fas fa-trophy"></i>
+        <p>Prestasi</p>
+    </a>
+    <a href="dt_disiplin.php" class="menu-item">
+        <i class="fas fa-user-clock"></i>
+        <p>Disiplin</p>
+    </a>
+    <a href="dt_perizinan.php" class="menu-item">
+        <i class="fas fa-clipboard-check"></i>
+        <p>Perizinan</p>
+    </a>
+    <a href="dt_minatbakat.php" class="menu-item">
+        <i class="fas fa-star"></i>
+        <p>Minat Bakat</p>
+    </a>
+    <a href="dt_portopolio.php" class="menu-item">
+        <i class="fas fa-folder-open"></i>
+        <p>Portopolio</p>
+    </a>
+    <a href="dt_kesehatan.php" class="menu-item">
+        <i class="fas fa-heartbeat"></i>
+        <p>Kesehatan</p>
+    </a>
+    <a href="pembina_jurnal.php" class="menu-item">
+        <i class="fas fa-book"></i>
+        <p>Jurnal Pembina</p>
+    </a>
+    <a href="akun.php" class="menu-item">
+        <i class="fas fa-user-circle"></i>
+        <p>Akun</p>
+    </a>
+</main>
+    </div>
+    
+    <nav class="bottom-navbar">
+    <a href="home.php" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </a>
+    <a href="https://docs.google.com/spreadsheets/d/1tk2WSZRG7kOvDaAO9vaQ7MV3ywBgAb2LZjYS1RjLD6c/edit?gid=1630597597#gid=1630597597" target="_blank" class="nav-item">
+        <i class="fas fa-file-alt"></i>
+        <span>Rekapan Santri</span>
+    </a>
+    <a href="rekapan_bw.php" class="nav-item">
+        <i class="fas fa-clipboard-list"></i>
+        <span>Rekapan BW</span>
+    </a>
+    <a href="grafik_tahfizh.php" class="nav-item">
+        <i class="fas fa-quran"></i>
+        <span>Grafik Tahfizh</span>
+    </a>
+    <a href="grafik_kedisiplinan.php" class="nav-item">
+        <i class="fas fa-user-clock"></i>
+        <span>Grafik Disiplin</span>
+    </a>
+    <a href="logout.php" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+    </a>
+</nav>
+</body>
 </html>
